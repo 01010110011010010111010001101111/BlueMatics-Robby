@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">RoboRemote</string>
+    <string name="title_activity_qrreader">qrreader</string>
+    <string name="err1">Es sind nur Werte zwischen 1 und 50 zugelassen!</string>
+    <string name="understood">Das habe ich verstanden: </string>
+    <string name="welcometext">Hallo und herzlich Willkommen!</string>
+    <string name="hardcontrol_off">Tempomat ausgeschaltet!</string>
+    <string name="hardcontrol_on">Tempomat eingeschaltet!</string>
+    <string name="voicecontrol_off">Sprachsteuerung ausgeschaltet!</string>
+    <string name="voicecontrol_on">Sprachsteuerung eingeschaltet!</string>
+    <string name="analogcontrol_off">analoge Steuerung ausgeschaltet!</string>
+    <string name="analogcontrol_on">analoge Steuerung eingeschaltet!</string>
+    <string name="access_denied">Zugriff verweigert!</string>
+    <string name="googlespeechapitext">Hi, sag mal was!</string>
+    <string name="googlespeechapitexterror">Ein Fehler ist aufgetreten!</string>
+    <string name="speechforward">vorwärts</string>
+    <string name="speechbackward">rückwärts</string>
+    <string name="lightON">Licht an</string>
+    <string name="lightOff">Licht aus</string>
+    <string name="parkingModeOn">Parkmodus an</string>
+    <string name="parkingModeOff">Parkmodus aus</string>
+    <string name="notificationTitle">RoboRemoteTest</string>
+    <string-array name="speechleft">
+        <item>links</item>
+        <item>linx</item>
+    </string-array>
+    <string name="speechright">rechts</string>
+    <string name="wronginput">Deine Eingabe ist nicht zulässig</string>
+    <string name="wronginputbutunderstood">"Dieser Befehl ist nicht zulässig. Das habe ich verstanden:</string>
+    <string name="speechStop">Stopp</string>
+    <string name="speechOff">Sprachausgabe deaktivieren</string>
+    <string name="speechOn">Sprachausgabe aktivieren</string>
+    <string name="speechisOff">Sprachausgabe deaktiviert</string>
+    <string name="speechisOn">Sprachausgabe aktiviert</string>
+    <string name="notAllowed">Nicht zulässig!</string>
+    <string-array name="whodothemagic">
+        <item>wer hat diese App geschrieben</item>
+        <item>Viktor Lau</item>
+        <item>Diese App wurde von Viktor Lau geschrieben.</item>
+    </string-array>
+    <string-array name="scanner">
+        <item>Scanner</item>
+        <item>Scanner starten</item>
+        <item>Scanner gestartet</item>
+    </string-array>
+
+
+    <string-array name="numbs">
+        <item>eins</item>
+        <item>zwei</item>
+        <item>drei</item>
+        <item>vier</item>
+        <item>fünf</item>
+        <item>sechs</item>
+        <item>sieben</item>
+        <item>acht</item>
+        <item>neun</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string name="updateText">Für diese Anwendung ist ein Update verfügbar!</string>
+    <string name="install">Installieren</string>
+    <string name="installed">installiert</string>
+    <string name="available">verfügbar</string>
+    <string name="version">Version</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="updatecancel">Update abgebrochen</string>
+    <string name="infospeedometer">Diese Anzeige zeigt dir die Auslastung der Elektromotoren an.</string>
+    <string name="infolcd">Diese Anzeige zeigt dir verschiedene Werte und Informationen an.</string>
+    <string name="infoscan">Diese Funktion ermöglicht dir die App zu idividualisieren // MEHR AUF::.. http://roboci51.lauviktor.de</string>
+    <string-array name="websocket">
+        <item>Websocket</item>
+        <item>websocket</item>
+        <item>Websockets</item>
+        <item>websockets</item>
+    </string-array>
+    <string name="connect_text">Bitte geben Sie hier die IP-Adresse und den Port des Servers ein.</string>
+    <string name="connect_infotext">Ihre Eingabe der IP-Adresse wird nicht an dritte weitergegeben.</string>
+    <string name="connect_infotext2">Um Fehler zu vermeiden, vergewissern Sie sich bitte, dass Ihre Eingabe richtig ist.</string>
+    <string name="connect_infotext3">Die IP-Adresse ist in vier Oktette zu unterteilen. Bsp.: 192.168.178.20</string>
+    <string name="connect_infotext4">Der Port ist als eine Ganzzahl einzugeben. Bsp.: 10053</string>
+    <string name="correction">Überprüfe deine Eingabe!</string>
+    <string name="connecting">Verbindungsaufbau</string>
+    <string name="connected">RoboRemote verbunden</string>
+    <string name="connecterror">Verbindung konnte nicht hergestellt werden</string>
+    <string name="connectionlost">Verbindung verloren</string>
+    <string name="usermanualopen">Benutzerhandbuch öffnen</string>
+</resources>

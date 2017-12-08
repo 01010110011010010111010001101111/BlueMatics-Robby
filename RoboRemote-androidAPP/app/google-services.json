@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "752523307465",
+    "firebase_url": "https://roboremote-e98f7.firebaseio.com",
+    "project_id": "roboremote-e98f7",
+    "storage_bucket": "roboremote-e98f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752523307465:android:f5665245c8e01bfa",
+        "android_client_info": {
+          "package_name": "de.lauviktor.roboremote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752523307465-m9u4muo67nvj9cvvaup6mpts58tbbfcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMYjxU8GPK_DjyishOTcnd6vxBDOeYwoA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
