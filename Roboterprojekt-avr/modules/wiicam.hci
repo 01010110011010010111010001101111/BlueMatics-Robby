@@ -1,0 +1,13 @@
+VERSION:3 SOURCE_TIMESTAMP:4B8390B3
+NODE:M LEVEL:0 LINE:2 "slaveadress"
+NODE:M LEVEL:0 LINE:3 "slaveread"
+NODE:V LEVEL:0 LINE:4 "data -> RAM:????"
+NODE:V LEVEL:0 LINE:10 "Wert -> RAM:????"
+NODE:V LEVEL:0 LINE:11 "x -> RAM:????"
+NODE:V LEVEL:0 LINE:12 "y -> RAM:????"
+NODE:V LEVEL:0 LINE:13 "sWIICAM -> RAM:????"
+NODE:V LEVEL:0 LINE:14 "temp -> RAM:????"
+NODE:F LEVEL:0 LINE:19 "wii_cam_init(void)"
+NODE:F LEVEL:0 LINE:31 "write2Byte(unsigned char b1,unsigned char b2)"
+NODE:F LEVEL:0 LINE:41 "readData(void)"
+NODE:F LEVEL:0 LINE:58 "convertdata(void)"

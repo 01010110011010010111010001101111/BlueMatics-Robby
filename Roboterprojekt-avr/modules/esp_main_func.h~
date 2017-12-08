@@ -1,0 +1,83 @@
+#define state_stop 17
+
+
+
+int currstate=0;
+int state = state_stop; 
+
+
+int line_left;
+int line_mleft;
+int line_mright;
+int line_right;
+int dist_left;
+int dist_fleft;
+int dist_fright;
+int dist_right;
+int linesensorvaluetemp;
+int distanzsensorvaluetemp
+
+
+
+void esp_states(){
+      if (currstate==20){
+      if (servo_value_cur<220){
+      servo_value_cur++;}}
+      if (currstate==21){
+      if (servo_value_cur>120){
+      servo_value_cur--;}}
+      
+      if (currstate==0){
+      state=state_stop;}else{
+       state=currstate-1;
+      }      
+}
+
+void esp_mainfunctions(){
+ //Bereite Linedetectordaten für esp vor        
+if (!LINE_DETECTOR_LEFT){
+line_left=1;
+}else{
+line_left=0;
+}
+if (!LINE_DETECTOR_MID_LEFT){
+line_mleft=1;
+}else{
+line_mleft=0;
+}
+if (!LINE_DETECTOR_MID_RIGHT){
+line_mright=1;
+}else{
+line_mright=0;
+}
+if (!LINE_DETECTOR_RIGHT){
+line_right=1;
+}else{
+line_right=0;
+}
+linesensorvaluetemp = (line_left*1000+line_mleft*100+line_mright*10+line_right);      
+
+//Bereite Distanzsensordaten für esp vor   
+//Klappt noch nicht richtig     
+if (!DISTANCE_SENSOR_LEFT){
+dist_left=1;
+}else{
+dist_left=0;
+}
+if (!DISTANCE_SENSOR_FRONT_LEFT){
+dist_fleft=1;
+}else{
+dist_fleft=0;
+}
+if (!DISTANCE_SENSOR_FRONT_RIGHT){
+dist_fright=1;
+}else{
+dist_fright=0;
+}
+if (!DISTANCE_SENSOR_RIGHT){
+dist_right=1;
+}else{
+dist_right=0;
+}
+distanzsensorvaluetemp = dist_left*1000+dist_fleft*100+dist_fright*10+dist_right;       
+}
