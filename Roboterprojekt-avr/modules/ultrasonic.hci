@@ -1,11 +1,3 @@
-VERSION:3 SOURCE_TIMESTAMP:4B84B61B
-NODE:V LEVEL:0 LINE:3 "strULTRA -> RAM:????"
-NODE:V LEVEL:0 LINE:4 "iRisingEdge -> RAM:????"
-NODE:V LEVEL:0 LINE:4 "iFallingEdge -> RAM:????"
-NODE:V LEVEL:0 LINE:5 "iTime -> RAM:????"
-NODE:V LEVEL:0 LINE:6 "bChange2 -> R2.5"
-NODE:V LEVEL:0 LINE:13 "icr3 -> RAM:????"
-LEVEL:1 LINE:11 ICON:U "byte"
-LEVEL:1 LINE:12 ICON:U "word"
-NODE:F LEVEL:0 LINE:20 "timer3_capt_isr(void)"
-NODE:F LEVEL:0 LINE:43 "timer3_compa_isr(void)"
+VERSION:3 SOURCE_TIMESTAMP:4B88A13A
+NODE:F LEVEL:0 LINE:3 "timer3_capt_isr(void)"
+NODE:F LEVEL:0 LINE:26 "timer3_compa_isr(void)"

@@ -1,20 +1,4 @@
-//WIICAM
-#define slaveadress 0xB0
-#define slaveread 0xB1
-unsigned int data[16];
-void write2Byte(char, char);
-void readData(void); 
-void convertdata(void); 
-void wii_cam_init(void);
-
-unsigned char Wert[5];  //Feld für Wertkonvertierung LCD
-unsigned int x[4];     //X,Y-Koordinaten der Objekte
-unsigned int y[4];    //X: 0..1023, Y: 0..767
-unsigned char sWIICAM[4];     //S: 0..15 (Objektgröße im extended Mode)
-unsigned int temp;
-
-
- /////////////WIICAM////////////// 
+/////////////WIICAM////////////// 
 
 void wii_cam_init(void)
 {

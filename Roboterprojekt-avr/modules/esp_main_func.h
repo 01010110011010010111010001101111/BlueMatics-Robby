@@ -1,24 +1,3 @@
-#define state_stop 17
-
-
-
-int currstate=0;
-int state = state_stop; 
-
-
-int line_left;
-int line_mleft;
-int line_mright;
-int line_right;
-int dist_left;
-int dist_fleft;
-int dist_fright;
-int dist_right;
-int linesensorvaluetemp;
-int distanzsensorvaluetemp;
-
-
-
 void esp_states(){
       if (currstate==20){
       if (servo_value_cur<220){

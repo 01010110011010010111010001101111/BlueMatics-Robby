@@ -1,21 +1,4 @@
-
-//ULTRASONIC
-char strULTRA[17];
-unsigned int iRisingEdge, iFallingEdge;
-unsigned int iTime;
-    bit bChange2=0;
-
-/* union declaration */
-union alpha 
-{
-  unsigned char byte[2];
-  unsigned int  word;
-} icr3;
-
-
-
-
-  //////////////ULTRASONIC/////////////
+//////////////ULTRASONIC/////////////
 // Timer3 input capture interrupt service routine
 interrupt [TIM3_CAPT] void timer3_capt_isr(void)
 {

@@ -1,43 +1,4 @@
 
-//ESP
-// TX_BUFFER, RX_BUFFER
-#define BUFFER_SIZE 15
-
-
-// 7bit slave I2C address
-#define TWI_SLAVE_ADDR 0x50
-
-char str[17];
-unsigned char i=10;
-int iTemp;
-                
-float fDistance;
-// flag that signals that the TWI slave reception was OK
-bit received_ok=false;
-// struct declaration
-struct TData
-{
-  uint8_t linesensorvalue; 
-  uint8_t distanzsensorvalue;  
-  int16_t lichtlinks;  
-  int16_t lichtrechts;
-  int16_t motorvalueleft;
-  int16_t motorvalueright;
-  uint8_t wiicam;
-  uint8_t infarot;
-  uint8_t servo;
-  uint8_t ultraschall;
-  uint8_t iValue;
-};
-// union declaration 
-union TBuffer
-{
-  uint8_t bytes[BUFFER_SIZE];
-  struct TData data; 
-};
-union TBuffer rx_buffer;  // slave receive buffer
-union TBuffer tx_buffer;  // slave transmission buffer
-
 
 /////////////////ESP//////////////////
 flash char * flash status_msg[8]=

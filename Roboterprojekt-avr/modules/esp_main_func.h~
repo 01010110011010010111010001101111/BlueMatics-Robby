@@ -15,7 +15,7 @@ int dist_fleft;
 int dist_fright;
 int dist_right;
 int linesensorvaluetemp;
-int distanzsensorvaluetemp
+int distanzsensorvaluetemp;
 
 
 

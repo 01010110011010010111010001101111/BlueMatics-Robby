@@ -48,7 +48,7 @@ bit bMerk=1;
 bit inSERVOTEST=0;
 
 int servo_breaks = 1;
-int servo_value_cur = 160; 
+int servo_value_cur = 170; 
 int servo_value_copy = 0;
 
  int servo_test = 0;

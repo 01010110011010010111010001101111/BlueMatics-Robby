@@ -1,6 +1,6 @@
 
 //ULTRASONIC
-char str[17];
+char strULTRA[17];
 unsigned int iRisingEdge, iFallingEdge;
 unsigned int iTime;
     bit bChange2=0;
