@@ -60,13 +60,6 @@ interrupt [TIM0_OVF] void timer0_ovf_isr(void)
   
                                    
 
-  //////////////SERVO/////////////
-// Timer1 output compare A interrupt service routine
-interrupt [TIM1_COMPA] void timer1_compa_isr(void)
-{
-//SERVO
-   
-}
 
 
 

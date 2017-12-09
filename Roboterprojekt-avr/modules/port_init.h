@@ -161,35 +161,6 @@ TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (1<<CS01) 
 TCNT0=131;
 OCR0=0x00;
   
-/////////////////////////////////////////////////////////////
-
-  // Timer/Counter 1 initialization
-  // Clock source: System Clock
-  // Clock value: 250,000 kHz
-  // Mode: CTC top=OCR1A
-  // OC1A output: Discon.
-  // OC1B output: Discon.
-  // OC1C output: Discon.
-  // Noise Canceler: Off
-  // Input Capture on Falling Edge
-  // Timer1 Overflow Interrupt: Off
-  // Input Capture Interrupt: Off
-  // Compare A Match Interrupt: On
-  // Compare B Match Interrupt: Off
-  // Compare C Match Interrupt: Off   
-  
-TCCR1A=0x00;
-TCCR1B=0x0B;
-TCNT1H=0x00;
-TCNT1L=0x00;
-ICR1H=0x00;
-ICR1L=0x00;
-OCR1AH=0x00;
-OCR1AL=0x00;
-OCR1BH=0x00;
-OCR1BL=0x00;
-OCR1CH=0x00;
-OCR1CL=0x00;
 
 
 /////////////////////////////////////////////////////////////
@@ -233,7 +204,7 @@ TCNT2=0x00;
 OCR2=0x00;
 
   // Timer(s)/Counter(s) Interrupt(s) initialization
-TIMSK=(0x10 | 0x01 | (1 <<TOIE2));
+TIMSK=( 0x01 | (1 <<TOIE2));
 ETIMSK=(1<<TICIE3) | (1<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
 
 

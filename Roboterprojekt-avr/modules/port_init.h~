@@ -36,14 +36,14 @@ ADCSRA|=(1<<ADSC);
 // External Interrupt 4 Wheel encoder Left
  interrupt [EXT_INT4] void ext_int4_isr(void)
  {
- if (wheelEncoderCounter_right<2000){
+ if (wheelEncoderCounter_right<20000){
   wheelEncoderCounter_right++;      
   }else{wheelEncoderCounter_right=0;}
  }
 // External Interrupt 6 Wheel encoder Right
  interrupt [EXT_INT6] void ext_int6_isr(void)
  {
- if (wheelEncoderCounter_left<2000){
+ if (wheelEncoderCounter_left<20000){
   wheelEncoderCounter_left++;      
   }else{wheelEncoderCounter_left=0;}
  }
@@ -177,7 +177,8 @@ OCR0=0x00;
   // Compare A Match Interrupt: On
   // Compare B Match Interrupt: Off
   // Compare C Match Interrupt: Off   
-  
+TCCR1=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (1<<CS01) | (0<<CS00);
+
 TCCR1A=0x00;
 TCCR1B=0x0B;
 TCNT1H=0x00;
@@ -233,7 +234,7 @@ TCNT2=0x00;
 OCR2=0x00;
 
   // Timer(s)/Counter(s) Interrupt(s) initialization
-TIMSK=(0x10 | 0x01 | (1 <<TOIE2));
+TIMSK=( 0x01 | (1 <<TOIE1));
 ETIMSK=(1<<TICIE3) | (1<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
 
 
