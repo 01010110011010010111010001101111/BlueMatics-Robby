@@ -1,22 +1,14 @@
 void STATE_LINE_SENSOR(){
-         lcd_clear();   
-   if(!LINE_DETECTOR_LEFT)
-     lcd_puts("LEFT: 1");
-   else  
-     lcd_puts("LEFT: 0");
-   if(!LINE_DETECTOR_RIGHT)
-     lcd_puts(" RIGHT: 1");
-   else  
-     lcd_puts(" RIGHT: 0");
+   lcd_clear();   
+   if(!LINE_DETECTOR_LEFT)lcd_puts("LEFT: 1");
+   else  lcd_puts("LEFT: 0");
+   if(!LINE_DETECTOR_RIGHT)lcd_puts(" RIGHT: 1");
+   else  lcd_puts(" RIGHT: 0");
    lcd_gotoxy(0,1);
-   if(!LINE_DETECTOR_MID_LEFT)
-     lcd_puts("MLEFT: 1");
-   else  
-     lcd_puts("MLEFT: 0");
-   if(!LINE_DETECTOR_MID_RIGHT)
-     lcd_puts("MRIGHT:1");
-   else  
-     lcd_puts("MRIGHT:0");       
+   if(!LINE_DETECTOR_MID_LEFT)lcd_puts("MLEFT: 1");
+   else  lcd_puts("MLEFT: 0");
+   if(!LINE_DETECTOR_MID_RIGHT)lcd_puts("MRIGHT:1");
+   else  lcd_puts("MRIGHT:0");       
  }
  
   /////////////////////////// 
@@ -83,23 +75,15 @@ void STATE_LINE_SENSOR(){
 
  void STATE_DISTANCE_SENSOR(){   
    lcd_clear();
-   if(!DISTANCE_SENSOR_LEFT)
-     lcd_puts("LEFT: 1");
-   else  
-     lcd_puts("LEFT: 0");
-   if(!DISTANCE_SENSOR_RIGHT)
-     lcd_puts(" RIGHT: 1");
-   else  
-     lcd_puts(" RIGHT: 0");
+   if(!DISTANCE_SENSOR_LEFT)lcd_puts("LEFT: 1");
+   else  lcd_puts("LEFT: 0");
+   if(!DISTANCE_SENSOR_RIGHT)lcd_puts(" RIGHT: 1");
+   else  lcd_puts(" RIGHT: 0");
    lcd_gotoxy(0,1);
-   if(!DISTANCE_SENSOR_FRONT_LEFT)
-     lcd_puts("FLEFT: 1");
-   else  
-     lcd_puts("FLEFT: 0");
-   if(!DISTANCE_SENSOR_FRONT_RIGHT)
-     lcd_puts("FRIGHT:1");
-   else  
-     lcd_puts("FRIGHT:0");       
+   if(!DISTANCE_SENSOR_FRONT_LEFT)lcd_puts("FLEFT: 1");
+   else  lcd_puts("FLEFT: 0");
+   if(!DISTANCE_SENSOR_FRONT_RIGHT)lcd_puts("FRIGHT:1");
+   else  lcd_puts("FRIGHT:0");       
  }
  
   ///////////////////////////
@@ -179,16 +163,6 @@ void STATE_LINE_SENSOR(){
     #ifndef DEBUG
       rc5_display();
     #endif 
-     
-    if(rc5_receive(&ucToggle, &ucAdress, &ucData))
-    {               
-      switch (ucData)
-      {
-        case 1: 
-          delay_ms(100);
-          break;
-      }
-    }
  }      
     
  
@@ -211,10 +185,8 @@ void STATE_LINE_SENSOR(){
       lcd_clear();  
       lcd_putsf("Objekt gefunden");
           lcd_gotoxy(0,1);
-
         itoa(iTime/52.2, strULTRA);
         lcd_puts(strULTRA); 
-        
       }  
       else
       {  
@@ -275,7 +247,6 @@ void STATE_LINE_SENSOR(){
          puts(" R:");
          itoa(wheelEncoderCounter_right,str);
          puts(str);
-  
   }while (wheelEncoderCounter_right<17);
   } 
    
@@ -298,7 +269,6 @@ void STATE_LINE_SENSOR(){
          puts(" R:");
          itoa(wheelEncoderCounter_right,str);
          puts(str);
-  
   }while (wheelEncoderCounter_left<17);
   }   
   
@@ -320,7 +290,6 @@ void STATE_LINE_SENSOR(){
          puts(" R:");
          itoa(wheelEncoderCounter_right,str);
          puts(str);
-  
   }while (wheelEncoderCounter_left<64&&wheelEncoderCounter_right<64);
   } 
 
@@ -328,7 +297,7 @@ void STATE_LINE_SENSOR(){
  
   void  STATE_METERLINKSMETERRECHTS(){
   
-  /////DREHUNG NACH LINKS
+  /////spin left
   wheelEncoderCounter_left=0;
   wheelEncoderCounter_right=0; 
   do{
@@ -344,7 +313,6 @@ void STATE_LINE_SENSOR(){
          puts(" R:");
          itoa(wheelEncoderCounter_right,str);
          puts(str);
-  
   }while (wheelEncoderCounter_left<17);   
 
   ENGINE_ENABLE_RIGHT = 0;
@@ -352,7 +320,7 @@ void STATE_LINE_SENSOR(){
   delay_ms(1000);
  
   
-  /////1m VORWÄRTS
+  /////1m forward
   wheelEncoderCounter_left=0;
   wheelEncoderCounter_right=0; 
   do{
@@ -375,7 +343,7 @@ void STATE_LINE_SENSOR(){
   delay_ms(1000);
 
   
-  /////DREHUNG NACH RECHTS
+  /////spin right
   wheelEncoderCounter_left=0;
   wheelEncoderCounter_right=0; 
   do{
@@ -393,12 +361,11 @@ void STATE_LINE_SENSOR(){
          puts(str);
   
   }while (wheelEncoderCounter_right<17); 
-
   ENGINE_ENABLE_RIGHT = 0;
   ENGINE_ENABLE_LEFT = 0;   
   delay_ms(1000);
  
-  /////1m VORWÄRTS
+  /////1m forward
   wheelEncoderCounter_left=0;
   wheelEncoderCounter_right=0; 
   do{
@@ -415,13 +382,8 @@ void STATE_LINE_SENSOR(){
          itoa(wheelEncoderCounter_right,str);
          puts(str); 
   }while (wheelEncoderCounter_left<100&&wheelEncoderCounter_right<100);  
-  
   } 
-    
-  
-
-
-
+ 
 void STATE_MACHINE(){
         ENGINE_ENABLE_RIGHT = 0;  
         ENGINE_ENABLE_LEFT = 0;
@@ -440,7 +402,7 @@ void STATE_MACHINE(){
        case state_engine:         
               if(state_info == 0){
                 lcd_clear();
-                lcd_puts("     MOTOREN    ");
+                lcd_puts("     ENGINE    ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -451,7 +413,7 @@ void STATE_MACHINE(){
        case state_engine_dir:         
               if(state_info == 0){  
                 lcd_clear();
-                lcd_puts("     LENKUNG    ");
+                lcd_puts("     STEERING    ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -462,7 +424,7 @@ void STATE_MACHINE(){
        case state_distance_sensor: 
               if(state_info == 0){  
                 lcd_clear();  
-                lcd_puts(" DISTANZ SENSOR ");
+                lcd_puts(" DISTANCESENSOR ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -473,7 +435,7 @@ void STATE_MACHINE(){
        case state_lightsensor: 
               if(state_info == 0){
                   lcd_clear();
-                  lcd_puts("  LICHT SENSOR  ");
+                  lcd_puts("  LIGHT SENSOR  ");
                   delay_ms(1000);
                   lcd_clear();
                   state_info = 1;
@@ -517,7 +479,7 @@ void STATE_MACHINE(){
        case state_ultrasonic:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("   ULTRASCHALL  ");
+                lcd_puts("   ULTRASONIC  ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -528,7 +490,7 @@ void STATE_MACHINE(){
               case state_vor:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("      VOR       ");
+                lcd_puts("     FOR       ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -538,7 +500,7 @@ void STATE_MACHINE(){
               case state_zur:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("      ZUR       ");
+                lcd_puts("      BACK       ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -548,7 +510,7 @@ void STATE_MACHINE(){
               case state_links:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("      LINKS      ");
+                lcd_puts("      LEFT      ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -559,7 +521,7 @@ void STATE_MACHINE(){
               case state_rechts:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("     RECHTS     ");
+                lcd_puts("     RIGHT     ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -570,7 +532,7 @@ void STATE_MACHINE(){
               case state_90links:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("     90LINKS     ");
+                lcd_puts("     90°LEFT     ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -581,7 +543,7 @@ void STATE_MACHINE(){
               case state_90rechts:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("    90RECHTS    ");
+                lcd_puts("    90°RIGHT    ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -592,7 +554,7 @@ void STATE_MACHINE(){
               case state_drehung:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("    DREHUNG    ");
+                lcd_puts("    SPIN    ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;
@@ -603,7 +565,7 @@ void STATE_MACHINE(){
               case state_meterlinksmeterrechts:
                 if(state_info == 0){   
                 lcd_clear();
-                lcd_puts("    1m1m    ");
+                lcd_puts("    1st STATE    ");
                 delay_ms(1000);
                 lcd_clear();
                 state_info = 1;

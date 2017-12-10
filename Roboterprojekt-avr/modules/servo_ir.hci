@@ -1,6 +1,0 @@
-VERSION:3 SOURCE_TIMESTAMP:4B89B6CF
-NODE:F LEVEL:0 LINE:3 "timer2_ovf_isr(void)"
-NODE:F LEVEL:0 LINE:22 "fnDisplay(void)"
-NODE:F LEVEL:0 LINE:32 "timer0_ovf_isr(void)"
-NODE:F LEVEL:0 LINE:68 "rc5_receive(unsigned char * ucToggle,unsigned char * ucAdress,unsigned char * ucData)"
-NODE:F LEVEL:0 LINE:90 "rc5_display(void)"

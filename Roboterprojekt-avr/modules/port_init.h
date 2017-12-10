@@ -161,6 +161,41 @@ TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (1<<CS01) 
 TCNT0=131;
 OCR0=0x00;
   
+//////////////////////////////////////////timer1
+// Timer/Counter 1 initialization
+// Clock source: System Clock
+// Clock value: 2000,000 kHz
+// Mode: Fast PWM top=0x00FF
+// OC1A output: Disconnected
+// OC1B output: Disconnected
+// OC1C output: Disconnected
+// Noise Canceler: Off
+// Input Capture on Falling Edge
+// Timer Period: 0,128 ms
+// Timer1 Overflow Interrupt: On
+// Input Capture Interrupt: Off
+// Compare A Match Interrupt: Off
+// Compare B Match Interrupt: Off
+// Compare C Match Interrupt: Off
+TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<COM1C1) | (0<<COM1C0) | (0<<WGM11) | (1<<WGM10);
+TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (1<<WGM12) | (0<<CS12) | (1<<CS11) | (0<<CS10);
+TCNT1H=0x00;
+TCNT1L=0x00;
+ICR1H=0x00;
+ICR1L=0x00;
+OCR1AH=0x00;
+OCR1AL=0x00;
+OCR1BH=0x00;
+OCR1BL=0x00;
+OCR1CH=0x00;
+OCR1CL=0x00;
+
+
+
+//TIMER 2
+TCCR2=(0<<WGM20) | (0<<COM21) | (0<<COM20) | (0<<WGM21) | (1<<CS22) | (0<<CS21) | (0<<CS20);
+TCNT2=0x00;
+OCR2=0x00;
 
 
 /////////////////////////////////////////////////////////////
@@ -198,13 +233,10 @@ OCR0=0x00;
 /////////////////////////////////////////////////////////////
 
 
-//TIMER 2
-TCCR2=(0<<WGM20) | (0<<COM21) | (0<<COM20) | (0<<WGM21) | (1<<CS22) | (0<<CS21) | (0<<CS20);
-TCNT2=0x00;
-OCR2=0x00;
+
 
   // Timer(s)/Counter(s) Interrupt(s) initialization
-TIMSK=( 0x01 | (1 <<TOIE2));
+TIMSK=( 0x01 | (1 <<TOIE2)| (1<<TOIE1));
 ETIMSK=(1<<TICIE3) | (1<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
 
 

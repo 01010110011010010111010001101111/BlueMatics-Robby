@@ -1,33 +1,3 @@
-  //////////////SERVO/////////////    
-  
-  interrupt [TIM2_OVF] void timer2_ovf_isr(void)
-{   
-     SERVO = 0;
-     
-     if(servo_value_cur != servo_value_copy || servo_breaks == 5){
-         servo_value_copy = servo_value_cur;
-         servo_breaks = 1;
-         TCNT2 = servo_value_cur;
-         SERVO = 1; 
- 
-     }                       
-     else{
-        servo_breaks++;
-        TCNT2 = 0x00;
-     }    
-}
-  
-
-//Zeigt die Position des Servos
-void fnDisplay(void )
-{
- char str[10];
-  lcd_clear();  
-  lcd_puts("POSITION-SERVO");      
-  lcd_gotoxy(0, 1);
-  itoa(servo_value_cur, strTemp);
-  lcd_puts(strTemp);  
-}
 // Timer 0 overflow interrupt service routine
 interrupt [TIM0_OVF] void timer0_ovf_isr(void)
 {
@@ -54,16 +24,7 @@ interrupt [TIM0_OVF] void timer0_ovf_isr(void)
       rc5_time = 0;                                // count next pulse time
     }
   }
-  
  } 
-  
-  
-                                   
-
-
-
-
-  //////////////IR RECEIVER///////////// 
                  
 int rc5_receive(unsigned char *ucToggle, unsigned char *ucAdress, unsigned char *ucData)
 {
@@ -84,9 +45,6 @@ int rc5_receive(unsigned char *ucToggle, unsigned char *ucAdress, unsigned char 
     return 0;
 }  
 
-
-
-  //////////////IR RECEIVER/////////////
 void rc5_display(void)
 { lcd_clear();
   lcd_puts("DATA");
@@ -100,8 +58,23 @@ void rc5_display(void)
   lcd_puts(s);   
 }
 
-
-
-  
-  
-                   
+void ondata(){
+    if(rc5_receive(&ucToggle, &ucAdress, &ucData))
+    {               
+      switch (ucData)
+      {
+        case 0: 
+        state=state_stop;
+          delay_ms(100);
+          break;
+        case 1: 
+        state=15;
+          delay_ms(100);
+          break;
+        case 2: 
+        state=16;
+          delay_ms(100);
+          break;    
+      }
+    }   
+}   

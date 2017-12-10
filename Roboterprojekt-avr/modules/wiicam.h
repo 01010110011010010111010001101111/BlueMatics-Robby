@@ -1,21 +1,18 @@
-/////////////WIICAM////////////// 
-
 void wii_cam_init(void)
 {
- //Kamera initialisieren
-    write2Byte(0x30,0x01);            //Camera on
-    write2Byte(0x30,0x08);             //set sensitivity Block 1 und 2
+ //init cam
+    write2Byte(0x30,0x01);          //Camera on
+    write2Byte(0x30,0x08);          //set sensitivity Block 1 und 2
     write2Byte(0x06,0x90);          //sensitivity part1
     write2Byte(0x08,0xC0);          //sensitivity part2
     write2Byte(0x1A,0x40);
-    write2Byte(0x33,0x33);          //setting Mode : hier extended  
+    write2Byte(0x33,0x33);          //setting Mode : extended  
     delay_ms(100);
 }
-
 void write2Byte(char b1, char b2)
 {
-      i2c_start();
-        i2c_write(slaveadress); //I2C-Adresse der Kamera, hier 0xBO
+        i2c_start();
+        i2c_write(slaveadress); //I2C-Address of cam 0xBO
         i2c_write(b1);
         i2c_write(b2);
         i2c_stop();
@@ -26,12 +23,12 @@ void readData(void)
 {
      unsigned char i=0;
      i2c_start();
-        i2c_write(slaveadress); //I2C-Adresse der Kamera
+        i2c_write(slaveadress); //I2C-Address of cam 0xBO
         i2c_write(0x36);
         i2c_stop();
         delay_ms(1);
         i2c_start();
-        i2c_write(slaveread); //I2C-Adresse der Kamera Lesemodus 0xB1
+        i2c_write(slaveread);//I2C-Address of cam: readmode 0xB1
         for(i=0; i<15; i++){
    	   	data[i]=i2c_read(1);
         }
