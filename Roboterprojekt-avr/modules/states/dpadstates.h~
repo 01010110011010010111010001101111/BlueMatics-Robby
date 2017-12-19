@@ -1,0 +1,38 @@
+ 
+  void STATE_VOR(){ 
+ // radkorrektur();
+      //0-255
+      ipwmcompareleft=100; 
+      ipwmcompareright=100; 
+  ENGINE_DIRECTION_LEFT = 0;  
+  ENGINE_DIRECTION_RIGHT = 0;
+  }    
+    /////////////////////////// 
+ 
+  void STATE_ZUR(){
+      //0-255
+      ipwmcompareleft=100; 
+      ipwmcompareright=100;
+  ENGINE_DIRECTION_LEFT = 1;  
+  ENGINE_DIRECTION_RIGHT = 1;   
+  }  
+    /////////////////////////// 
+ 
+  void STATE_LINKS(){
+      //0-255
+      ipwmcompareleft=0; 
+      ipwmcompareright=100;
+  ENGINE_DIRECTION_LEFT = 0;  
+  ENGINE_DIRECTION_RIGHT = 0;
+  }  
+    /////////////////////////// 
+ 
+  void STATE_RECHTS(){
+      //0-255
+      ipwmcompareleft=100; 
+      ipwmcompareright=0; 
+  ENGINE_DIRECTION_LEFT = 0;  
+  ENGINE_DIRECTION_RIGHT = 0;
+  }       
+    /////////////////////////// 
+ 

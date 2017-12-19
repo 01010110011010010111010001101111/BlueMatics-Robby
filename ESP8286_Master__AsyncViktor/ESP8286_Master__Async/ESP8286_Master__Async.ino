@@ -1,13 +1,19 @@
+#include <SD.h>
 #include <ESP8266WiFi.h>
 //#include <WiFiClient.h>
 #include <WebSocketsServer.h>
 #include <ArduinoJson.h>
 //#include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
+//#include <ESP8266WebServer.h>
 #include <FS.h>
 #include <Wire.h>
 #include "webpage.h"
 
+
+/*-------------------SD Defs-----------------------------------------*/
+int sd=0;
+int newboot=0;
 /*----------------- Webobjekte------------------------------------- */
 AsyncWebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
@@ -102,7 +108,7 @@ void i2c_exchange_data(void)
     // I2C transaction was performed without errors
     Serial.printf("I2C transaction result: %i\r\n", i2c_result);
     Serial.printf("Transmitted to MEGA128: %2i\r\n", tx_buffer.data.iValue);
-    Serial.printf("Received from MEGA128: %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
+    Serial.printf("Received from MEGA128: %4i %4i %4i %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
     rx_buffer.data.lichtlinks, rx_buffer.data.lichtrechts, rx_buffer.data.motorvalueleft, rx_buffer.data.motorvalueright, rx_buffer.data.wiicam, rx_buffer.data.iValue);
     Serial.printf("Content of Receive Buffer: ");
     for (int i = 0; i < BUFFER_SIZE; i++)
@@ -113,13 +119,31 @@ void i2c_exchange_data(void)
   {
     // I2C transaction was performed with errors
     Serial.printf("I2C transaction error: %i\r\n\r\n", i2c_result);
-    Serial.printf("Received from MEGA128: %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
+    Serial.printf("Received from MEGA128: %4i %4i %4i %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
     rx_buffer.data.lichtlinks, rx_buffer.data.lichtrechts, rx_buffer.data.motorvalueleft, rx_buffer.data.motorvalueright, rx_buffer.data.wiicam, rx_buffer.data.iValue);
     Serial.printf("Content of Receive Buffer: ");
     for (int i = 0; i < BUFFER_SIZE; i++)
       Serial.printf("%2X ", rx_buffer.bytes[i]);
     Serial.printf("\r\n");
   }
+  
+    if (sd=1){
+    SDFile Sensorfile = SD.open("datalog.txt", FILE_WRITE);
+    // if the file is available, write to it:
+    if (Sensorfile) {
+    Sensorfile.printf("------------------------------------------\n\n\n");
+    Sensorfile.printf("I2C transaction result: %i\r\n", i2c_result);
+    Sensorfile.printf("Transmitted to MEGA128: %2i\r\n", tx_buffer.data.iValue);
+    Sensorfile.printf("Received from MEGA128: %4i %4i %4i %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
+    rx_buffer.data.lichtlinks, rx_buffer.data.lichtrechts, rx_buffer.data.motorvalueleft, rx_buffer.data.motorvalueright, rx_buffer.data.wiicam, rx_buffer.data.iValue);
+    Sensorfile.printf("Content of Receive Buffer: ");
+     for (int i = 0; i < BUFFER_SIZE; i++)
+    Sensorfile.printf("%2X ", rx_buffer.bytes[i]);
+    Sensorfile.printf("\r\n");
+    Sensorfile.close();
+  }
+  }
+  
 }
 
 //---------------Prototypes for webevent handling-------------------
@@ -135,6 +159,17 @@ void setup() {
   Serial.begin(115200);
   Serial.println();
   delay(200);
+
+    //SD CARD
+  Serial.print("Initializing SD card...");
+  if (!SD.begin(14)) {
+    Serial.println("initialization failed!");
+    sd=0;
+    return;
+  }else{
+    Serial.println("SD Card found");
+    sd=1;  
+  }
 
   
   // WiFi SoftAP initialization
@@ -175,6 +210,8 @@ void setup() {
   server.begin();
   Serial.println("HTTP server gestartet!");
 }
+
+
 
 void loop() {
   unsigned long currentMillis = millis();
@@ -221,7 +258,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         if (text == "off") {itest=0; i2c_exchange_data();}
         if (text == "servo+") {itest=20; i2c_exchange_data();}
         if (text == "servo-") {itest=21; i2c_exchange_data();}
-      }
+     }
       break;
   }
 }
@@ -271,23 +308,12 @@ void sendJasonString()
   root["wiicam"] = rx_buffer.data.wiicam;
   root["infarot"] = rx_buffer.data.infarot;
   root["ultraschall"] = rx_buffer.data.ultraschall;
-
-
-
-
-
-  uint8_t infarot;
-  uint8_t ultraschall;
-  
   root["servovalue"] = rx_buffer.data.servo;
-  
   root["integer"] = rx_buffer.data.iValue;
     
   char buf[512];
   size_t size = root.printTo(buf, sizeof(buf));
   webSocket.sendTXT(0, buf, size);
-  //Serial.println(buf);
-
 }
 
 

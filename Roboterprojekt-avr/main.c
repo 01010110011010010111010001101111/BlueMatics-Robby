@@ -51,10 +51,30 @@ Data Stack size         : 1024
 #define state_90rechts  14
 #define state_drehung  15
 #define state_meterlinksmeterrechts  16
-#define state_stop 17
+#define state_2  17
+#define state_3  18
+
+#define state_stop 19
+
+
 
 #include "modules/variables.h"
 #include "modules/port_init.h"
+
+
+/*
+ void radkorrektur(){
+char strrad [17];
+ float newval = 100/(wheelEncoderCounter_right+wheelEncoderCounter_left);
+ float newvalprozent= newval*wheelEncoderCounter_left;
+ itoa(newvalprozent,strrad); 
+  lcd_clear();
+ lcd_puts(strrad);
+
+}
+*/
+
+
 #include "modules/ir.h"
 #include "modules/servo.h"
 #include "modules/esp_main_func.h"
@@ -63,6 +83,9 @@ Data Stack size         : 1024
 #include "modules/states/states.h"
 #include "modules/esp.h"
 
+
+
+
 // Timer1 overflow interrupt service routine
 interrupt [TIM1_OVF] void timer1_ovf_isr(void)
 {
@@ -70,22 +93,35 @@ interrupt [TIM1_OVF] void timer1_ovf_isr(void)
   TCNT1L=0x9C;
   ipwmcounter++; 
 
+
+
+  
+  
   if (ipwmcounter>255)
-    ipwmcounter=0; 
+    ipwmcounter=0;  
+          
 
 
+
+
+
+    
 
  if(ipwmcounter >= ipwmcompareleft){
- ENGINE_ENABLE_LEFT=0;   
+ ENGINE_ENABLE_LEFT=0;  
   }else{
   ENGINE_ENABLE_LEFT=1;
   }  
       
  if(ipwmcounter >= ipwmcompareright){
- ENGINE_ENABLE_RIGHT=0;   
+ ENGINE_ENABLE_RIGHT=0;     
   }else{
   ENGINE_ENABLE_RIGHT=1;}    
 }
+
+
+
+
 
 
 void main(void)
@@ -99,14 +135,9 @@ twiinit();
 
 while (1)
       {          
-      //STATE_MACHINE(); 
-      
-      //0-255
-      ipwmcompareleft=0; 
-      ipwmcompareright=0;  
-      
+      STATE_MACHINE(); 
       esp_states();      
-      if (!BUMPER_RIGHT)state=16;
+      
       ondata();   
       esp_mainfunctions();
       

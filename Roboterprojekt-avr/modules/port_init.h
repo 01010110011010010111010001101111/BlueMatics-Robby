@@ -235,7 +235,8 @@ OCR2=0x00;
 
 
 
-  // Timer(s)/Counter(s) Interrupt(s) initialization
+  // Timer(s)/Counter(s) Interrupt(s) initialization  
+
 TIMSK=( 0x01 | (1 <<TOIE2)| (1<<TOIE1));
 ETIMSK=(1<<TICIE3) | (1<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
 

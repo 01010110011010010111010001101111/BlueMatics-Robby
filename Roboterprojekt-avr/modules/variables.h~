@@ -24,10 +24,11 @@ int dist_fright;
 int dist_right;
 int linesensorvaluetemp;
 int distanzsensorvaluetemp;
-int ipwmcounterleft=0;
-int ipwmcounterright=0;
+int ipwmcounter=0;
 int ipwmcompareleft=0;
 int ipwmcompareright=0;
+int pwmcontrol=0;
+int pwmcontrolcompare=0;
 
 //SERVO
 #define MAX_SERVOS 1

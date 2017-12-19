@@ -1,13 +1,123 @@
 #include "modules/states/teststates.h"
 #include "modules/states/dpadstates.h"
-#include "modules/states/spec_states/detector.h"
-#include "modules/states/spec_states/state1.h"
-#include "modules/states/spec_states/state2.h"
-#include "modules/states/spec_states/state3.h"
 
 
+  
+   /////////////////////////// 
+ 
+  void STATE_DREHUNG(){
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  do{
+      //0-255
+      ipwmcompareleft=100; 
+      ipwmcompareright=100; 
+  ENGINE_DIRECTION_LEFT = 1;  
+  ENGINE_DIRECTION_RIGHT = 0;  
+         lcd_clear();
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  }while (wheelEncoderCounter_left<64&&wheelEncoderCounter_right<64);
+  } 
 
+   /////////////////////////// 
+ 
+  void  STATE_METERLINKSMETERRECHTS(){
+  
+  /////spin left
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  do{
+      //0-255
+      ipwmcompareleft=100; 
+      ipwmcompareright=0; 
+  ENGINE_DIRECTION_LEFT = 1;  
+  ENGINE_DIRECTION_RIGHT = 0;  
+         lcd_clear();
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  }while (wheelEncoderCounter_left<17);   
 
+  ENGINE_ENABLE_RIGHT = 0;
+  ENGINE_ENABLE_LEFT = 0; 
+  delay_ms(1000);
+ 
+  
+  /////1m forward
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  do{
+      //0-255
+      ipwmcompareleft=100; 
+      ipwmcompareright=100;  
+  ENGINE_DIRECTION_LEFT = 0;  
+  ENGINE_DIRECTION_RIGHT = 0;  
+         lcd_clear();
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str); 
+  }while (wheelEncoderCounter_left<100&&wheelEncoderCounter_right<100);
+  
+  ENGINE_ENABLE_RIGHT = 0;
+  ENGINE_ENABLE_LEFT = 0;   
+  delay_ms(1000);
+  /////spin right
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  do{
+      //0-255
+      ipwmcompareleft=0; 
+      ipwmcompareright=100;  
+  ENGINE_DIRECTION_LEFT = 0;  
+  ENGINE_DIRECTION_RIGHT = 1;  
+         lcd_clear();
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  
+  }while (wheelEncoderCounter_right<17); 
+  ENGINE_ENABLE_RIGHT = 0;
+  ENGINE_ENABLE_LEFT = 0;   
+  delay_ms(1000);
+ 
+  /////1m forward
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  do{
+      //0-255
+      ipwmcompareleft=100; 
+      ipwmcompareright=100; 
+  ENGINE_DIRECTION_LEFT = 0;  
+  ENGINE_DIRECTION_RIGHT = 0;  
+         lcd_clear();
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str); 
+  }while (wheelEncoderCounter_left<100&&wheelEncoderCounter_right<100);  
+  } 
+ 
 void STATE_MACHINE(){
       //0-255
       ipwmcompareleft=0; 
@@ -198,32 +308,7 @@ void STATE_MACHINE(){
               STATE_METERLINKSMETERRECHTS();
              
 
-       break;      
-           
-              case state_2:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("    2nd STATE    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_3();
-             
-
-       break; 
-              case state_3:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("    3rd STATE    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_3();
-             
-
-       break;  
+       break;    
        default: 
            lcd_clear();
            lcd_puts("   BlueMatics"); 
