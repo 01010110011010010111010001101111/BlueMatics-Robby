@@ -53,14 +53,19 @@ Data Stack size         : 1024
 #define state_meterlinksmeterrechts  16
 #define state_2  17
 #define state_3  18
-
 #define state_stop 19
-
 
 
 #include "modules/variables.h"
 #include "modules/port_init.h"
-
+#include "modules/ir.h"
+#include "modules/servo.h"
+#include "modules/esp_main_func.h"
+#include "modules/wiicam.h"
+#include "modules/ultrasonic.h"
+#include "modules/states/states.h"
+#include "modules/esp.h"
+#include "modules/pwm.h"
 
 /*
  void radkorrektur(){
@@ -75,49 +80,6 @@ char strrad [17];
 */
 
 
-#include "modules/ir.h"
-#include "modules/servo.h"
-#include "modules/esp_main_func.h"
-#include "modules/wiicam.h"
-#include "modules/ultrasonic.h"
-#include "modules/states/states.h"
-#include "modules/esp.h"
-
-
-
-
-// Timer1 overflow interrupt service routine
-interrupt [TIM1_OVF] void timer1_ovf_isr(void)
-{
-  // Reinitialize Timer 1 value
-  TCNT1L=0x9C;
-  ipwmcounter++; 
-
-
-
-  
-  
-  if (ipwmcounter>255)
-    ipwmcounter=0;  
-          
-
-
-
-
-
-    
-
- if(ipwmcounter >= ipwmcompareleft){
- ENGINE_ENABLE_LEFT=0;  
-  }else{
-  ENGINE_ENABLE_LEFT=1;
-  }  
-      
- if(ipwmcounter >= ipwmcompareright){
- ENGINE_ENABLE_RIGHT=0;     
-  }else{
-  ENGINE_ENABLE_RIGHT=1;}    
-}
 
 
 

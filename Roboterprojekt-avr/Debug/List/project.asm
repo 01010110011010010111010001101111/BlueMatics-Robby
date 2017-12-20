@@ -1400,127 +1400,127 @@ __GLOBAL_INI_TBL:
 	.DW  _0x0*2+129
 
 	.DW  0x03
-	.DW  _0xC6
+	.DW  _0x16F
 	.DW  _0x0*2+126
 
 	.DW  0x04
-	.DW  _0xC6+3
+	.DW  _0x16F+3
 	.DW  _0x0*2+129
 
 	.DW  0x03
-	.DW  _0xD0
+	.DW  _0x179
 	.DW  _0x0*2+126
 
 	.DW  0x04
-	.DW  _0xD0+3
+	.DW  _0x179+3
 	.DW  _0x0*2+129
 
 	.DW  0x03
-	.DW  _0xD0+7
+	.DW  _0x179+7
 	.DW  _0x0*2+126
 
 	.DW  0x04
-	.DW  _0xD0+10
+	.DW  _0x179+10
 	.DW  _0x0*2+129
 
 	.DW  0x03
-	.DW  _0xD0+14
+	.DW  _0x179+14
 	.DW  _0x0*2+126
 
 	.DW  0x04
-	.DW  _0xD0+17
+	.DW  _0x179+17
 	.DW  _0x0*2+129
 
 	.DW  0x03
-	.DW  _0xD0+21
+	.DW  _0x179+21
 	.DW  _0x0*2+126
 
 	.DW  0x04
-	.DW  _0xD0+24
+	.DW  _0x179+24
 	.DW  _0x0*2+129
 
 	.DW  0x11
-	.DW  _0x104
+	.DW  _0x1B5
 	.DW  _0x0*2+252
 
 	.DW  0x10
-	.DW  _0x104+17
+	.DW  _0x1B5+17
 	.DW  _0x0*2+269
 
 	.DW  0x12
-	.DW  _0x104+33
+	.DW  _0x1B5+33
 	.DW  _0x0*2+285
 
 	.DW  0x11
-	.DW  _0x104+51
+	.DW  _0x1B5+51
 	.DW  _0x0*2+303
 
 	.DW  0x11
-	.DW  _0x104+68
+	.DW  _0x1B5+68
 	.DW  _0x0*2+320
 
 	.DW  0x10
-	.DW  _0x104+85
+	.DW  _0x1B5+85
 	.DW  _0x0*2+337
 
 	.DW  0x11
-	.DW  _0x104+101
+	.DW  _0x1B5+101
 	.DW  _0x0*2+353
 
 	.DW  0x0F
-	.DW  _0x104+118
+	.DW  _0x1B5+118
 	.DW  _0x0*2+370
 
 	.DW  0x10
-	.DW  _0x104+133
+	.DW  _0x1B5+133
 	.DW  _0x0*2+385
 
 	.DW  0x10
-	.DW  _0x104+149
+	.DW  _0x1B5+149
 	.DW  _0x0*2+401
 
 	.DW  0x12
-	.DW  _0x104+165
+	.DW  _0x1B5+165
 	.DW  _0x0*2+417
 
 	.DW  0x11
-	.DW  _0x104+183
+	.DW  _0x1B5+183
 	.DW  _0x0*2+435
 
 	.DW  0x10
-	.DW  _0x104+200
+	.DW  _0x1B5+200
 	.DW  _0x0*2+452
 
 	.DW  0x12
-	.DW  _0x104+216
+	.DW  _0x1B5+216
 	.DW  _0x0*2+468
 
 	.DW  0x11
-	.DW  _0x104+234
+	.DW  _0x1B5+234
 	.DW  _0x0*2+486
 
 	.DW  0x0D
-	.DW  _0x104+251
+	.DW  _0x1B5+251
 	.DW  _0x0*2+503
 
 	.DW  0x12
-	.DW  _0x104+264
+	.DW  _0x1B5+264
 	.DW  _0x0*2+516
 
 	.DW  0x12
-	.DW  _0x104+282
+	.DW  _0x1B5+282
 	.DW  _0x0*2+534
 
 	.DW  0x12
-	.DW  _0x104+300
+	.DW  _0x1B5+300
 	.DW  _0x0*2+552
 
 	.DW  0x0E
-	.DW  _0x104+318
+	.DW  _0x1B5+318
 	.DW  _0x0*2+570
 
 	.DW  0x0B
-	.DW  _0x104+332
+	.DW  _0x1B5+332
 	.DW  _0x0*2+584
 
 	.DW  0x01
@@ -1681,9 +1681,7 @@ __GLOBAL_INI_END:
 ;#define state_meterlinksmeterrechts  16
 ;#define state_2  17
 ;#define state_3  18
-;
 ;#define state_stop 19
-;
 ;
 ;
 ;#include "modules/variables.h"
@@ -1750,7 +1748,7 @@ _ext_int4_isr:
 _0x6:
 	CALL SUBOPT_0x3
 _0x7:
-	RJMP _0x152
+	RJMP _0x205
 ; .FEND
 _ext_int6_isr:
 ; .FSTART _ext_int6_isr
@@ -1767,7 +1765,7 @@ _ext_int6_isr:
 _0x8:
 	CALL SUBOPT_0x5
 _0x9:
-	RJMP _0x152
+	RJMP _0x205
 ; .FEND
    .equ __lcd_port=0x15 ;PORTC
 _port_init:
@@ -1850,21 +1848,6 @@ _port_init:
 	sei
 	RET
 ; .FEND
-;
-;
-;/*
-; void radkorrektur(){
-;char strrad [17];
-; float newval = 100/(wheelEncoderCounter_right+wheelEncoderCounter_left);
-; float newvalprozent= newval*wheelEncoderCounter_left;
-; itoa(newvalprozent,strrad);
-;  lcd_clear();
-; lcd_puts(strrad);
-;
-;}
-;*/
-;
-;
 ;#include "modules/ir.h"
 _timer0_ovf_isr:
 ; .FSTART _timer0_ovf_isr
@@ -1942,7 +1925,7 @@ _0x14:
 	STS  _rc5_time,R30
 _0x10:
 _0xE:
-	RJMP _0x152
+	RJMP _0x205
 ; .FEND
 _rc5_receive:
 ; .FSTART _rc5_receive
@@ -2046,7 +2029,7 @@ _ondata:
 	BRNE _0x1C
 	LDI  R30,LOW(19)
 	LDI  R31,HIGH(19)
-	RJMP _0x140
+	RJMP _0x1F1
 _0x1C:
 	CPI  R30,LOW(0x1)
 	LDI  R26,HIGH(0x1)
@@ -2054,7 +2037,7 @@ _0x1C:
 	BRNE _0x1D
 	LDI  R30,LOW(15)
 	LDI  R31,HIGH(15)
-	RJMP _0x140
+	RJMP _0x1F1
 _0x1D:
 	CPI  R30,LOW(0x2)
 	LDI  R26,HIGH(0x2)
@@ -2062,7 +2045,7 @@ _0x1D:
 	BRNE _0x1B
 	LDI  R30,LOW(16)
 	LDI  R31,HIGH(16)
-_0x140:
+_0x1F1:
 	STS  _state,R30
 	STS  _state+1,R31
 	LDI  R26,LOW(100)
@@ -2165,12 +2148,12 @@ _0x2A:
 	BRNE _0x2C
 	LDI  R30,LOW(19)
 	LDI  R31,HIGH(19)
-	RJMP _0x141
+	RJMP _0x1F2
 _0x2C:
 	LDS  R30,_currstate
 	LDS  R31,_currstate+1
 	SBIW R30,1
-_0x141:
+_0x1F2:
 	STS  _state,R30
 	STS  _state+1,R31
 	RET
@@ -2181,44 +2164,44 @@ _esp_mainfunctions:
 	RJMP _0x2F
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x142
+	RJMP _0x1F3
 _0x2F:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x142:
+_0x1F3:
 	STS  _line_left,R30
 	STS  _line_left+1,R31
 	SBIC 0x0,2
 	RJMP _0x32
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x143
+	RJMP _0x1F4
 _0x32:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x143:
+_0x1F4:
 	STS  _line_mleft,R30
 	STS  _line_mleft+1,R31
 	SBIC 0x0,4
 	RJMP _0x35
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x144
+	RJMP _0x1F5
 _0x35:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x144:
+_0x1F5:
 	STS  _line_mright,R30
 	STS  _line_mright+1,R31
 	SBIC 0x0,6
 	RJMP _0x38
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x145
+	RJMP _0x1F6
 _0x38:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x145:
+_0x1F6:
 	STS  _line_right,R30
 	STS  _line_right+1,R31
 	LDS  R30,_line_left
@@ -2243,44 +2226,44 @@ _0x145:
 	RJMP _0x3B
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x146
+	RJMP _0x1F7
 _0x3B:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x146:
+_0x1F7:
 	STS  _dist_left,R30
 	STS  _dist_left+1,R31
 	SBIC 0x16,2
 	RJMP _0x3E
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x147
+	RJMP _0x1F8
 _0x3E:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x147:
+_0x1F8:
 	STS  _dist_fleft,R30
 	STS  _dist_fleft+1,R31
 	SBIC 0x16,4
 	RJMP _0x41
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x148
+	RJMP _0x1F9
 _0x41:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x148:
+_0x1F9:
 	STS  _dist_fright,R30
 	STS  _dist_fright+1,R31
 	SBIC 0x16,6
 	RJMP _0x44
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x149
+	RJMP _0x1FA
 _0x44:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x149:
+_0x1FA:
 	STS  _dist_right,R30
 	STS  _dist_right+1,R31
 	LDS  R30,_dist_left
@@ -2506,7 +2489,7 @@ _0x4D:
 	SET
 	BLD  R2,2
 _0x4E:
-_0x152:
+_0x205:
 	LD   R30,Y+
 	OUT  SREG,R30
 	LD   R31,Y+
@@ -2535,35 +2518,35 @@ _STATE_LINE_SENSOR:
 	SBIC 0x0,0
 	RJMP _0x53
 	__POINTW2MN _0x54,0
-	RJMP _0x14A
+	RJMP _0x1FB
 _0x53:
 	__POINTW2MN _0x54,8
-_0x14A:
+_0x1FB:
 	CALL _lcd_puts
 	SBIC 0x0,6
 	RJMP _0x56
 	__POINTW2MN _0x54,16
-	RJMP _0x14B
+	RJMP _0x1FC
 _0x56:
 	__POINTW2MN _0x54,26
-_0x14B:
+_0x1FC:
 	CALL _lcd_puts
 	CALL SUBOPT_0x10
 	SBIC 0x0,2
 	RJMP _0x58
 	__POINTW2MN _0x54,36
-	RJMP _0x14C
+	RJMP _0x1FD
 _0x58:
 	__POINTW2MN _0x54,45
-_0x14C:
+_0x1FD:
 	CALL _lcd_puts
 	SBIC 0x0,4
 	RJMP _0x5A
 	__POINTW2MN _0x54,54
-	RJMP _0x14D
+	RJMP _0x1FE
 _0x5A:
 	__POINTW2MN _0x54,63
-_0x14D:
+_0x1FE:
 	CALL _lcd_puts
 	RET
 ; .FEND
@@ -2650,35 +2633,35 @@ _STATE_DISTANCE_SENSOR:
 	SBIC 0x16,0
 	RJMP _0x74
 	__POINTW2MN _0x75,0
-	RJMP _0x14E
+	RJMP _0x1FF
 _0x74:
 	__POINTW2MN _0x75,8
-_0x14E:
+_0x1FF:
 	CALL _lcd_puts
 	SBIC 0x16,6
 	RJMP _0x77
 	__POINTW2MN _0x75,16
-	RJMP _0x14F
+	RJMP _0x200
 _0x77:
 	__POINTW2MN _0x75,26
-_0x14F:
+_0x200:
 	CALL _lcd_puts
 	CALL SUBOPT_0x10
 	SBIC 0x16,2
 	RJMP _0x79
 	__POINTW2MN _0x75,36
-	RJMP _0x150
+	RJMP _0x201
 _0x79:
 	__POINTW2MN _0x75,45
-_0x150:
+_0x201:
 	CALL _lcd_puts
 	SBIC 0x16,4
 	RJMP _0x7B
 	__POINTW2MN _0x75,54
-	RJMP _0x151
+	RJMP _0x202
 _0x7B:
 	__POINTW2MN _0x75,63
-_0x151:
+_0x202:
 	CALL _lcd_puts
 	RET
 ; .FEND
@@ -2950,33 +2933,33 @@ _STATE_DREHUNG:
 ; .FSTART _STATE_DREHUNG
 	CALL SUBOPT_0x5
 	CALL SUBOPT_0x3
-_0xC0:
+_0x169:
 	CALL SUBOPT_0x23
 	CALL SUBOPT_0x29
-	__POINTW2MN _0xC6,0
+	__POINTW2MN _0x16F,0
 	CALL SUBOPT_0x27
-	__POINTW2MN _0xC6,3
+	__POINTW2MN _0x16F,3
 	CALL SUBOPT_0x28
 	CALL SUBOPT_0x4
 	CPI  R26,LOW(0x40)
 	LDI  R30,HIGH(0x40)
 	CPC  R27,R30
-	BRGE _0xC7
+	BRGE _0x170
 	CALL SUBOPT_0x1
 	CPI  R26,LOW(0x40)
 	LDI  R30,HIGH(0x40)
 	CPC  R27,R30
-	BRLT _0xC8
-_0xC7:
-	RJMP _0xC1
-_0xC8:
-	RJMP _0xC0
-_0xC1:
+	BRLT _0x171
+_0x170:
+	RJMP _0x16A
+_0x171:
+	RJMP _0x169
+_0x16A:
 	RET
 ; .FEND
 
 	.DSEG
-_0xC6:
+_0x16F:
 	.BYTE 0x7
 
 	.CSEG
@@ -2984,107 +2967,225 @@ _STATE_METERLINKSMETERRECHTS:
 ; .FSTART _STATE_METERLINKSMETERRECHTS
 	CALL SUBOPT_0x5
 	CALL SUBOPT_0x3
-_0xCA:
+_0x173:
 	CALL SUBOPT_0x24
 	CALL SUBOPT_0x29
-	__POINTW2MN _0xD0,0
+	__POINTW2MN _0x179,0
 	CALL SUBOPT_0x27
-	__POINTW2MN _0xD0,3
+	__POINTW2MN _0x179,3
 	CALL SUBOPT_0x28
 	CALL SUBOPT_0x4
 	SBIW R26,17
-	BRLT _0xCA
+	BRLT _0x173
 	CALL SUBOPT_0x2A
 	CALL SUBOPT_0x3
-_0xD6:
+_0x17F:
 	CALL SUBOPT_0x23
 	CALL SUBOPT_0x2B
-	__POINTW2MN _0xD0,7
+	__POINTW2MN _0x179,7
 	CALL SUBOPT_0x27
-	__POINTW2MN _0xD0,10
+	__POINTW2MN _0x179,10
 	CALL SUBOPT_0x28
 	CALL SUBOPT_0x4
 	CPI  R26,LOW(0x64)
 	LDI  R30,HIGH(0x64)
 	CPC  R27,R30
-	BRGE _0xDC
+	BRGE _0x185
 	CALL SUBOPT_0x1
 	CPI  R26,LOW(0x64)
 	LDI  R30,HIGH(0x64)
 	CPC  R27,R30
-	BRLT _0xDD
-_0xDC:
-	RJMP _0xD7
-_0xDD:
-	RJMP _0xD6
-_0xD7:
+	BRLT _0x186
+_0x185:
+	RJMP _0x180
+_0x186:
+	RJMP _0x17F
+_0x180:
 	CALL SUBOPT_0x2A
 	CALL SUBOPT_0x3
-_0xE3:
+_0x18C:
 	CALL SUBOPT_0x25
 	CALL SUBOPT_0x26
-	__POINTW2MN _0xD0,14
+	__POINTW2MN _0x179,14
 	CALL SUBOPT_0x27
-	__POINTW2MN _0xD0,17
+	__POINTW2MN _0x179,17
 	CALL SUBOPT_0x28
 	CALL SUBOPT_0x1
 	SBIW R26,17
-	BRLT _0xE3
+	BRLT _0x18C
 	CALL SUBOPT_0x2A
 	CALL SUBOPT_0x3
-_0xEE:
+_0x197:
 	CALL SUBOPT_0x23
 	CALL SUBOPT_0x2B
-	__POINTW2MN _0xD0,21
+	__POINTW2MN _0x179,21
 	CALL SUBOPT_0x27
-	__POINTW2MN _0xD0,24
+	__POINTW2MN _0x179,24
 	CALL SUBOPT_0x28
 	CALL SUBOPT_0x4
 	CPI  R26,LOW(0x64)
 	LDI  R30,HIGH(0x64)
 	CPC  R27,R30
-	BRGE _0xF4
+	BRGE _0x19D
 	CALL SUBOPT_0x1
 	CPI  R26,LOW(0x64)
 	LDI  R30,HIGH(0x64)
 	CPC  R27,R30
-	BRLT _0xF5
-_0xF4:
-	RJMP _0xEF
-_0xF5:
-	RJMP _0xEE
-_0xEF:
+	BRLT _0x19E
+_0x19D:
+	RJMP _0x198
+_0x19E:
+	RJMP _0x197
+_0x198:
 	RET
 ; .FEND
 
 	.DSEG
-_0xD0:
+_0x179:
 	.BYTE 0x1C
 
 	.CSEG
+_movement:
+; .FSTART _movement
+	ST   -Y,R27
+	ST   -Y,R26
+;	left -> Y+6
+;	right -> Y+4
+;	dir_left -> Y+2
+;	dir_right -> Y+0
+	LDD  R30,Y+6
+	LDD  R31,Y+6+1
+	STS  _ipwmcompareleft,R30
+	STS  _ipwmcompareleft+1,R31
+	LDD  R30,Y+4
+	LDD  R31,Y+4+1
+	STS  _ipwmcompareright,R30
+	STS  _ipwmcompareright+1,R31
+	LDD  R30,Y+2
+	CPI  R30,0
+	BRNE _0x19F
+	CBI  0x1B,7
+	RJMP _0x1A0
+_0x19F:
+	SBI  0x1B,7
+_0x1A0:
+	LD   R30,Y
+	CPI  R30,0
+	BRNE _0x1A1
+	CBI  0x1B,5
+	RJMP _0x1A2
+_0x1A1:
+	SBI  0x1B,5
+_0x1A2:
+	ADIW R28,8
+	RET
+; .FEND
 _STATE_3:
 ; .FSTART _STATE_3
-	CALL SUBOPT_0x5
-	CALL SUBOPT_0x3
-_0xF7:
-	CALL SUBOPT_0x23
-	CBI  0x1B,7
-	CBI  0x1B,5
-	CALL SUBOPT_0x4
-	CPI  R26,LOW(0x40)
-	LDI  R30,HIGH(0x40)
-	CPC  R27,R30
-	BRGE _0xFD
-	CALL SUBOPT_0x1
-	CPI  R26,LOW(0x40)
-	LDI  R30,HIGH(0x40)
-	CPC  R27,R30
-	BRLT _0xFE
-_0xFD:
-	RJMP _0xF8
-_0xFE:
-	RJMP _0xF7
-_0xF8:
+	LDS  R30,_detector_value
+	LDS  R31,_detector_value+1
+	SBIW R30,0
+	BRNE _0x1A6
+	CALL SUBOPT_0x2C
+	LDI  R30,LOW(100)
+	LDI  R31,HIGH(100)
+	RJMP _0x203
+_0x1A6:
+	CPI  R30,LOW(0x1)
+	LDI  R26,HIGH(0x1)
+	CPC  R31,R26
+	BRNE _0x1A7
+	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2E
+	RJMP _0x204
+_0x1A7:
+	CPI  R30,LOW(0x2)
+	LDI  R26,HIGH(0x2)
+	CPC  R31,R26
+	BRNE _0x1A8
+	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2E
+	RJMP _0x204
+_0x1A8:
+	CPI  R30,LOW(0x3)
+	LDI  R26,HIGH(0x3)
+	CPC  R31,R26
+	BRNE _0x1A9
+	CALL SUBOPT_0x2D
+	LDI  R30,LOW(100)
+	LDI  R31,HIGH(100)
+	RJMP _0x203
+_0x1A9:
+	CPI  R30,LOW(0x4)
+	LDI  R26,HIGH(0x4)
+	CPC  R31,R26
+	BRNE _0x1AA
+	CALL SUBOPT_0x2C
+	LDI  R30,LOW(70)
+	LDI  R31,HIGH(70)
+	RJMP _0x203
+_0x1AA:
+	CPI  R30,LOW(0x5)
+	LDI  R26,HIGH(0x5)
+	CPC  R31,R26
+	BRNE _0x1AB
+	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2E
+	RJMP _0x204
+_0x1AB:
+	CPI  R30,LOW(0x6)
+	LDI  R26,HIGH(0x6)
+	CPC  R31,R26
+	BRNE _0x1AC
+	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2E
+	RJMP _0x204
+_0x1AC:
+	CPI  R30,LOW(0x7)
+	LDI  R26,HIGH(0x7)
+	CPC  R31,R26
+	BRNE _0x1AD
+	LDI  R30,LOW(50)
+	LDI  R31,HIGH(50)
+	ST   -Y,R31
+	ST   -Y,R30
+	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2E
+	RJMP _0x204
+_0x1AD:
+	CPI  R30,LOW(0x8)
+	LDI  R26,HIGH(0x8)
+	CPC  R31,R26
+	BRNE _0x1AE
+	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2E
+	RJMP _0x204
+_0x1AE:
+	CPI  R30,LOW(0x9)
+	LDI  R26,HIGH(0x9)
+	CPC  R31,R26
+	BRNE _0x1A5
+	LDI  R30,LOW(80)
+	LDI  R31,HIGH(80)
+	ST   -Y,R31
+	ST   -Y,R30
+_0x203:
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R30,LOW(0)
+	LDI  R31,HIGH(0)
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R26,LOW(0)
+_0x204:
+	LDI  R27,0
+	RCALL _movement
+_0x1A5:
 	RET
 ; .FEND
 _STATE_MACHINE:
@@ -3097,275 +3198,275 @@ _STATE_MACHINE:
 	LDS  R30,_state
 	LDS  R31,_state+1
 	SBIW R30,0
-	BRNE _0x102
+	BRNE _0x1B3
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x103
+	BRNE _0x1B4
 	CALL _lcd_clear
-	__POINTW2MN _0x104,0
-	CALL SUBOPT_0x2C
-_0x103:
+	__POINTW2MN _0x1B5,0
+	CALL SUBOPT_0x2F
+_0x1B4:
 	RCALL _STATE_LINE_SENSOR
-	RJMP _0x101
-_0x102:
+	RJMP _0x1B2
+_0x1B3:
 	CPI  R30,LOW(0x1)
 	LDI  R26,HIGH(0x1)
 	CPC  R31,R26
-	BRNE _0x105
+	BRNE _0x1B6
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x106
+	BRNE _0x1B7
 	CALL _lcd_clear
-	__POINTW2MN _0x104,17
-	CALL SUBOPT_0x2C
-_0x106:
+	__POINTW2MN _0x1B5,17
+	CALL SUBOPT_0x2F
+_0x1B7:
 	RCALL _STATE_ENGINE
-	RJMP _0x101
-_0x105:
+	RJMP _0x1B2
+_0x1B6:
 	CPI  R30,LOW(0x2)
 	LDI  R26,HIGH(0x2)
 	CPC  R31,R26
-	BRNE _0x107
+	BRNE _0x1B8
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x108
+	BRNE _0x1B9
 	CALL _lcd_clear
-	__POINTW2MN _0x104,33
-	CALL SUBOPT_0x2C
-_0x108:
+	__POINTW2MN _0x1B5,33
+	CALL SUBOPT_0x2F
+_0x1B9:
 	RCALL _STATE_ENGINE_DIR
-	RJMP _0x101
-_0x107:
+	RJMP _0x1B2
+_0x1B8:
 	CPI  R30,LOW(0x3)
 	LDI  R26,HIGH(0x3)
 	CPC  R31,R26
-	BRNE _0x109
+	BRNE _0x1BA
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x10A
+	BRNE _0x1BB
 	CALL _lcd_clear
-	__POINTW2MN _0x104,51
-	CALL SUBOPT_0x2C
-_0x10A:
+	__POINTW2MN _0x1B5,51
+	CALL SUBOPT_0x2F
+_0x1BB:
 	RCALL _STATE_DISTANCE_SENSOR
-	RJMP _0x101
-_0x109:
+	RJMP _0x1B2
+_0x1BA:
 	CPI  R30,LOW(0x4)
 	LDI  R26,HIGH(0x4)
 	CPC  R31,R26
-	BRNE _0x10B
+	BRNE _0x1BC
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x10C
+	BRNE _0x1BD
 	CALL _lcd_clear
-	__POINTW2MN _0x104,68
-	CALL SUBOPT_0x2C
-_0x10C:
+	__POINTW2MN _0x1B5,68
+	CALL SUBOPT_0x2F
+_0x1BD:
 	RCALL _STATE_LIGHTSENSOR
-	RJMP _0x101
-_0x10B:
+	RJMP _0x1B2
+_0x1BC:
 	CPI  R30,LOW(0x5)
 	LDI  R26,HIGH(0x5)
 	CPC  R31,R26
-	BRNE _0x10D
+	BRNE _0x1BE
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x10E
+	BRNE _0x1BF
 	CALL _lcd_clear
-	__POINTW2MN _0x104,85
-	CALL SUBOPT_0x2C
-_0x10E:
+	__POINTW2MN _0x1B5,85
+	CALL SUBOPT_0x2F
+_0x1BF:
 	RCALL _STATE_WIICAM
-	RJMP _0x101
-_0x10D:
+	RJMP _0x1B2
+_0x1BE:
 	CPI  R30,LOW(0x6)
 	LDI  R26,HIGH(0x6)
 	CPC  R31,R26
-	BRNE _0x10F
+	BRNE _0x1C0
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x110
+	BRNE _0x1C1
 	CALL _lcd_clear
-	__POINTW2MN _0x104,101
-	CALL SUBOPT_0x2C
-_0x110:
+	__POINTW2MN _0x1B5,101
+	CALL SUBOPT_0x2F
+_0x1C1:
 	RCALL _STATE_IRTOWER
-	RJMP _0x101
-_0x10F:
+	RJMP _0x1B2
+_0x1C0:
 	CPI  R30,LOW(0x7)
 	LDI  R26,HIGH(0x7)
 	CPC  R31,R26
-	BRNE _0x111
+	BRNE _0x1C2
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x112
+	BRNE _0x1C3
 	CALL _lcd_clear
-	__POINTW2MN _0x104,118
-	CALL SUBOPT_0x2C
-_0x112:
+	__POINTW2MN _0x1B5,118
+	CALL SUBOPT_0x2F
+_0x1C3:
 	RCALL _STATE_SERVO
-	RJMP _0x101
-_0x111:
+	RJMP _0x1B2
+_0x1C2:
 	CPI  R30,LOW(0x8)
 	LDI  R26,HIGH(0x8)
 	CPC  R31,R26
-	BRNE _0x113
+	BRNE _0x1C4
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x114
+	BRNE _0x1C5
 	CALL _lcd_clear
-	__POINTW2MN _0x104,133
-	CALL SUBOPT_0x2C
-_0x114:
+	__POINTW2MN _0x1B5,133
+	CALL SUBOPT_0x2F
+_0x1C5:
 	RCALL _STATE_ULTRASONIC
-	RJMP _0x101
-_0x113:
+	RJMP _0x1B2
+_0x1C4:
 	CPI  R30,LOW(0x9)
 	LDI  R26,HIGH(0x9)
 	CPC  R31,R26
-	BRNE _0x115
+	BRNE _0x1C6
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x116
+	BRNE _0x1C7
 	CALL _lcd_clear
-	__POINTW2MN _0x104,149
-	CALL SUBOPT_0x2C
-_0x116:
+	__POINTW2MN _0x1B5,149
+	CALL SUBOPT_0x2F
+_0x1C7:
 	RCALL _STATE_VOR
-	RJMP _0x101
-_0x115:
+	RJMP _0x1B2
+_0x1C6:
 	CPI  R30,LOW(0xA)
 	LDI  R26,HIGH(0xA)
 	CPC  R31,R26
-	BRNE _0x117
+	BRNE _0x1C8
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x118
+	BRNE _0x1C9
 	CALL _lcd_clear
-	__POINTW2MN _0x104,165
-	CALL SUBOPT_0x2C
-_0x118:
+	__POINTW2MN _0x1B5,165
+	CALL SUBOPT_0x2F
+_0x1C9:
 	RCALL _STATE_ZUR
-	RJMP _0x101
-_0x117:
+	RJMP _0x1B2
+_0x1C8:
 	CPI  R30,LOW(0xB)
 	LDI  R26,HIGH(0xB)
 	CPC  R31,R26
-	BRNE _0x119
+	BRNE _0x1CA
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x11A
+	BRNE _0x1CB
 	CALL _lcd_clear
-	__POINTW2MN _0x104,183
-	CALL SUBOPT_0x2C
-_0x11A:
+	__POINTW2MN _0x1B5,183
+	CALL SUBOPT_0x2F
+_0x1CB:
 	RCALL _STATE_LINKS
-	RJMP _0x101
-_0x119:
+	RJMP _0x1B2
+_0x1CA:
 	CPI  R30,LOW(0xC)
 	LDI  R26,HIGH(0xC)
 	CPC  R31,R26
-	BRNE _0x11B
+	BRNE _0x1CC
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x11C
+	BRNE _0x1CD
 	CALL _lcd_clear
-	__POINTW2MN _0x104,200
-	CALL SUBOPT_0x2C
-_0x11C:
+	__POINTW2MN _0x1B5,200
+	CALL SUBOPT_0x2F
+_0x1CD:
 	RCALL _STATE_RECHTS
-	RJMP _0x101
-_0x11B:
+	RJMP _0x1B2
+_0x1CC:
 	CPI  R30,LOW(0xD)
 	LDI  R26,HIGH(0xD)
 	CPC  R31,R26
-	BRNE _0x11D
+	BRNE _0x1CE
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x11E
+	BRNE _0x1CF
 	CALL _lcd_clear
-	__POINTW2MN _0x104,216
-	CALL SUBOPT_0x2C
-_0x11E:
+	__POINTW2MN _0x1B5,216
+	CALL SUBOPT_0x2F
+_0x1CF:
 	RCALL _STATE_90LINKS
-	RJMP _0x101
-_0x11D:
+	RJMP _0x1B2
+_0x1CE:
 	CPI  R30,LOW(0xE)
 	LDI  R26,HIGH(0xE)
 	CPC  R31,R26
-	BRNE _0x11F
+	BRNE _0x1D0
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x120
+	BRNE _0x1D1
 	CALL _lcd_clear
-	__POINTW2MN _0x104,234
-	CALL SUBOPT_0x2C
-_0x120:
+	__POINTW2MN _0x1B5,234
+	CALL SUBOPT_0x2F
+_0x1D1:
 	RCALL _STATE_90RECHTS
-	RJMP _0x101
-_0x11F:
+	RJMP _0x1B2
+_0x1D0:
 	CPI  R30,LOW(0xF)
 	LDI  R26,HIGH(0xF)
 	CPC  R31,R26
-	BRNE _0x121
+	BRNE _0x1D2
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x122
+	BRNE _0x1D3
 	CALL _lcd_clear
-	__POINTW2MN _0x104,251
-	CALL SUBOPT_0x2C
-_0x122:
+	__POINTW2MN _0x1B5,251
+	CALL SUBOPT_0x2F
+_0x1D3:
 	RCALL _STATE_DREHUNG
-	RJMP _0x101
-_0x121:
+	RJMP _0x1B2
+_0x1D2:
 	CPI  R30,LOW(0x10)
 	LDI  R26,HIGH(0x10)
 	CPC  R31,R26
-	BRNE _0x123
+	BRNE _0x1D4
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x124
+	BRNE _0x1D5
 	CALL _lcd_clear
-	__POINTW2MN _0x104,264
-	CALL SUBOPT_0x2C
-_0x124:
+	__POINTW2MN _0x1B5,264
+	CALL SUBOPT_0x2F
+_0x1D5:
 	RCALL _STATE_METERLINKSMETERRECHTS
-	RJMP _0x101
-_0x123:
+	RJMP _0x1B2
+_0x1D4:
 	CPI  R30,LOW(0x11)
 	LDI  R26,HIGH(0x11)
 	CPC  R31,R26
-	BRNE _0x125
+	BRNE _0x1D6
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x126
+	BRNE _0x1D7
 	CALL _lcd_clear
-	__POINTW2MN _0x104,282
-	CALL SUBOPT_0x2C
-_0x126:
+	__POINTW2MN _0x1B5,282
+	CALL SUBOPT_0x2F
+_0x1D7:
 	RCALL _STATE_3
-	RJMP _0x101
-_0x125:
+	RJMP _0x1B2
+_0x1D6:
 	CPI  R30,LOW(0x12)
 	LDI  R26,HIGH(0x12)
 	CPC  R31,R26
-	BRNE _0x129
+	BRNE _0x1DA
 	MOV  R0,R12
 	OR   R0,R13
-	BRNE _0x128
+	BRNE _0x1D9
 	CALL _lcd_clear
-	__POINTW2MN _0x104,300
-	CALL SUBOPT_0x2C
-_0x128:
+	__POINTW2MN _0x1B5,300
+	CALL SUBOPT_0x2F
+_0x1D9:
 	RCALL _STATE_3
-	RJMP _0x101
-_0x129:
+	RJMP _0x1B2
+_0x1DA:
 	CALL _lcd_clear
-	__POINTW2MN _0x104,318
+	__POINTW2MN _0x1B5,318
 	CALL SUBOPT_0x7
-	__POINTW2MN _0x104,332
+	__POINTW2MN _0x1B5,332
 	CALL _lcd_puts
-_0x101:
+_0x1B2:
 	LDI  R26,LOW(50)
 _0x20E0003:
 	LDI  R27,0
@@ -3374,7 +3475,7 @@ _0x20E0003:
 ; .FEND
 
 	.DSEG
-_0x104:
+_0x1B5:
 	.BYTE 0x157
 ;#include "modules/esp.h"
 
@@ -3385,22 +3486,22 @@ _slave_rx_handler:
 ;	rx_complete -> Y+0
 	LDS  R30,_twi_result
 	CPI  R30,0
-	BRNE _0x12A
+	BRNE _0x1DB
 	SET
 	BLD  R2,1
-	RJMP _0x12B
-_0x12A:
+	RJMP _0x1DC
+_0x1DB:
 	CLT
 	BLD  R2,1
 	LDI  R30,LOW(0)
 	JMP  _0x20E0001
-_0x12B:
+_0x1DC:
 	LD   R30,Y
 	CPI  R30,0
-	BREQ _0x12C
+	BREQ _0x1DD
 	LDI  R30,LOW(0)
 	JMP  _0x20E0001
-_0x12C:
+_0x1DD:
 	LDS  R26,_twi_rx_index
 	LDI  R30,LOW(15)
 	CALL __LTB12U
@@ -3413,7 +3514,7 @@ _slave_tx_handler:
 	LD   R30,Y
 	CPI  R30,0
 	BREQ PC+2
-	RJMP _0x12D
+	RJMP _0x1DE
 	LDS  R30,_linesensorvaluetemp
 	STS  _tx_buffer,R30
 	LDS  R30,_distanzsensorvaluetemp
@@ -3441,14 +3542,14 @@ _slave_tx_handler:
 	__PUTB1MN _tx_buffer,14
 	LDI  R30,LOW(15)
 	JMP  _0x20E0001
-_0x12D:
+_0x1DE:
 	SBRS R2,1
-	RJMP _0x12E
+	RJMP _0x1DF
 	__GETB1MN _rx_buffer,14
 	LDI  R31,0
 	STS  _currstate,R30
 	STS  _currstate+1,R31
-_0x12E:
+_0x1DF:
 	LDI  R30,LOW(0)
 	JMP  _0x20E0001
 ; .FEND
@@ -3477,81 +3578,46 @@ _twiinit:
 	CALL _twi_slave_init
 	RET
 ; .FEND
-;
-;
-;
-;
-;// Timer1 overflow interrupt service routine
-;interrupt [TIM1_OVF] void timer1_ovf_isr(void)
-; 0000 005B {
+;#include "modules/pwm.h"
 _timer1_ovf_isr:
 ; .FSTART _timer1_ovf_isr
 	CALL SUBOPT_0x0
-; 0000 005C   // Reinitialize Timer 1 value
-; 0000 005D   TCNT1L=0x9C;
 	LDI  R30,LOW(156)
 	OUT  0x2C,R30
-; 0000 005E   ipwmcounter++;
 	LDI  R26,LOW(_ipwmcounter)
 	LDI  R27,HIGH(_ipwmcounter)
 	CALL SUBOPT_0x2
-; 0000 005F 
-; 0000 0060 
-; 0000 0061 
-; 0000 0062 
-; 0000 0063 
-; 0000 0064   if (ipwmcounter>255)
-	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x30
 	CPI  R26,LOW(0x100)
 	LDI  R30,HIGH(0x100)
 	CPC  R27,R30
-	BRLT _0x12F
-; 0000 0065     ipwmcounter=0;
+	BRLT _0x1E0
 	LDI  R30,LOW(0)
 	STS  _ipwmcounter,R30
 	STS  _ipwmcounter+1,R30
-; 0000 0066 
-; 0000 0067 
-; 0000 0068 
-; 0000 0069 
-; 0000 006A 
-; 0000 006B 
-; 0000 006C 
-; 0000 006D 
-; 0000 006E  if(ipwmcounter >= ipwmcompareleft){
-_0x12F:
+_0x1E0:
 	LDS  R30,_ipwmcompareleft
 	LDS  R31,_ipwmcompareleft+1
-	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x30
 	CP   R26,R30
 	CPC  R27,R31
-	BRLT _0x130
-; 0000 006F  ENGINE_ENABLE_LEFT=0;
+	BRLT _0x1E1
 	CBI  0x1B,3
-; 0000 0070   }else{
-	RJMP _0x133
-_0x130:
-; 0000 0071   ENGINE_ENABLE_LEFT=1;
+	RJMP _0x1E4
+_0x1E1:
 	SBI  0x1B,3
-; 0000 0072   }
-_0x133:
-; 0000 0073 
-; 0000 0074  if(ipwmcounter >= ipwmcompareright){
+_0x1E4:
 	LDS  R30,_ipwmcompareright
 	LDS  R31,_ipwmcompareright+1
-	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x30
 	CP   R26,R30
 	CPC  R27,R31
-	BRLT _0x136
-; 0000 0075  ENGINE_ENABLE_RIGHT=0;
+	BRLT _0x1E7
 	CBI  0x1B,1
-; 0000 0076   }else{
-	RJMP _0x139
-_0x136:
-; 0000 0077   ENGINE_ENABLE_RIGHT=1;}
+	RJMP _0x1EA
+_0x1E7:
 	SBI  0x1B,1
-_0x139:
-; 0000 0078 }
+_0x1EA:
 	LD   R30,Y+
 	OUT  SREG,R30
 	LD   R31,Y+
@@ -3561,46 +3627,60 @@ _0x139:
 	RETI
 ; .FEND
 ;
+;/*
+; void radkorrektur(){
+;char strrad [17];
+; float newval = 100/(wheelEncoderCounter_right+wheelEncoderCounter_left);
+; float newvalprozent= newval*wheelEncoderCounter_left;
+; itoa(newvalprozent,strrad);
+;  lcd_clear();
+; lcd_puts(strrad);
+;
+;}
+;*/
+;
+;
+;
 ;
 ;
 ;
 ;
 ;
 ;void main(void)
-; 0000 0080 {
+; 0000 005A {
 _main:
 ; .FSTART _main
-; 0000 0081 // Ports initialisieren
-; 0000 0082 port_init();
+; 0000 005B // Ports initialisieren
+; 0000 005C port_init();
 	CALL _port_init
-; 0000 0083 //Other inits
-; 0000 0084 i2c_init();
+; 0000 005D //Other inits
+; 0000 005E i2c_init();
 	CALL _i2c_init
-; 0000 0085 wii_cam_init();
+; 0000 005F wii_cam_init();
 	RCALL _wii_cam_init
-; 0000 0086 twiinit();
+; 0000 0060 twiinit();
 	RCALL _twiinit
-; 0000 0087 
-; 0000 0088 while (1)
-_0x13C:
-; 0000 0089       {
-; 0000 008A       STATE_MACHINE();
+; 0000 0061 
+; 0000 0062 while (1)
+_0x1ED:
+; 0000 0063       {
+; 0000 0064       STATE_MACHINE();
 	RCALL _STATE_MACHINE
-; 0000 008B       esp_states();
+; 0000 0065       esp_states();
 	RCALL _esp_states
-; 0000 008C 
-; 0000 008D       ondata();
+; 0000 0066 
+; 0000 0067       ondata();
 	RCALL _ondata
-; 0000 008E       esp_mainfunctions();
+; 0000 0068       esp_mainfunctions();
 	RCALL _esp_mainfunctions
-; 0000 008F 
-; 0000 0090 
-; 0000 0091 
-; 0000 0092       }
-	RJMP _0x13C
-; 0000 0093 }
-_0x13F:
-	RJMP _0x13F
+; 0000 0069 
+; 0000 006A 
+; 0000 006B 
+; 0000 006C       }
+	RJMP _0x1ED
+; 0000 006D }
+_0x1F0:
+	RJMP _0x1F0
 ; .FEND
 
 	.CSEG
@@ -4358,19 +4438,19 @@ _lcd_init:
 	LD   R30,Y
 	SUBI R30,-LOW(192)
 	__PUTB1MN __base_y_G104,3
-	CALL SUBOPT_0x2E
-	CALL SUBOPT_0x2E
-	CALL SUBOPT_0x2E
+	CALL SUBOPT_0x31
+	CALL SUBOPT_0x31
+	CALL SUBOPT_0x31
 	RCALL __long_delay_G104
 	LDI  R26,LOW(32)
 	RCALL __lcd_init_write_G104
 	RCALL __long_delay_G104
 	LDI  R26,LOW(40)
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x32
 	LDI  R26,LOW(4)
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x32
 	LDI  R26,LOW(133)
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x32
     in    r26,__lcd_direction
     andi  r26,0xf                 ;set as input
     out   __lcd_direction,r26
@@ -4530,7 +4610,7 @@ SUBOPT_0x0:
 	ST   -Y,R30
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
 SUBOPT_0x1:
 	LDS  R26,_wheelEncoderCounter_right
 	LDS  R27,_wheelEncoderCounter_right+1
@@ -4545,20 +4625,20 @@ SUBOPT_0x2:
 	ST   -X,R30
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 9 TIMES, CODE SIZE REDUCTION:21 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 8 TIMES, CODE SIZE REDUCTION:18 WORDS
 SUBOPT_0x3:
 	LDI  R30,LOW(0)
 	STS  _wheelEncoderCounter_right,R30
 	STS  _wheelEncoderCounter_right+1,R30
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
 SUBOPT_0x4:
 	LDS  R26,_wheelEncoderCounter_left
 	LDS  R27,_wheelEncoderCounter_left+1
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 9 TIMES, CODE SIZE REDUCTION:21 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 8 TIMES, CODE SIZE REDUCTION:18 WORDS
 SUBOPT_0x5:
 	LDI  R30,LOW(0)
 	STS  _wheelEncoderCounter_left,R30
@@ -4848,7 +4928,7 @@ SUBOPT_0x22:
 	CALL __DIVF21
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:47 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:37 WORDS
 SUBOPT_0x23:
 	LDI  R30,LOW(100)
 	LDI  R31,HIGH(100)
@@ -4938,8 +5018,33 @@ SUBOPT_0x2B:
 	CALL _lcd_clear
 	RJMP SUBOPT_0x10
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 19 TIMES, CODE SIZE REDUCTION:159 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 8 TIMES, CODE SIZE REDUCTION:11 WORDS
 SUBOPT_0x2C:
+	LDI  R30,LOW(100)
+	LDI  R31,HIGH(100)
+	ST   -Y,R31
+	ST   -Y,R30
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
+SUBOPT_0x2D:
+	LDI  R30,LOW(70)
+	LDI  R31,HIGH(70)
+	ST   -Y,R31
+	ST   -Y,R30
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:12 WORDS
+SUBOPT_0x2E:
+	LDI  R30,LOW(1)
+	LDI  R31,HIGH(1)
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R26,LOW(1)
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 19 TIMES, CODE SIZE REDUCTION:159 WORDS
+SUBOPT_0x2F:
 	CALL _lcd_puts
 	LDI  R26,LOW(1000)
 	LDI  R27,HIGH(1000)
@@ -4951,19 +5056,19 @@ SUBOPT_0x2C:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x2D:
+SUBOPT_0x30:
 	LDS  R26,_ipwmcounter
 	LDS  R27,_ipwmcounter+1
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x2E:
+SUBOPT_0x31:
 	CALL __long_delay_G104
 	LDI  R26,LOW(48)
 	JMP  __lcd_init_write_G104
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x2F:
+SUBOPT_0x32:
 	CALL __lcd_write_data
 	JMP  __long_delay_G104
 
