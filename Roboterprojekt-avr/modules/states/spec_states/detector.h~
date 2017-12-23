@@ -1,16 +1,19 @@
   
 //Detector
 
-/*
-
-
-
-
-
-*/
+  /////////////////////////// 
+  void movement(int left, int right, int dir_left, int dir_right){
+  ipwmcompareleft=left; 
+  ipwmcompareright=right; 
+  ENGINE_DIRECTION_LEFT = dir_left;  
+  ENGINE_DIRECTION_RIGHT = dir_right;
+  }
 
 
 int detector_value;
+int detector_value_line;
+int tmr_line=0;
+int val_R_linesearch=0;
  
   void detector(){   
   if (      BUMPER_LEFT&&  BUMPER_RIGHT&&  DISTANCE_SENSOR_LEFT&&  DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&&  DISTANCE_SENSOR_FRONT_RIGHT)detector_value=0;        
@@ -36,7 +39,7 @@ int detector_value;
   if (     !BUMPER_LEFT&& !BUMPER_RIGHT&& !DISTANCE_SENSOR_LEFT&& !DISTANCE_SENSOR_RIGHT&& !DISTANCE_SENSOR_FRONT_LEFT&&  DISTANCE_SENSOR_FRONT_RIGHT)detector_value=20;    
   if (     !BUMPER_LEFT&& !BUMPER_RIGHT&& !DISTANCE_SENSOR_LEFT&& !DISTANCE_SENSOR_RIGHT&& !DISTANCE_SENSOR_FRONT_LEFT&& !DISTANCE_SENSOR_FRONT_RIGHT)detector_value=21;        
   if (      BUMPER_LEFT&&  BUMPER_RIGHT&&  DISTANCE_SENSOR_LEFT&& !DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&& !DISTANCE_SENSOR_FRONT_RIGHT)detector_value=22;            
-  if (      BUMPER_LEFT&&  BUMPER_RIGHT&&  DISTANCE_SENSOR_LEFT&& !DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&& !DISTANCE_SENSOR_FRONT_RIGHT)detector_value=23;          
+  if (      BUMPER_LEFT&&  BUMPER_RIGHT&& !DISTANCE_SENSOR_LEFT&&  DISTANCE_SENSOR_RIGHT&& !DISTANCE_SENSOR_FRONT_LEFT&&  DISTANCE_SENSOR_FRONT_RIGHT)detector_value=23;          
   if (      BUMPER_LEFT&& !BUMPER_RIGHT&&  DISTANCE_SENSOR_LEFT&& !DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&&  DISTANCE_SENSOR_FRONT_RIGHT)detector_value=24;      
   if (     !BUMPER_LEFT&&  BUMPER_RIGHT&& !DISTANCE_SENSOR_LEFT&&  DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&&  DISTANCE_SENSOR_FRONT_RIGHT)detector_value=25;     
   if (      BUMPER_LEFT&&  BUMPER_RIGHT&& !DISTANCE_SENSOR_LEFT&&  DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&& !DISTANCE_SENSOR_FRONT_RIGHT)detector_value=26;     
@@ -75,8 +78,418 @@ int detector_value;
   if (      BUMPER_LEFT&& !BUMPER_RIGHT&&  DISTANCE_SENSOR_LEFT&&  DISTANCE_SENSOR_RIGHT&& !DISTANCE_SENSOR_FRONT_LEFT&& !DISTANCE_SENSOR_FRONT_RIGHT)detector_value=59;   
   if (     !BUMPER_LEFT&&  BUMPER_RIGHT&& !DISTANCE_SENSOR_LEFT&& !DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&&  DISTANCE_SENSOR_FRONT_RIGHT)detector_value=60;        
         
-  if (     (iTime/52.2)<10)detector_value=65;  
+  if (     (iTime/52.2)<10)detector_value=64;        
+  
+  } 
+  
+  
+void line_detector(){
+
+  if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=0;     
+  if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=1;  
+  if (     !LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=2;  
+  if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=3;  
+  if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=4;  
+  if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=5;  
+  if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=6;     
+  if (      LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=7; 
+  if (     !LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=8; 
+  if (      LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=9; 
+
+}  
+  
+void detectorcase_line(){
+
+  if (tmr_line<10000){
+  tmr_line++}else{
+   val_R_linesearch++
+   tmr_line=0;
+  }
+  
+  
+    switch (detector_value_line){
+   case 0:  
+    //nothing detected
+    //Robby is driving a spiral (right)
+     movement(80,val_R_linesearch,0,0);  
+   break; 
     
+   case 1:   
+    //detected a line on all sensors 
+    //Robby is driving slowly to the left
+     movement(0,65,0,0);
+   break;   
+
+   case 2:  
+   //detected a line on left sensor
+   //Robby is driving to the left 
+     movement(60,80,0,0);
+   break;   
+   
+   case 3:   
+    //detected a line on left and midleft sensor 
+    //Robby is driving slowly to the left
+     movement(60,70,0,0);
+   break;   
+
+   case 4:  
+    //detected a line on left, midleft and midright sensor 
+    //Robby is driving slowly 
+     movement(70,70,0,0);
+   break;      
+
+   case 5:  
+    //detected a line on right sensor 
+    //Robby is driving slowly to the left
+     movement(60,70,0,0);
+   break;  
+ 
+   case 6:  
+    //detected a line on right and midright sensor 
+    //Robby is driving slowly to the left
+     movement(60,70,0,0);
+   break;  
+   
+   case 7:  
+    //detected a line on right and midright sensor 
+    //Robby is driving slowly
+     movement(70,70,0,0);
+   break;  
+   
+   case 8:  
+    //detected a line on right and left sensor 
+    //Robby is driving slowly to the left
+     movement(60,70,0,0);
+   break;      
+   
+   case 9:  
+    //detected a line on midright and midleft sensor 
+    //Robby is driving slowly to the left
+     movement(70,70,0,0);
+   break;     
+  }  
+
+}  
+  
+  void detectorcase(){
+  
+    switch (detector_value){
+   case 0:  
+    //nothing detected 
+     movement(100,100,0,0);  
+   break; 
+    
+   case 1:   
+    //DISTANCE_SENSOR_FRONT_RIGHT
+     movement(100,70,1,1);
+   break;   
+
+   case 2:  
+   //DISTANCE_SENSOR_FRONT_LEFT
+     movement(70,100,1,1);
+   break;   
+   
+   case 3:   
+    //DISTANCE_SENSOR_RIGHT
+     movement(70,100,0,0);
+   break;   
+
+   case 4:  
+   //DISTANCE_SENSOR_LEFT
+     movement(100,70,0,0);
+   break;      
+
+   case 5:  
+   //BUMPER_RIGHT
+     movement(100,70,1,1);
+   break;  
+ 
+   case 6:  
+   //BUMPER_LEFT
+     movement(70,100,1,1);
+   break;  
+   
+   case 7:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT
+     movement(50,100,1,1);
+   break;  
+   
+   case 8:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT
+     movement(100,70,1,1);
+   break;  
+    
+   case 9:  
+   //DISTANCE_SENSOR_LEFT & DISTANCE_SENSOR_RIGHT
+     movement(80,80,0,0);
+   break;  
+  
+   case 10:  
+   //BUMPER_RIGHT & DISTANCE_SENSOR_LEFT
+     movement(100,70,1,1);
+   break;   
+   
+   case 11:  
+   //BUMPER_RIGHT & BUMPER_LEFT
+     movement(100,70,1,1);
+   break; 
+   
+   case 12:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT
+     movement(100,50,1,1);
+   break; 
+   
+   case 13:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT
+     movement(50,100,1,1);
+   break;  
+   
+   case 14:  
+   //DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT
+     movement(100,80,1,1);
+   break;  
+   
+   case 15:  
+   //DISTANCE_SENSOR_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(80,100,1,1);
+   break;  
+   
+   case 16:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT
+     movement(90,100,1,1);
+   break;  
+   
+   case 17:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT
+     movement(90,100,1,1);
+   break;  
+   
+   case 18:  
+   //DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(90,100,1,1);
+   break;   
+   
+   case 19:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT
+     movement(70,80,1,1);
+   break;    
+  
+   case 20:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(70,80,1,1);
+   break;    
+   
+   case 21:  
+   //All sensors active
+     movement(90,85,1,1);
+   break;           
+   
+   case 22:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_RIGHT
+     movement(100,70,1,1);
+   break;   
+   
+   case 23:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_LEFT
+     movement(70,100,1,1);
+   break; 
+     
+   case 24:  
+   //DISTANCE_SENSOR_RIGHT & BUMPER_RIGHT
+     movement(100,70,1,1);
+   break; 
+ 
+   case 25:  
+   //DISTANCE_SENSOR_LEFT & BUMPER_LEFT
+     movement(70,100,1,1);
+   break;  
+   
+   case 26:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_LEFT
+     movement(100,70,1,1);
+   break;   
+   
+   case 27:  
+   //DISTANCE_SENSOR_FRONT_LEFT & BUMPER_RIGHT
+     movement(70,100,1,1);
+   break; 
+   
+   case 28:  
+   //DISTANCE_SENSOR_RIGHT & BUMPER_LEFT
+     movement(100,70,1,1);
+   break; 
+   
+   case 29:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & BUMPER_RIGHT
+     movement(100,70,1,1);
+   break;    
+   
+   case 30:  
+   //DISTANCE_SENSOR_FRONT_LEFT & BUMPER_LEFT
+     movement(70,100,1,1);
+   break; 
+ 
+   case 31:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & BUMPER_LEFT
+     movement(70,100,1,1);
+   break; 
+   
+   case 32:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(100,85,1,1);
+   break;      
+   
+   case 33:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(85,100,1,1);
+   break;     
+   
+   case 34:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(70,100,1,1);
+   break;   
+   
+   case 35:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_LEFT
+     movement(85,100,1,1);
+   break;            
+
+   case 36:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(100,70,1,1);
+   break;    
+   
+   case 37:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(70,100,1,1);
+   break;  
+   
+   case 38:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & BUMPER_LEFT
+     movement(100,70,1,1);
+   break;   
+   
+   case 39:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_LEFT & BUMPER_LEFT
+     movement(70,100,1,1);
+   break; 
+   
+   case 40:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_RIGHT & BUMPER_RIGHT
+     movement(100,70,1,1);
+   break;   
+   
+   case 41:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & BUMPER_LEFT
+     movement(70,100,1,1);
+   break;   
+   
+   case 42:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT
+     movement(70,100,1,1);
+   break;  
+   
+   case 43:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_RIGHT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(100,70,1,1);
+   break;     
+   
+   case 44:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(65,100,1,1);
+   break;      
+   
+   case 45:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_LEFT
+     movement(80,90,1,1);
+   break;  
+   
+   case 46:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_LEFT
+     movement(80,90,1,1);
+   break;    
+   
+   case 47:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT
+     movement(90,80,1,1);
+   break;  
+   
+   case 48:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT
+     movement(90,80,1,1);
+   break;   
+   
+   case 49:  
+   //DISTANCE_SENSOR_FRONT_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(75,100,1,1);
+   break; 
+   
+   case 50:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT
+     movement(80,70,1,1);
+   break;      
+   
+   case 51:  
+   //DISTANCE_SENSOR_FRONT_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(100,90,1,1);
+   break;    
+   
+   case 52:  
+   //DISTANCE_SENSOR_RIGHT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(100,70,1,1);
+   break;   
+   
+   case 53:  
+   //DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_LEFT & BUMPER_RIGHT & BUMPER_LEFT
+     movement(75,100,1,1);
+   break;   
+   
+   case 54:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT
+     movement(80,65,1,1);
+   break;   
+   
+   case 55:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & BUMPER_LEFT
+     movement(80,100,1,1);
+   break;   
+   
+   case 56:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_LEFT & BUMPER_LEFT
+     movement(80,100,1,1);
+   break;                                                   
+
+   case 57:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_LEFT
+     movement(80,100,1,1);
+   break;   
+   
+   case 58:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & DISTANCE_SENSOR_RIGHT & BUMPER_RIGHT
+     movement(100,80,1,1);
+   break;                                                      
+ 
+   case 59:  
+   //DISTANCE_SENSOR_FRONT_RIGHT & DISTANCE_SENSOR_FRONT_LEFT & BUMPER_RIGHT
+     movement(100,85,1,1);
+   break;   
+   
+   case 60:  
+   //DISTANCE_SENSOR_RIGHT & DISTANCE_SENSOR_LEFT & BUMPER_LEFT
+     movement(80,70,1,1);
+   break;                                                      
+
+   
+   case 64:  
+   //ULTRASONC_SENSOR
+     movement(70,100,1,1);
+   break;                                                      
+                     
+   
+  }
+
+  
+
   
   
   

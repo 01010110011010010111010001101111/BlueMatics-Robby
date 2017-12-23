@@ -96,12 +96,12 @@ wii_cam_init();
 twiinit();
 
 while (1)
-      {          
-      STATE_MACHINE(); 
-      esp_states();      
-      
-      ondata();   
-      esp_mainfunctions();
+      {
+      detector();           //SENSOR_DETECTOR        
+      STATE_MACHINE();      //DEFAULT_STATE_MACHINE
+      esp_states();         //ESP_STATE_MACHINE
+      ondata();             //IR_DATA_FUNCTION
+      esp_mainfunctions();  //ESP_MAIN_FUNCTIONS
   
       }
 }

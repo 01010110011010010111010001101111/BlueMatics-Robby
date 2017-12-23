@@ -1,6 +1,4 @@
-  //////////////SERVO/////////////    
-  
-  interrupt [TIM2_OVF] void timer2_ovf_isr(void)
+interrupt [TIM2_OVF] void timer2_ovf_isr(void)
 {   
      SERVO = 0;
      
@@ -8,17 +6,14 @@
          servo_value_copy = servo_value_cur;
          servo_breaks = 1;
          TCNT2 = servo_value_cur;
-         SERVO = 1; 
- 
+         SERVO = 1;
      }                       
      else{
         servo_breaks++;
         TCNT2 = 0x00;
      }    
 }
-  
-
-//Zeigt die Position des Servos
+//show position of servo
 void fnDisplay(void )
 {
  char str[10];

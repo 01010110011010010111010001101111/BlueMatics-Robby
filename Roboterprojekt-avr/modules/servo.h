@@ -20,6 +20,6 @@ void fnDisplay(void )
   lcd_clear();  
   lcd_puts("POSITION-SERVO");      
   lcd_gotoxy(0, 1);
-  itoa(servo_value_cur, strTemp);
+  itoa(servo_value_cur-170, strTemp);
   lcd_puts(strTemp);  
 }

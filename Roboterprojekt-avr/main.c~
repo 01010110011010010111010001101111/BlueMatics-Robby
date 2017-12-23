@@ -97,13 +97,11 @@ twiinit();
 
 while (1)
       {          
-     /* STATE_MACHINE(); 
+      STATE_MACHINE(); 
       esp_states();      
       
       ondata();   
       esp_mainfunctions();
-       */
-         playpause();
-         delay_ms(2000);
+  
       }
 }

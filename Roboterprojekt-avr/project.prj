@@ -7,7 +7,7 @@ A=ArayniMax
 C=
 D=16.11.2017
 Files=1
-OpenedFiles=15
+OpenedFiles=17
 OF1=main.c
 ActiveTab=2
 DebugOutputListFilesDirectory=Debug\List
@@ -21,7 +21,7 @@ OutputLinkerFilesDirectory=Release\Exe
 AllowDisplayFunctionCallTree=1
 CleanUp=2
 TimeStamp2=1268122259
-TimeStamp1=1268101305
+TimeStamp1=1268225882
 OF2=modules\port_init.h
 EditorPanelMode=0
 ActiveEditorPanel=0
@@ -31,14 +31,14 @@ PageIndex0=0
 Active1=0
 EditorPanel1=0
 PageIndex1=1
-Active2=1
+Active2=0
 EditorPanel2=0
 PageIndex2=2
 TimeStamp0=1268122259
 OF3=modules\esp_main_func.h
 Active3=0
 EditorPanel3=0
-TimeStamp3=1268100778
+TimeStamp3=1268225833
 PageIndex3=3
 F1=main.c
 OF4=modules\esp.h
@@ -69,7 +69,7 @@ PageIndex8=8
 OF9=modules\servo.h
 Active9=0
 EditorPanel9=0
-TimeStamp9=1267363482
+TimeStamp9=1268228378
 PageIndex9=9
 OF10=modules\ir.h
 Active10=0
@@ -77,30 +77,40 @@ EditorPanel10=0
 TimeStamp10=1267375077
 PageIndex10=10
 OF11=modules\states\spec_states\detector.h
-Active11=0
+Active11=1
 EditorPanel11=0
-TimeStamp11=1268035685
+TimeStamp11=1268229205
 PageIndex11=11
 OF12=modules\states\spec_states\state3.h
 Active12=0
 EditorPanel12=0
-TimeStamp12=1268098454
+TimeStamp12=1268226116
 PageIndex12=12
 OF13=modules\pwm.h
 Active13=0
 EditorPanel13=0
 TimeStamp13=1268026695
-PageIndex13=13
+PageIndex13=14
 OF14=modules\states\teststates.h
 Active14=0
 EditorPanel14=0
 TimeStamp14=1267956823
-PageIndex14=14
-OF15=modules\voice.h
+PageIndex14=15
+OF15=modules\states\spec_states\state4.h
 Active15=0
 EditorPanel15=0
-TimeStamp15=1268100952
-PageIndex15=15
+TimeStamp15=1268227297
+PageIndex15=13
+OF16=modules\states\spec_states\state5.h
+Active16=0
+EditorPanel16=0
+TimeStamp16=1268227406
+PageIndex16=16
+OF17=modules\states\spec_states\state6.h
+Active17=0
+EditorPanel17=0
+TimeStamp17=1268229179
+PageIndex17=17
 [CompilerDebug]
 Chip=ATmega128
 CPUClock=16000000
@@ -200,8 +210,8 @@ WatchAVR8LAutoVariables=0
 UseEEPROMLocation0=1
 RebuildAll=0
 LinkageInformationPresent=1
-COFFileTimeStamp=1268224264
-Build=687
+COFFileTimeStamp=1268229205
+Build=698
 GlobalVarAddr=1832
 EEPROMVarAddr=0
 XminiBootLoader=0
@@ -312,7 +322,7 @@ UseEEPROMLocation0=1
 RebuildAll=1
 LinkageInformationPresent=0
 COFFileTimeStamp=-1
-Build=687
+Build=698
 XminiBootLoader=0
 XminiBootEnd=0
 XminiAppEnd=0
@@ -572,10 +582,10 @@ L13=Enhanced function parameters passing: Yes
 L14=Automatic register allocation: Yes
 L15=Smart register allocation: Yes
 L16=
-L17=Build: 687
-L18=17293 line(s) compiled
+L17=Build: 697
+L18=17385 line(s) compiled
 L19=No errors
-L20=9 warning(s)
+L20=10 warning(s)
 L21=
 L22=Bit variables area: 0x2 to 0x2
 L23=Bit variables size: 1 byte(s)
@@ -584,30 +594,30 @@ L25=Data Stack area: 0x100 to 0x4FF
 L26=Data Stack size: 1024 byte(s)
 L27=Estimated Data Stack usage: 42 byte(s)
 L28=
-L29=RAM Global variables area: 0x500 to 0x885
-L30=RAM Global variables size: 902 byte(s)
+L29=RAM Global variables area: 0x500 to 0x88B
+L30=RAM Global variables size: 908 byte(s)
 L31=
-L32=Hardware Stack area: 0x886 to 0x10FF
-L33=Hardware Stack size: 2170 byte(s)
+L32=Hardware Stack area: 0x88C to 0x10FF
+L33=Hardware Stack size: 2164 byte(s)
 L34=
 L35=Heap size: 0 byte(s)
 Lines=39
 L36=
 L37=EEPROM usage: 0 byte(s), 0,0% of EEPROM
-L38=Program size: 4792 words (9584 bytes), 7,3% of FLASH
-L39=751 words (1502 bytes), 13,5% reduced by Code Compression
+L38=Program size: 5855 words (11710 bytes), 8,9% of FLASH
+L39=876 words (1752 bytes), 13,0% reduced by Code Compression
 [BuildInfoAssembler]
 Lines=12
 L1=AVRASM: AVR macro assembler 2.1.30 (build 592 Nov  7 2008 12:38:17)
 L2=Copyright (C) 1995-2008 ATMEL Corporation
 L3=
-L4=C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\List\project.asm(6091): No EEPROM data, deleting C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\Exe\project.eep
+L4=C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\List\project.asm(7278): No EEPROM data, deleting C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\Exe\project.eep
 L5=
 L6=ATmega128 memory use summary [bytes]:
 L7=Segment   Begin    End      Code   Data   Used    Size   Use%
 L8=---------------------------------------------------------------
-L9=[.cseg] 0x000000 0x002570   8432   1152   9584  131072   7.3%
-L10=[.dseg] 0x000100 0x000886      0    902    902    4096  22.0%
+L9=[.cseg] 0x000000 0x002dbe  10558   1152  11710  131072   8.9%
+L10=[.dseg] 0x000100 0x00088c      0    908    908    4096  22.2%
 L11=[.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 L12=
 [Bookmarks0]
@@ -615,9 +625,9 @@ Row=3
 Column=20
 ScrollPosX=0
 ScrollPosY=0
-TimeStamp=1268122259
+TimeStamp=1268229207
 [BookmarksFoldedCode]
-Files=22
+Files=25
 F1=main.c
 F2=modules\port_init.h
 F3=Debug\List\project.lst
@@ -640,12 +650,15 @@ F19=modules\states\teststates.h
 F20=modules\pwm.h
 F21=modules\states\spec_states\state3.h
 F22=modules\voice.h
+F23=modules\states\spec_states\state6.h
+F24=modules\states\spec_states\state5.h
+F25=modules\states\spec_states\state4.h
 [Bookmarks1]
-TimeStamp=1268101305
-Row=99
-Column=5
+TimeStamp=1268225882
+Row=103
+Column=48
 ScrollPosX=0
-ScrollPosY=84
+ScrollPosY=48
 BK0=-1
 BK1=-1
 BK2=-1
@@ -658,10 +671,10 @@ BK8=-1
 BK9=-1
 [Bookmarks2]
 TimeStamp=1268122259
-Row=103
+Row=40
 Column=2
 ScrollPosX=0
-ScrollPosY=93
+ScrollPosY=33
 BK0=-1
 BK1=-1
 BK2=-1
@@ -754,9 +767,9 @@ BK9=-1
 [FoldedCode6]
 Blocks=0
 [Bookmarks7]
-TimeStamp=1267363482
-Row=18
-Column=0
+TimeStamp=1268228378
+Row=22
+Column=26
 ScrollPosX=0
 ScrollPosY=0
 BK0=-1
@@ -770,9 +783,9 @@ BK7=-1
 BK8=-1
 BK9=-1
 [Bookmarks8]
-TimeStamp=1268100778
-Row=3
-Column=1
+TimeStamp=1268225833
+Row=5
+Column=59
 ScrollPosX=0
 ScrollPosY=0
 BK0=-1
@@ -822,7 +835,7 @@ TimeStamp=1267363481
 Row=36
 Column=43
 ScrollPosX=0
-ScrollPosY=15
+ScrollPosY=0
 BK0=-1
 BK1=-1
 BK2=-1
@@ -936,11 +949,11 @@ BK7=-1
 BK8=-1
 BK9=-1
 [Bookmarks18]
-TimeStamp=1268035685
-Row=45
-Column=23
+TimeStamp=1268229205
+Row=103
+Column=13
 ScrollPosX=0
-ScrollPosY=21
+ScrollPosY=72
 BK0=-1
 BK1=-1
 BK2=-1
@@ -984,11 +997,11 @@ BK7=-1
 BK8=-1
 BK9=-1
 [Bookmarks21]
-TimeStamp=1268098454
-Row=168
+TimeStamp=1268226116
+Row=1
 Column=0
 ScrollPosX=0
-ScrollPosY=136
+ScrollPosY=0
 BK0=-1
 BK1=-1
 BK2=-1
@@ -999,8 +1012,6 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode1]
-Blocks=0
 [Bookmarks22]
 TimeStamp=1268100952
 Row=9
@@ -1017,32 +1028,6 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode19]
-Blocks=0
-[FoldedCode20]
-Blocks=0
-[FoldedCode21]
-Blocks=0
-[FoldedCode18]
-Blocks=0
-[FoldedCode17]
-Blocks=0
-[FoldedCode7]
-Blocks=0
-[FoldedCode15]
-Blocks=0
-[FoldedCode16]
-Blocks=0
-[FoldedCode10]
-Blocks=0
-[FoldedCode12]
-Blocks=0
-[FoldedCode11]
-Blocks=0
-[FoldedCode8]
-Blocks=0
-[FoldedCode2]
-Blocks=0
 [FoldedCode22]
 Blocks=0
 [HeadersList]
@@ -1079,3 +1064,85 @@ F26=modules\states\spec_states\state2.h
 F27=modules\states\spec_states\state3.h
 F28=modules\esp.h
 F29=modules\pwm.h
+[FoldedCode1]
+Blocks=0
+[Bookmarks23]
+TimeStamp=1268229179
+Row=4
+Column=19
+ScrollPosX=0
+ScrollPosY=0
+BK0=-1
+BK1=-1
+BK2=-1
+BK3=-1
+BK4=-1
+BK5=-1
+BK6=-1
+BK7=-1
+BK8=-1
+BK9=-1
+[FoldedCode23]
+Blocks=0
+[Bookmarks24]
+TimeStamp=1268227406
+Row=6
+Column=1
+ScrollPosX=0
+ScrollPosY=0
+BK0=-1
+BK1=-1
+BK2=-1
+BK3=-1
+BK4=-1
+BK5=-1
+BK6=-1
+BK7=-1
+BK8=-1
+BK9=-1
+[FoldedCode24]
+Blocks=0
+[Bookmarks25]
+TimeStamp=1268227297
+Row=16
+Column=0
+ScrollPosX=0
+ScrollPosY=0
+BK0=-1
+BK1=-1
+BK2=-1
+BK3=-1
+BK4=-1
+BK5=-1
+BK6=-1
+BK7=-1
+BK8=-1
+BK9=-1
+[FoldedCode25]
+Blocks=0
+[FoldedCode19]
+Blocks=0
+[FoldedCode20]
+Blocks=0
+[FoldedCode21]
+Blocks=0
+[FoldedCode18]
+Blocks=0
+[FoldedCode17]
+Blocks=0
+[FoldedCode7]
+Blocks=0
+[FoldedCode15]
+Blocks=0
+[FoldedCode16]
+Blocks=0
+[FoldedCode10]
+Blocks=0
+[FoldedCode12]
+Blocks=0
+[FoldedCode11]
+Blocks=0
+[FoldedCode8]
+Blocks=0
+[FoldedCode2]
+Blocks=0
