@@ -9,8 +9,11 @@
 #include <FS.h>
 #include <Wire.h>
 #include "webpage.h"
+#include <GPD2846.h>
 
 
+/*-------------------Voice-Modul-------------------------------------*/
+GPD2846 speech(15,16,10); // ESP pins GPIO10 = S1, GPIO16 = S2, GPIO2 = S3 on Voice Modul
 /*-------------------SD Defs-----------------------------------------*/
 int sd=0;
 int newboot=0;
@@ -258,6 +261,12 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         if (text == "off") {itest=0; i2c_exchange_data();}
         if (text == "servo+") {itest=20; i2c_exchange_data();}
         if (text == "servo-") {itest=21; i2c_exchange_data();}
+
+        if (text == "playpause") {speech.pause();}
+        if (text == "next") {speech.next();}
+        if (text == "prev") {speech.previous();}
+        if (text == "volumeup") {speech.volumeUp();}
+        if (text == "volumedown") {speech.volumeDown();}
      }
       break;
   }

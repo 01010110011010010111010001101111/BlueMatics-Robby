@@ -53,14 +53,19 @@ Data Stack size         : 1024
 #define state_meterlinksmeterrechts  16
 #define state_2  17
 #define state_3  18
-
 #define state_stop 19
-
 
 
 #include "modules/variables.h"
 #include "modules/port_init.h"
-
+#include "modules/ir.h"
+#include "modules/servo.h"
+#include "modules/esp_main_func.h"
+#include "modules/wiicam.h"
+#include "modules/ultrasonic.h"
+#include "modules/states/states.h"
+#include "modules/esp.h"
+#include "modules/pwm.h"
 
 /*
  void radkorrektur(){
@@ -73,18 +78,6 @@ char strrad [17];
 
 }
 */
-
-
-#include "modules/ir.h"
-#include "modules/servo.h"
-#include "modules/esp_main_func.h"
-#include "modules/wiicam.h"
-#include "modules/ultrasonic.h"
-#include "modules/states/states.h"
-#include "modules/esp.h"
-#include "modules/pwm.h"
-
-
 
 
 
@@ -104,13 +97,13 @@ twiinit();
 
 while (1)
       {          
-      STATE_MACHINE(); 
+     /* STATE_MACHINE(); 
       esp_states();      
       
       ondata();   
       esp_mainfunctions();
-      
-
-
+       */
+         playpause();
+         delay_ms(2000);
       }
 }

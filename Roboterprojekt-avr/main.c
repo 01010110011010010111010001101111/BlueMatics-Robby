@@ -102,8 +102,6 @@ while (1)
       
       ondata();   
       esp_mainfunctions();
-      
-
-
+  
       }
 }

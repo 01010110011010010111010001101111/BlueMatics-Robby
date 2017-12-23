@@ -108,6 +108,13 @@ function sendCMD(Value){
   <p>Servoposition</p><br>
   <button style="background-color:blue" onclick="sendCMD('servo+')">+</button>  
   <button style="background-color:blue" onclick="sendCMD('servo-')">-</button>  
+
+  <p>Mediaplayer</p><br>
+  <button style="background-color:red" onclick="sendCMD('playpause')">PLAY/PAUSE</button>  
+  <button style="background-color:red" onclick="sendCMD('next')">NEXT</button>  
+  <button style="background-color:red" onclick="sendCMD('prev')">PREVIOUS</button>  
+  <button style="background-color:red" onclick="sendCMD('volumeup')">VOLUME UP</button>  
+  <button style="background-color:red" onclick="sendCMD('volumedown')">VOLUME DOWN</button> 
   <p>Connection<br>
   ReadyState: <span id="READY_STATE">...</span></p>
 </body>

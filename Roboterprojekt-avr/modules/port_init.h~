@@ -97,11 +97,11 @@ ADCSRA|=(1<<ADSC);
   /////////////PORT E////////////// 
 
 //NOT IN USE #define PORTE.0
-//NOT IN USE #define PORTE.1
+#define VOICE_PAUSE                   PORTE.1
 //NOT IN USE #define PORTE.2
-//NOT IN USE #define PORTE.3
+#define VOICE_PREV                    PORTE.3
 #define WHEEL_ENCODER_RIGHT           PINE.4
-//NOT IN USE #define PORTE.5
+#define VOICE_NEXT                    PORTE.5
 #define WHEEL_ENCODER_LEFT            PINE.6
 #define ECHO                          PINE.7
 
@@ -127,7 +127,7 @@ DDRA  = 0b10001010;
 DDRB  = 0b00000010;
 //LCD USES THIS PORT DDRC  = 0b11111111;
 DDRD  = 0b10100001;
-DDRE  = 0b00100000;
+DDRE  = 0b01010100;
 DDRF  = 0b00100000;
 
 // LCD initialization
