@@ -101,45 +101,45 @@ void line_detector(){
 void detectorcase_line(){
 
   if (tmr_line<10000){
-  tmr_line++}else{
-   val_R_linesearch++
+  tmr_line++;}else{
+   val_R_linesearch++;
    tmr_line=0;
   }
   
   
     switch (detector_value_line){
    case 0:  
-    //nothing detected
-    //Robby is driving a spiral (right)
-     movement(80,val_R_linesearch,0,0);  
+    //detected a line on all sensors 
+    //Robby is driving slowly to the left
+     movement(0,65,0,0); 
    break; 
     
    case 1:   
-    //detected a line on all sensors 
-    //Robby is driving slowly to the left
-     movement(0,65,0,0);
+    //nothing detected
+    //Robby is driving a spiral (right)
+     movement(80,val_R_linesearch,0,0); 
    break;   
 
    case 2:  
-   //detected a line on left sensor
+   //detected a line on right, midright and midleft sensor
    //Robby is driving to the left 
      movement(60,80,0,0);
    break;   
    
    case 3:   
-    //detected a line on left and midleft sensor 
-    //Robby is driving slowly to the left
-     movement(60,70,0,0);
+    //detected a line on right and midright sensor 
+    //Robby is driving slowly to the right
+     movement(70,60,0,0);
    break;   
 
    case 4:  
-    //detected a line on left, midleft and midright sensor 
-    //Robby is driving slowly 
-     movement(70,70,0,0);
+    //detected a line on right sensor 
+    //Robby is driving slowly right 
+     movement(70,60,0,0);
    break;      
 
    case 5:  
-    //detected a line on right sensor 
+    //detected a line on left, midleft and midright sensor 
     //Robby is driving slowly to the left
      movement(60,70,0,0);
    break;  

@@ -97,11 +97,11 @@ ADCSRA|=(1<<ADSC);
   /////////////PORT E////////////// 
 
 //NOT IN USE #define PORTE.0
-#define VOICE_PAUSE                   PORTE.1
+//#define VOICE_PAUSE                   PORTE.1
 //NOT IN USE #define PORTE.2
-#define VOICE_PREV                    PORTE.3
+//#define VOICE_PREV                    PORTE.3
 #define WHEEL_ENCODER_RIGHT           PINE.4
-#define VOICE_NEXT                    PORTE.5
+//#define VOICE_NEXT                    PORTE.5
 #define WHEEL_ENCODER_LEFT            PINE.6
 #define ECHO                          PINE.7
 

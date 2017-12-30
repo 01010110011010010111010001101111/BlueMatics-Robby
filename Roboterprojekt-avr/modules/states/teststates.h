@@ -110,16 +110,19 @@ void STATE_LINE_SENSOR(){
         unsigned char iWII=0;
         readData();
         convertdata();
-        lcd_clear();
+        //lcd_clear();
         //Anzeige der Blobs als X/X-Wertepaare
-        for(iWII=0; iWII<4; iWII++){
-                if (iWII<2){           //erste Zeile: Blob 1 und 2
+        for(iWII=0; iWII<4; iWII++){  
+                         
+                if (iWII<2){           //erste Zeile: Blob 1 und 2  
+
                    if(x[iWII]==1023||y[iWII]==1023){
                         lcd_gotoxy(20 * (iWII), 0);
-                   lcd_putsf("No Object!");  
-                   wiicamobject=0;
+                   //lcd_putsf("No Object!");  
+                                   
                   }
-                   else{
+                   else{   
+                                      
                     itoa( x[iWII]-512, Wert);  //konvertiert die int-Ausgabe des Empfängers in char-Array   
                   lcd_gotoxy(20 * (iWII), 0);
                    lcd_puts(Wert);
@@ -129,19 +132,19 @@ void STATE_LINE_SENSOR(){
                    itoa( sWIICAM[iWII], Wert);
                    lcd_gotoxy(20 * (iWII)+ 16, 0);
                    lcd_puts(Wert);  
-                   wiicamobject=1;
 
+                         
                    }
                }
                else
                { 
-                   if(x[iWII]==1023||y[iWII]==1023){
+                   if(x[iWII]==1023||y[iWII]==1023){ 
                         lcd_gotoxy(20 * (iWII-2), 1);
-                   lcd_putsf("No Object!");   
-                   wiicamobject=0;
+                   //lcd_putsf("No Object!");   
+                                      
 
                   }
-                 else{                   //zweite Zeile: Blob 3 und 4
+                 else{                   //zweite Zeile: Blob 3 und 4   
                     itoa( x[iWII]-512, Wert);   
                   lcd_gotoxy(20 * (iWII-2), 1);
                    lcd_puts(Wert);
@@ -150,12 +153,12 @@ void STATE_LINE_SENSOR(){
                    lcd_puts(Wert);
                        itoa( sWIICAM[iWII], Wert);
                    lcd_gotoxy(20 * (iWII-2)+ 16, 1);
-                   lcd_puts(Wert);
-                   wiicamobject=1;
+                   lcd_puts(Wert);                     
                    }
-               }
+               }  
           }
-    delay_ms(30);
+          
+    delay_ms(30); 
     WII_CAM_SCL = !WII_CAM_SCL;
  }       
 

@@ -1,4 +1,4 @@
-VERSION:3 SOURCE_TIMESTAMP:4B8A6E99
+VERSION:3 SOURCE_TIMESTAMP:4B9AA070
 NODE:F LEVEL:0 LINE:1 "wii_cam_init(void)"
 NODE:F LEVEL:0 LINE:12 "write2Byte(unsigned char b1,unsigned char b2)"
 NODE:F LEVEL:0 LINE:22 "readData(void)"

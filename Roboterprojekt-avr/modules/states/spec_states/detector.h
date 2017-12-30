@@ -109,63 +109,63 @@ void detectorcase_line(){
   
     switch (detector_value_line){
    case 0:  
-    //nothing detected
-    //Robby is driving a spiral (right)
-     movement(80,val_R_linesearch,0,0);  
+    //detected a line on all sensors 
+    //Robby is driving slowly to the left
+     movement(0,65,0,0); 
    break; 
     
    case 1:   
-    //detected a line on all sensors 
-    //Robby is driving slowly to the left
-     movement(0,65,0,0);
+    //nothing detected
+    //Robby is driving a spiral (right)
+     movement(80,val_R_linesearch,0,0); 
    break;   
 
    case 2:  
-   //detected a line on left sensor
+   //detected a line on right, midright and midleft sensor
    //Robby is driving to the left 
      movement(60,80,0,0);
    break;   
    
    case 3:   
-    //detected a line on left and midleft sensor 
-    //Robby is driving slowly to the left
-     movement(60,70,0,0);
+    //detected a line on right and midright sensor 
+    //Robby is driving slowly to the right
+     movement(70,60,0,0);
    break;   
 
    case 4:  
-    //detected a line on left, midleft and midright sensor 
-    //Robby is driving slowly 
-     movement(70,70,0,0);
+    //detected a line on right sensor 
+    //Robby is driving slowly right 
+     movement(70,60,0,0);
    break;      
 
    case 5:  
-    //detected a line on right sensor 
+    //detected a line on left, midleft and midright sensor 
     //Robby is driving slowly to the left
      movement(60,70,0,0);
    break;  
  
    case 6:  
-    //detected a line on right and midright sensor 
+    //detected a line on left and midleft sensor 
     //Robby is driving slowly to the left
      movement(60,70,0,0);
    break;  
    
    case 7:  
-    //detected a line on right and midright sensor 
-    //Robby is driving slowly
-     movement(70,70,0,0);
+    //detected a line on left sensor 
+    //Robby is driving slowly left
+     movement(65,75,0,0);
    break;  
    
    case 8:  
-    //detected a line on right and left sensor 
-    //Robby is driving slowly to the left
-     movement(60,70,0,0);
+    //detected a line on midleft and midright sensor 
+    //Robby is driving slowly
+     movement(70,70,0,0);
    break;      
    
    case 9:  
-    //detected a line on midright and midleft sensor 
+    //detected a line on left and right sensor 
     //Robby is driving slowly to the left
-     movement(70,70,0,0);
+     movement(65,72,0,0);
    break;     
   }  
 

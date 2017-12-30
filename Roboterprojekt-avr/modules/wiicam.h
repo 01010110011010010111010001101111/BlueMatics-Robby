@@ -21,7 +21,7 @@ void write2Byte(char b1, char b2)
 
 void readData(void)
 {
-     unsigned char i=0;
+     unsigned char i=0;  
      i2c_start();
         i2c_write(slaveadress); //I2C-Address of cam 0xBO
         i2c_write(0x36);

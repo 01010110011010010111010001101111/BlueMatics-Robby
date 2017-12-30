@@ -110,16 +110,19 @@ void STATE_LINE_SENSOR(){
         unsigned char iWII=0;
         readData();
         convertdata();
-        lcd_clear();
+        //lcd_clear();
         //Anzeige der Blobs als X/X-Wertepaare
-        for(iWII=0; iWII<4; iWII++){
-                if (iWII<2){           //erste Zeile: Blob 1 und 2
+        for(iWII=0; iWII<4; iWII++){  
+                         
+                if (iWII<2){           //erste Zeile: Blob 1 und 2  
+
                    if(x[iWII]==1023||y[iWII]==1023){
                         lcd_gotoxy(20 * (iWII), 0);
-                   lcd_putsf("No Object!");  
-                   wiicamobject=0;
+                   //lcd_putsf("No Object!");  
+                                   
                   }
-                   else{
+                   else{   
+                                      
                     itoa( x[iWII]-512, Wert);  //konvertiert die int-Ausgabe des Empfängers in char-Array   
                   lcd_gotoxy(20 * (iWII), 0);
                    lcd_puts(Wert);
@@ -129,19 +132,20 @@ void STATE_LINE_SENSOR(){
                    itoa( sWIICAM[iWII], Wert);
                    lcd_gotoxy(20 * (iWII)+ 16, 0);
                    lcd_puts(Wert);  
-                   wiicamobject=1;
 
+                         
                    }
                }
                else
                { 
-                   if(x[iWII]==1023||y[iWII]==1023){
+                   if(x[iWII]==1023||y[iWII]==1023){ 
+
                         lcd_gotoxy(20 * (iWII-2), 1);
-                   lcd_putsf("No Object!");   
-                   wiicamobject=0;
+                   //lcd_putsf("No Object!");   
+                                      
 
                   }
-                 else{                   //zweite Zeile: Blob 3 und 4
+                 else{                   //zweite Zeile: Blob 3 und 4   
                     itoa( x[iWII]-512, Wert);   
                   lcd_gotoxy(20 * (iWII-2), 1);
                    lcd_puts(Wert);
@@ -151,11 +155,19 @@ void STATE_LINE_SENSOR(){
                        itoa( sWIICAM[iWII], Wert);
                    lcd_gotoxy(20 * (iWII-2)+ 16, 1);
                    lcd_puts(Wert);
-                   wiicamobject=1;
+                                          
                    }
-               }
+               }  
           }
-    delay_ms(30);
+          
+   /* if ((sWIICAM[iWII]>0)|(( y[iWII]-374)>0)|((x[iWII]-512)>0)){
+      wiicamobject=1; 
+    }else{
+      wiicamobject=0;   
+      }  
+      */  
+          
+    delay_ms(30); 
     WII_CAM_SCL = !WII_CAM_SCL;
  }       
 
@@ -200,400 +212,3 @@ void STATE_LINE_SENSOR(){
   }
     
   /////////////////////////// 
- 
-  void STATE_VOR(){ 
- // radkorrektur();
-      //0-255
-      ipwmcompareleft=255; 
-      ipwmcompareright=255; 
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;
-  }    
-    /////////////////////////// 
- 
-  void STATE_ZUR(){
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100;
-  ENGINE_DIRECTION_LEFT = 1;  
-  ENGINE_DIRECTION_RIGHT = 1;   
-  }  
-    /////////////////////////// 
- 
-  void STATE_LINKS(){
-      //0-255
-      ipwmcompareleft=0; 
-      ipwmcompareright=100;
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;
-  }  
-    /////////////////////////// 
- 
-  void STATE_RECHTS(){
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=0; 
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;
-  }       
-    /////////////////////////// 
- 
-  void STATE_90RECHTS(){
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=0; 
-      ipwmcompareright=100;  
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 1;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str);
-  }while (wheelEncoderCounter_right<17);
-  } 
-   
-         
-    /////////////////////////// 
- 
-  void STATE_90LINKS(){
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=0;
-  ENGINE_DIRECTION_LEFT = 1;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str);
-  }while (wheelEncoderCounter_left<17);
-  }   
-  
-   /////////////////////////// 
- 
-  void STATE_DREHUNG(){
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100; 
-  ENGINE_DIRECTION_LEFT = 1;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str);
-  }while (wheelEncoderCounter_left<64&&wheelEncoderCounter_right<64);
-  } 
-
-   /////////////////////////// 
- 
-  void  STATE_METERLINKSMETERRECHTS(){
-  
-  /////spin left
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=0; 
-  ENGINE_DIRECTION_LEFT = 1;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str);
-  }while (wheelEncoderCounter_left<17);   
-
-  ENGINE_ENABLE_RIGHT = 0;
-  ENGINE_ENABLE_LEFT = 0; 
-  delay_ms(1000);
- 
-  
-  /////1m forward
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100;  
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str); 
-  }while (wheelEncoderCounter_left<100&&wheelEncoderCounter_right<100);
-  
-  ENGINE_ENABLE_RIGHT = 0;
-  ENGINE_ENABLE_LEFT = 0;   
-  delay_ms(1000);
-
-  
-  /////spin right
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=0; 
-      ipwmcompareright=100;  
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 1;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str);
-  
-  }while (wheelEncoderCounter_right<17); 
-  ENGINE_ENABLE_RIGHT = 0;
-  ENGINE_ENABLE_LEFT = 0;   
-  delay_ms(1000);
- 
-  /////1m forward
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100; 
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str); 
-  }while (wheelEncoderCounter_left<100&&wheelEncoderCounter_right<100);  
-  } 
- 
-void STATE_MACHINE(){
-      //0-255
-      ipwmcompareleft=0; 
-      ipwmcompareright=0; 
-       switch(state){
-       case state_linedetector:  
-              if(state_info == 0){ 
-                lcd_clear();
-                lcd_puts("  LINEDETECTOR  ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_LINE_SENSOR();
-       break; 
-       
-       case state_engine:         
-              if(state_info == 0){
-                lcd_clear();
-                lcd_puts("     ENGINE    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_ENGINE();
-       break;
-                  
-       case state_engine_dir:         
-              if(state_info == 0){  
-                lcd_clear();
-                lcd_puts("     STEERING    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_ENGINE_DIR();
-       break;
-       
-       case state_distance_sensor: 
-              if(state_info == 0){  
-                lcd_clear();  
-                lcd_puts(" DISTANCESENSOR ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_DISTANCE_SENSOR();     
-       break;
-
-       case state_lightsensor: 
-              if(state_info == 0){
-                  lcd_clear();
-                  lcd_puts("  LIGHT SENSOR  ");
-                  delay_ms(1000);
-                  lcd_clear();
-                  state_info = 1;
-                }
-              STATE_LIGHTSENSOR();
-       break;
-
-       case state_wiicam:
-                if(state_info == 0){    
-                lcd_clear();
-                lcd_puts("     WII CAM   ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_WIICAM();
-       break;     
-       
-       case state_irtower:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("    IR TOWER    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_IRTOWER();
-       break;    
-       
-       case state_servo:
-                if(state_info == 0){
-                lcd_clear();
-                lcd_puts("     SERVO    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_SERVO();
-       break;       
-       
-       case state_ultrasonic:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("   ULTRASONIC  ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_ULTRASONIC();
-       break;    
-       
-              case state_vor:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("     FOR       ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_VOR();
-       break;    
-              case state_zur:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("      BACK       ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_ZUR();
-       break;    
-              case state_links:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("      LEFT      ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_LINKS();
-       break;   
-       
-              case state_rechts:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("     RIGHT     ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_RECHTS();
-       break;          
-
-              case state_90links:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("     90°LEFT     ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_90LINKS();
-       break;   
-       
-              case state_90rechts:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("    90°RIGHT    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_90RECHTS();
-       break;     
-
-              case state_drehung:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("    SPIN    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_DREHUNG();
-       break;    
-       
-              case state_meterlinksmeterrechts:
-                if(state_info == 0){   
-                lcd_clear();
-                lcd_puts("    1st STATE    ");
-                delay_ms(1000);
-                lcd_clear();
-                state_info = 1;
-                }
-              STATE_METERLINKSMETERRECHTS();
-             
-
-       break;    
-       default: 
-           lcd_clear();
-           lcd_puts("   BlueMatics"); 
-           lcd_gotoxy(0,1);
-           lcd_puts("     Robby");  
-      }                                
-       delay_ms(50);
-}

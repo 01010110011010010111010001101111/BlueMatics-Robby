@@ -10,7 +10,8 @@ int rightCounter = 0;
 int leftEnc = 0;
 int rightEnc = 0;  
 int engine_dir = 0;
-int wiicamobject=0;
+int wiicamobject;
+int wiicamobject2;
 char str[17];
 int currstate=0;
 int state = state_stop; 
@@ -27,8 +28,7 @@ int distanzsensorvaluetemp;
 int ipwmcounter=0;
 int ipwmcompareleft=0;
 int ipwmcompareright=0;
-int pwmcontrol=0;
-int pwmcontrolcompare=0;
+
 
 //SERVO
 #define MAX_SERVOS 1
