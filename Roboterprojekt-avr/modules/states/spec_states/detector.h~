@@ -1,13 +1,8 @@
-  
+#include "modules/pwm.h"
 //Detector
 
   /////////////////////////// 
-  void movement(int left, int right, int dir_left, int dir_right){
-  ipwmcompareleft=left; 
-  ipwmcompareright=right; 
-  ENGINE_DIRECTION_LEFT = dir_left;  
-  ENGINE_DIRECTION_RIGHT = dir_right;
-  }
+
 
 
 int detector_value;
@@ -145,27 +140,27 @@ void detectorcase_line(){
    break;  
  
    case 6:  
-    //detected a line on right and midright sensor 
+    //detected a line on left and midleft sensor 
     //Robby is driving slowly to the left
      movement(60,70,0,0);
    break;  
    
    case 7:  
-    //detected a line on right and midright sensor 
-    //Robby is driving slowly
-     movement(70,70,0,0);
+    //detected a line on left sensor 
+    //Robby is driving slowly left
+     movement(65,75,0,0);
    break;  
    
    case 8:  
-    //detected a line on right and left sensor 
-    //Robby is driving slowly to the left
-     movement(60,70,0,0);
+    //detected a line on midleft and midright sensor 
+    //Robby is driving slowly
+     movement(70,70,0,0);
    break;      
    
    case 9:  
-    //detected a line on midright and midleft sensor 
+    //detected a line on left and right sensor 
     //Robby is driving slowly to the left
-     movement(70,70,0,0);
+     movement(65,72,0,0);
    break;     
   }  
 

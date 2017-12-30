@@ -30,12 +30,7 @@ int ipwmcompareleft=0;
 int ipwmcompareright=0;
 
 
-//SERVO
-#define MAX_SERVOS 1
-#define LEFT MIDDLE-220
-#define MIDDLE 350
-#define RIGHT MIDDLE+220
-#define PERIOD 4000
+
 //IR RECEIVER
 #define RC5TIME     1.778e-3        // 1.778msec
 #define    XTAL        16.0E6

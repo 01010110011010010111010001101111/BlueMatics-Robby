@@ -10,8 +10,9 @@ int rightCounter = 0;
 int leftEnc = 0;
 int rightEnc = 0;  
 int engine_dir = 0;
-int wiicamobject;
+int wiicamobject1;
 int wiicamobject2;
+
 char str[17];
 int currstate=0;
 int state = state_stop; 

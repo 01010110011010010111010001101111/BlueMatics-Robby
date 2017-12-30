@@ -105,71 +105,63 @@ void STATE_LINE_SENSOR(){
  }   
           
   ///////////////////////////
-
  void STATE_WIICAM(){ 
-        unsigned char iWII=0;
+ unsigned char iWII=0; 
+        unsigned char pwmleft;
+        unsigned char pwmright;
         readData();
-        convertdata();
-        //lcd_clear();
-        //Anzeige der Blobs als X/X-Wertepaare
-        for(iWII=0; iWII<4; iWII++){  
-                         
-                if (iWII<2){           //erste Zeile: Blob 1 und 2  
+        convertdata(); 
 
+          
+        
+        //Anzeige der Blobs als X/X-Wertepaare   
+        for(iWII=0; iWII<4; iWII++){            
+                if (iWII<4){           //erste Zeile: Blob 1 und 2  
                    if(x[iWII]==1023||y[iWII]==1023){
                         lcd_gotoxy(20 * (iWII), 0);
-                   //lcd_putsf("No Object!");  
-                                   
+                  // lcd_putsf("No Object!");
+                  
+                   pwmleft=0;
+                   pwmright=0; 
+                    
                   }
-                   else{   
-                                      
-                    itoa( x[iWII]-512, Wert);  //konvertiert die int-Ausgabe des Empfängers in char-Array   
-                  lcd_gotoxy(20 * (iWII), 0);
+                   else{                          
+                   itoa( x[iWII]-512, Wert);  //konvertiert die int-Ausgabe des Empfängers in char-Array   
+                   lcd_gotoxy(20 * (iWII), 0);
                    lcd_puts(Wert);
                    itoa( y[iWII]-374, Wert);
                    lcd_gotoxy(20 * (iWII)+ 8, 0);
                    lcd_puts(Wert);
                    itoa( sWIICAM[iWII], Wert);
                    lcd_gotoxy(20 * (iWII)+ 16, 0);
-                   lcd_puts(Wert);  
+                   lcd_puts(Wert);                    
+                   } 
 
-                         
-                   }
                }
                else
                { 
                    if(x[iWII]==1023||y[iWII]==1023){ 
-
-                        lcd_gotoxy(20 * (iWII-2), 1);
-                   //lcd_putsf("No Object!");   
-                                      
-
+                   lcd_gotoxy(20 * (iWII-2), 1);
+                  // lcd_putsf("No Object!"); 
+                   pwmleft=0;
+                   pwmright=0;   
                   }
                  else{                   //zweite Zeile: Blob 3 und 4   
-                    itoa( x[iWII]-512, Wert);   
-                  lcd_gotoxy(20 * (iWII-2), 1);
+                   itoa( x[iWII]-512, Wert);   
+                   lcd_gotoxy(20 * (iWII-2), 1);
                    lcd_puts(Wert);
-                       itoa( y[iWII]-374, Wert);
+                   itoa( y[iWII]-374, Wert);
                    lcd_gotoxy(20 * (iWII-2)+ 8, 1);
                    lcd_puts(Wert);
-                       itoa( sWIICAM[iWII], Wert);
+                   itoa( sWIICAM[iWII], Wert);
                    lcd_gotoxy(20 * (iWII-2)+ 16, 1);
-                   lcd_puts(Wert);
-                                          
+                   lcd_puts(Wert);   
                    }
-               }  
+               }        
           }
-          
-   /* if ((sWIICAM[iWII]>0)|(( y[iWII]-374)>0)|((x[iWII]-512)>0)){
-      wiicamobject=1; 
-    }else{
-      wiicamobject=0;   
-      }  
-      */  
-          
     delay_ms(30); 
-    WII_CAM_SCL = !WII_CAM_SCL;
- }       
+    WII_CAM_SCL = !WII_CAM_SCL; 
+ }              
 
   ///////////////////////////
   

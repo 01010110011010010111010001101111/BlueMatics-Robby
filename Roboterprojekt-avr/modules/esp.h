@@ -33,7 +33,7 @@ unsigned char slave_tx_handler(bool tx_complete)
       tx_buffer.data.motorvalueright=wheelEncoderCounter_right; 
       tx_buffer.data.wiicam=wiicamobject; 
       tx_buffer.data.infarot=ucData;       
-      tx_buffer.data.servo=servo_value_cur; 
+      tx_buffer.data.servo=servo_value_cur-170; 
       tx_buffer.data.ultraschall=iTime/52.2;           
       tx_buffer.data.iValue = iTemp;
     return BUFFER_SIZE;

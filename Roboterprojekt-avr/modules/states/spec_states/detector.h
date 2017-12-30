@@ -1,13 +1,7 @@
-  
 //Detector
 
   /////////////////////////// 
-  void movement(int left, int right, int dir_left, int dir_right){
-  ipwmcompareleft=left; 
-  ipwmcompareright=right; 
-  ENGINE_DIRECTION_LEFT = dir_left;  
-  ENGINE_DIRECTION_RIGHT = dir_right;
-  }
+
 
 
 int detector_value;

@@ -67,18 +67,6 @@ Data Stack size         : 1024
 #include "modules/esp.h"
 #include "modules/pwm.h"
 
-/*
- void radkorrektur(){
-char strrad [17];
- float newval = 100/(wheelEncoderCounter_right+wheelEncoderCounter_left);
- float newvalprozent= newval*wheelEncoderCounter_left;
- itoa(newvalprozent,strrad); 
-  lcd_clear();
- lcd_puts(strrad);
-
-}
-*/
-
 
 
 

@@ -58,6 +58,7 @@ Data Stack size         : 1024
 
 #include "modules/variables.h"
 #include "modules/port_init.h"
+#include "modules/pwm.h"
 #include "modules/ir.h"
 #include "modules/servo.h"
 #include "modules/esp_main_func.h"
@@ -65,7 +66,7 @@ Data Stack size         : 1024
 #include "modules/ultrasonic.h"
 #include "modules/states/states.h"
 #include "modules/esp.h"
-#include "modules/pwm.h"
+
 
 
 
