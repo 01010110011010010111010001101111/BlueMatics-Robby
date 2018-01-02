@@ -118,11 +118,6 @@ void STATE_LINE_SENSOR(){
         for(iWII=0; iWII<4; iWII++){            
                 if (iWII<4){           //erste Zeile: Blob 1 und 2  
                    if(x[iWII]==1023||y[iWII]==1023){
-                        lcd_gotoxy(20 * (iWII), 0);
-                  // lcd_putsf("No Object!");
-                  
-                   pwmleft=0;
-                   pwmright=0; 
                     
                   }
                    else{                          
@@ -140,11 +135,7 @@ void STATE_LINE_SENSOR(){
                }
                else
                { 
-                   if(x[iWII]==1023||y[iWII]==1023){ 
-                   lcd_gotoxy(20 * (iWII-2), 1);
-                  // lcd_putsf("No Object!"); 
-                   pwmleft=0;
-                   pwmright=0;   
+                   if(x[iWII]==1023||y[iWII]==1023){   
                   }
                  else{                   //zweite Zeile: Blob 3 und 4   
                    itoa( x[iWII]-512, Wert);   

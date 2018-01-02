@@ -166,7 +166,7 @@ void STATE_LINE_SENSOR(){
   ///////////////////////////
  
   void STATE_SERVO(){  
-    lcd_clear();    
+      lcd_clear();    
       fnDisplay();
       delay_ms(200);
  }

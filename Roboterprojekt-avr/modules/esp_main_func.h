@@ -1,8 +1,8 @@
 
 void esp_states(){
  
-      if (currstate==20)if (servo_value_cur<220)servo_value_cur+=5;
-      if (currstate==21)if (servo_value_cur>120)servo_value_cur-=5;
+      if (currstate==20)if (servo_value_cur<220)servo_value_cur+=1;
+      if (currstate==21)if (servo_value_cur>120)servo_value_cur-=1;
       currstate==0?(state=state_stop):(state=currstate-1); 
 }
 void esp_mainfunctions(){

@@ -11,7 +11,7 @@ int leftEnc = 0;
 int rightEnc = 0;  
 int engine_dir = 0;
 int wiicamobject;
-
+int servochange=0;
 char str[17];
 int currstate=0;
 int state = state_stop; 

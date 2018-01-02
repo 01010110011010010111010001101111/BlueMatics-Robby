@@ -1,7 +1,7 @@
 // globale variables
 char strTemp[17] = "";
 int servo_breaks = 1;
-int servo_value_cur = 170; 
+int servo_value_cur ; 
 int servo_value_copy = 0;
 int servo_test = 0;
 int state_info = 0;
@@ -10,9 +10,8 @@ int rightCounter = 0;
 int leftEnc = 0;
 int rightEnc = 0;  
 int engine_dir = 0;
-int wiicamobject1;
-int wiicamobject2;
-
+int wiicamobject;
+int servochange=0;
 char str[17];
 int currstate=0;
 int state = state_stop; 
@@ -31,12 +30,7 @@ int ipwmcompareleft=0;
 int ipwmcompareright=0;
 
 
-//SERVO
-#define MAX_SERVOS 1
-#define LEFT MIDDLE-220
-#define MIDDLE 350
-#define RIGHT MIDDLE+220
-#define PERIOD 4000
+
 //IR RECEIVER
 #define RC5TIME     1.778e-3        // 1.778msec
 #define    XTAL        16.0E6

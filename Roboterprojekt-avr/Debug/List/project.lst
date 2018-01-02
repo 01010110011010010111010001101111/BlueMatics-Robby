@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.30  C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\List\project.asm Sat Dec 30 16:41:13 2017
+AVRASM ver. 2.1.30  C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\List\project.asm Tue Jan 02 16:03:45 2018
 
 C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\List\project.asm(1090): warning: Register r4 already defined by the .DEF directive
 C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterprojekt-avr\Debug\List\project.asm(1091): warning: Register r5 already defined by the .DEF directive
@@ -2511,7 +2511,7 @@ C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterproj
 0004b2 067f      	CPC  R7,R31
 0004b3 f41c      	BRGE _0x3A
 0004b4 01f3      	MOVW R30,R6
-0004b5 9635      	ADIW R30,5
+0004b5 9631      	ADIW R30,1
 0004b6 013f      	MOVW R6,R30
                  _0x3A:
                  _0x39:
@@ -2524,7 +2524,7 @@ C:\Users\Viktor\Documents\Projekte\Bluematics Robby\BlueMatics-Robby\Roboterproj
 0004be 05f7      	CPC  R31,R7
 0004bf f41c      	BRGE _0x3C
 0004c0 01f3      	MOVW R30,R6
-0004c1 9735      	SBIW R30,5
+0004c1 9731      	SBIW R30,1
 0004c2 013f      	MOVW R6,R30
                  _0x3C:
                  _0x3B:

@@ -1,7 +1,7 @@
+
 interrupt [TIM2_OVF] void timer2_ovf_isr(void)
-{   
-     SERVO = 0;
-     
+{ 
+     SERVO = 0;  
      if(servo_value_cur != servo_value_copy || servo_breaks == 5){
          servo_value_copy = servo_value_cur;
          servo_breaks = 1;
@@ -11,7 +11,7 @@ interrupt [TIM2_OVF] void timer2_ovf_isr(void)
      else{
         servo_breaks++;
         TCNT2 = 0x00;
-     }    
+     }
 }
 //show position of servo
 void fnDisplay(void )

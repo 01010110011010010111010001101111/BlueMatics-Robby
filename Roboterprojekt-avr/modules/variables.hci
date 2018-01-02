@@ -1,4 +1,4 @@
-VERSION:3 SOURCE_TIMESTAMP:4B9E688B
+VERSION:3 SOURCE_TIMESTAMP:4C22803D
 NODE:V LEVEL:0 LINE:2 "strTemp -> RAM:????"
 NODE:V LEVEL:0 LINE:3 "servo_breaks -> R4,R5"
 NODE:V LEVEL:0 LINE:4 "servo_value_cur -> R6,R7"
@@ -11,6 +11,7 @@ NODE:V LEVEL:0 LINE:10 "leftEnc -> RAM:????"
 NODE:V LEVEL:0 LINE:11 "rightEnc -> RAM:????"
 NODE:V LEVEL:0 LINE:12 "engine_dir -> RAM:????"
 NODE:V LEVEL:0 LINE:13 "wiicamobject -> RAM:????"
+NODE:V LEVEL:0 LINE:14 "servochange -> RAM:????"
 NODE:V LEVEL:0 LINE:15 "str -> RAM:????"
 NODE:V LEVEL:0 LINE:16 "currstate -> RAM:????"
 NODE:V LEVEL:0 LINE:17 "state -> RAM:????"

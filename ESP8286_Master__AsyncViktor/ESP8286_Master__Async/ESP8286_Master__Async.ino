@@ -1,5 +1,6 @@
 #include <SD.h>
 #include <ESP8266WiFi.h>
+#include <SPI.h>
 //#include <WiFiClient.h>
 #include <WebSocketsServer.h>
 #include <ArduinoJson.h>
@@ -9,14 +10,25 @@
 #include <FS.h>
 #include <Wire.h>
 #include "webpage.h"
-#include <GPD2846.h>
+#include "map.h"
 
 
-/*-------------------Voice-Modul-------------------------------------*/
-GPD2846 speech(15,16,10); // ESP pins GPIO10 = S1, GPIO16 = S2, GPIO2 = S3 on Voice Modul
+
 /*-------------------SD Defs-----------------------------------------*/
-int sd=0;
-int newboot=0;
+String    error;
+uint8_t   sd=0;
+uint8_t   sdtype;
+int       formattype;
+uint32_t  sdsize;
+uint8_t   logfile;
+uint32_t  logfilesize;
+
+Sd2Card card;
+SdVolume volume;
+String timestamp;
+
+
+
 /*----------------- Webobjekte------------------------------------- */
 AsyncWebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
@@ -98,43 +110,34 @@ unsigned char i2c_master_trans(unsigned char slave_addr,
   return 0;
 }
 
+
+
+
+
+
+
+
 void i2c_exchange_data(void)
 {
   // Daten, die gesendet werden
   tx_buffer.data.iValue = itest;         
-        
+  char timestampBuffer[50];
   // transmit data from tx_buffer to the slave and receive response in rx_buffer
   i2c_result = i2c_master_trans(TWI_SLAVE_ADDR, tx_buffer.bytes, BUFFER_SIZE, rx_buffer.bytes, BUFFER_SIZE);
   // display the transaction on the terminal
   if (i2c_result == 0)
   {
+
     // I2C transaction was performed without errors
-    Serial.printf("I2C transaction result: %i\r\n", i2c_result);
-    Serial.printf("Transmitted to MEGA128: %2i\r\n", tx_buffer.data.iValue);
-    Serial.printf("Received from MEGA128: %4i %4i %4i %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
-    rx_buffer.data.lichtlinks, rx_buffer.data.lichtrechts, rx_buffer.data.motorvalueleft, rx_buffer.data.motorvalueright, rx_buffer.data.wiicam, rx_buffer.data.iValue);
-    Serial.printf("Content of Receive Buffer: ");
-    for (int i = 0; i < BUFFER_SIZE; i++)
-      Serial.printf("%2X ", rx_buffer.bytes[i]);
-    Serial.printf("\r\n");
-  }
-  else
-  {
-    // I2C transaction was performed with errors
-    Serial.printf("I2C transaction error: %i\r\n\r\n", i2c_result);
-    Serial.printf("Received from MEGA128: %4i %4i %4i %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
-    rx_buffer.data.lichtlinks, rx_buffer.data.lichtrechts, rx_buffer.data.motorvalueleft, rx_buffer.data.motorvalueright, rx_buffer.data.wiicam, rx_buffer.data.iValue);
-    Serial.printf("Content of Receive Buffer: ");
-    for (int i = 0; i < BUFFER_SIZE; i++)
-      Serial.printf("%2X ", rx_buffer.bytes[i]);
-    Serial.printf("\r\n");
-  }
-  
     if (sd=1){
+    timestamp.toCharArray(timestampBuffer, 50); 
     SDFile Sensorfile = SD.open("datalog.txt", FILE_WRITE);
+
     // if the file is available, write to it:
     if (Sensorfile) {
-    Sensorfile.printf("------------------------------------------\n\n\n");
+    Sensorfile.printf("------------------------------------------\n");
+    Sensorfile.printf(timestampBuffer);
+    Sensorfile.printf("\n");
     Sensorfile.printf("I2C transaction result: %i\r\n", i2c_result);
     Sensorfile.printf("Transmitted to MEGA128: %2i\r\n", tx_buffer.data.iValue);
     Sensorfile.printf("Received from MEGA128: %4i %4i %4i %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
@@ -142,16 +145,40 @@ void i2c_exchange_data(void)
     Sensorfile.printf("Content of Receive Buffer: ");
      for (int i = 0; i < BUFFER_SIZE; i++)
     Sensorfile.printf("%2X ", rx_buffer.bytes[i]);
-    Sensorfile.printf("\r\n");
+    Sensorfile.printf("\r\n\n");
     Sensorfile.close();
-  }
-  }
+  }}}
+  else
+  {
+    if (sd=1){
+    timestamp.toCharArray(timestampBuffer, 50);
+    SDFile Sensorfile = SD.open("datalog.txt", FILE_WRITE);
+
+    // if the file is available, write to it:
+    if (Sensorfile) {
+    Sensorfile.printf("-----------------ERROR-----------------\n");
+    Sensorfile.printf(timestampBuffer);
+    Sensorfile.printf("\n");
+    Sensorfile.printf("I2C transaction error: %i\r\n", i2c_result);
+    Sensorfile.printf("Transmitted to MEGA128: %2i\r\n", tx_buffer.data.iValue);
+    Sensorfile.printf("Received from MEGA128: %4i %4i %4i %4i %4i %4i %4i %4i\r\n", rx_buffer.data.linesensorvalue, rx_buffer.data.distanzsensorvalue, 
+    rx_buffer.data.lichtlinks, rx_buffer.data.lichtrechts, rx_buffer.data.motorvalueleft, rx_buffer.data.motorvalueright, rx_buffer.data.wiicam, rx_buffer.data.iValue);
+    Sensorfile.printf("Content of Receive Buffer: ");
+     for (int i = 0; i < BUFFER_SIZE; i++)
+    Sensorfile.printf("%2X ", rx_buffer.bytes[i]);
+    Sensorfile.printf("\r\n\n");
+    Sensorfile.close();
+  }}}
+  
+
   
 }
 
 //---------------Prototypes for webevent handling-------------------
 void webSocketEvent(uint8_t , WStype_t, uint8_t * , size_t );
 void sendJasonString();
+
+
 
 void setup() {
   // I2C initialization
@@ -162,17 +189,44 @@ void setup() {
   Serial.begin(115200);
   Serial.println();
   delay(200);
-
-    //SD CARD
-  Serial.print("Initializing SD card...");
-  if (!SD.begin(14)) {
-    Serial.println("initialization failed!");
+  if (!card.init(SPI_HALF_SPEED, 14)) {
+    //sd-card not found
     sd=0;
     return;
-  }else{
-    Serial.println("SD Card found");
-    sd=1;  
+  } else {
+    //sd-card found
+    sd=1;
+    }
+  // get the type of card
+  switch (card.type()) {
+    case SD_CARD_TYPE_SD1:
+      sdtype=1;
+      break;
+    case SD_CARD_TYPE_SD2:
+      sdtype=2;
+      break;
+    case SD_CARD_TYPE_SDHC:
+      sdtype=3;
+      break;
+    default:
+      sdtype=0;
   }
+  if (!volume.init(card)) {
+    Serial.println("Could not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
+    return;
+  }
+  // print the type and size of the first FAT-type volume
+  uint32_t volumesize;
+
+  formattype = volume.fatType();
+
+  volumesize = volume.blocksPerCluster();    // clusters are collections of blocks
+  volumesize *= volume.clusterCount();       // we'll have a lot of clusters
+  volumesize *= 512;                            // SD card blocks are always 512 bytes
+  volumesize /= 1048576;
+  sdsize=volumesize;
+
+
 
   
   // WiFi SoftAP initialization
@@ -210,6 +264,10 @@ void setup() {
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send_P(200, "text/html", html);
   });
+  server.on("/map", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send_P(200, "text/html", handleMAP);
+  });
+  
   server.begin();
   Serial.println("HTTP server gestartet!");
 }
@@ -224,7 +282,16 @@ void loop() {
     if (con == true) {
       i2c_exchange_data();
       sendJasonString(); //Daten über Websocket nur schicken, wenn Verbindung besteht!
-    }}}
+    }}
+
+
+    
+    }
+
+
+
+
+
     
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght) {
   switch (type) {
@@ -243,7 +310,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
     case WStype_TEXT:
       {
         String text = String((char *) &payload[0]);
-        Serial.println(text);
 
         if (text == "state_linedetector") {itest=1; i2c_exchange_data();}
         if (text == "state_engine") {itest=2; i2c_exchange_data();}
@@ -261,13 +327,18 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         if (text == "off") {itest=0; i2c_exchange_data();}
         if (text == "servo+") {itest=20; i2c_exchange_data();}
         if (text == "servo-") {itest=21; i2c_exchange_data();}
-
-        if (text == "playpause") {speech.pause();}
-        if (text == "next") {speech.next();}
-        if (text == "prev") {speech.previous();}
-        if (text == "volumeup") {speech.volumeUp();}
-        if (text == "volumedown") {speech.volumeDown();}
-     }
+        if (text.startsWith("Client connected")){
+          if (sd=1){
+                  SDFile Sensorfile = SD.open("datalog.txt", FILE_WRITE);
+                  if (Sensorfile) {
+                      Sensorfile.printf("\n------------------------------------------\n");
+                      Sensorfile.printf("------------------------------------------\n");
+                      Sensorfile.printf("      NEW CONNECTION ESTABLISHED\n");
+                      Sensorfile.printf("------------------------------------------\n");
+                      Sensorfile.printf("------------------------------------------\n");
+                  Sensorfile.close();
+                                    }}}
+          if (text.startsWith("TIMESTAMP:")){timestamp=text;}else{Serial.println(text);}}
       break;
   }
 }
@@ -319,11 +390,24 @@ void sendJasonString()
   root["ultraschall"] = rx_buffer.data.ultraschall;
   root["servovalue"] = rx_buffer.data.servo;
   root["integer"] = rx_buffer.data.iValue;
+
+
+  //esp-intern
+  if (sd=1){
+      root["sd"] = 1;
+      root["sd_type"] = sdtype;
+      root["sd_format"] = formattype;
+      root["sd_size"] = sdsize;
+  }else{
+      root["sd"] = 0;   
+  }
     
   char buf[512];
   size_t size = root.printTo(buf, sizeof(buf));
   webSocket.sendTXT(0, buf, size);
 }
+
+
 
 
 
