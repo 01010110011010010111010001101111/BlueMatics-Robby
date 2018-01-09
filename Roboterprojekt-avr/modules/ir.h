@@ -63,18 +63,26 @@ void ondata(){
     {               
       switch (ucData)
       {
-        case 0: 
-        state=state_stop;
+        case 0:               
+        currstate=state_stop; 
           delay_ms(100);
           break;
-        case 1: 
-        state=15;
-          delay_ms(100);
-          break;
-        case 2: 
-        state=16;
-          delay_ms(100);
-          break;    
-      }
-    }   
-}   
+           
+     }
+    }       
+    if(ucData==1){state=13;}
+    if(ucData==2){state=14;}
+    if(ucData==3){state=15;}
+    if(ucData==4){state=16;}
+    if(ucData==5){state=17;}
+    if(ucData==6){state=18;} 
+    if(ucData==7){state=19;}
+    if(ucData==8){state=20;}    
+    if(ucData==18){state=12;}
+    if(ucData==19){state=11;} 
+    if(ucData==22){state=9;}
+    if(ucData==23){state=10;}
+
+} 
+
+  

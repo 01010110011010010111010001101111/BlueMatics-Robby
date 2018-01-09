@@ -1,7 +1,7 @@
   
    /////////////////////////// 
  
-  void STATE_DREHUNG(){
+  void STATE_1(){
   wheelEncoderCounter_left=0;
   wheelEncoderCounter_right=0; 
   do{

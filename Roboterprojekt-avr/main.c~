@@ -47,17 +47,24 @@ Data Stack size         : 1024
 #define state_zur  10
 #define state_links  11
 #define state_rechts  12
-#define state_90links  13
-#define state_90rechts  14
-#define state_drehung  15
-#define state_meterlinksmeterrechts  16
-#define state_2  17
-#define state_3  18
-#define state_stop 19
+//state_0 = state_stop
+#define state_1  13
+#define state_2  14
+#define state_3  15
+#define state_4  16
+#define state_5  17
+#define state_6  18
+#define state_7  19
+#define state_8  20
+#define state_90links  22
+#define state_90rechts  23
+#define state_stop 27
+
 
 
 #include "modules/variables.h"
 #include "modules/port_init.h"
+#include "modules/pwm.h"
 #include "modules/ir.h"
 #include "modules/servo.h"
 #include "modules/esp_main_func.h"
@@ -65,8 +72,6 @@ Data Stack size         : 1024
 #include "modules/ultrasonic.h"
 #include "modules/states/states.h"
 #include "modules/esp.h"
-#include "modules/pwm.h"
-
 
 
 
@@ -84,12 +89,16 @@ wii_cam_init();
 twiinit();
 
 while (1)
-      {
-      detector();           //SENSOR_DETECTOR        
+      {    
+      lcd_clear(); 
+      itoa(state,str);
+      lcd_puts(str); 
+            if (state==25)if (servo_value_cur<220)servo_value_cur+=1;
+            if (state==24)if (servo_value_cur>120)servo_value_cur-=1;
       STATE_MACHINE();      //DEFAULT_STATE_MACHINE
       esp_states();         //ESP_STATE_MACHINE
-      ondata();             //IR_DATA_FUNCTION
       esp_mainfunctions();  //ESP_MAIN_FUNCTIONS
-  
-      }
+      ondata();             //IR_DATA_FUNCTION 
+     
+   }
 }

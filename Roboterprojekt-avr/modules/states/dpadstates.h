@@ -1,38 +1,41 @@
  
-  void STATE_VOR(){ 
- // radkorrektur();
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100; 
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;
+  void STATE_VOR(){
+    wheelEncoderCounter_left=2;
+    wheelEncoderCounter_right=0;  
+         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+             movement(100,100,0,0);
+         }     
+         if(wheelEncoderCounter_right<wheelEncoderCounter_left){
+             movement(100,80,0,0);
+         } 
+         if(wheelEncoderCounter_right>wheelEncoderCounter_left){
+             movement(80,100,0,0);
+         }
   }    
     /////////////////////////// 
  
   void STATE_ZUR(){
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100;
-  ENGINE_DIRECTION_LEFT = 1;  
-  ENGINE_DIRECTION_RIGHT = 1;   
+    wheelEncoderCounter_left=2;
+    wheelEncoderCounter_right=0;  
+         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+             movement(100,100,1,1);
+         }     
+         if(wheelEncoderCounter_right<wheelEncoderCounter_left){
+             movement(100,80,1,1);
+         } 
+         if(wheelEncoderCounter_right>wheelEncoderCounter_left){
+             movement(80,100,1,1);
+         }   
   }  
     /////////////////////////// 
  
   void STATE_LINKS(){
-      //0-255
-      ipwmcompareleft=0; 
-      ipwmcompareright=100;
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;
+        movement(100,100,1,0);
   }  
     /////////////////////////// 
  
   void STATE_RECHTS(){
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=0; 
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;
+movement(100,100,0,1);
   }       
     /////////////////////////// 
  

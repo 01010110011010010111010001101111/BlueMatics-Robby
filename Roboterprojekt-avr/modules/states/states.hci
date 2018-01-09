@@ -1,8 +1,13 @@
-VERSION:3 SOURCE_TIMESTAMP:4B9383E4
+VERSION:3 SOURCE_TIMESTAMP:4C29B392
 NODE:I LEVEL:0 LINE:1 "modules\states\teststates.h"
 NODE:I LEVEL:0 LINE:2 "modules\states\dpadstates.h"
 NODE:I LEVEL:0 LINE:3 "modules\states\spec_states\detector.h"
 NODE:I LEVEL:0 LINE:4 "modules\states\spec_states\state1.h"
 NODE:I LEVEL:0 LINE:5 "modules\states\spec_states\state2.h"
 NODE:I LEVEL:0 LINE:6 "modules\states\spec_states\state3.h"
-NODE:F LEVEL:0 LINE:11 "STATE_MACHINE(void)"
+NODE:I LEVEL:0 LINE:7 "modules\states\spec_states\state4.h"
+NODE:I LEVEL:0 LINE:8 "modules\states\spec_states\state5.h"
+NODE:I LEVEL:0 LINE:9 "modules\states\spec_states\state6.h"
+NODE:I LEVEL:0 LINE:10 "modules\states\spec_states\state7.h"
+NODE:I LEVEL:0 LINE:11 "modules\states\spec_states\state8.h"
+NODE:F LEVEL:0 LINE:16 "STATE_MACHINE(void)"

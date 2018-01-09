@@ -1,7 +1,14 @@
-#include "modules/states/spec_states/detector.h"
-#include "modules/states/spec_states/state4.h"
-
 void STATE_5(){
-pwmmaker();
-movement(newvalL,newvalR,0,0);
+
+lcd_clear();
+puts("moth");
+lcd_gotoxy(0,1);
+itoa(newvalR,str);
+puts(str);
+puts(" ");
+itoa(newvalL,str);
+puts(str);
+
+pwmmaker(70);
+movement(newvalR,newvalL,0,0);
 }

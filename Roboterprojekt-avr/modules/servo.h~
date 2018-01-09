@@ -1,22 +1,18 @@
-     int servo_value_cur = 170; 
-     int servo_value_copy = 0;  
+
 interrupt [TIM2_OVF] void timer2_ovf_isr(void)
 { 
 
      SERVO = 0;  
-
-     
-     if(servo_value_cur != servo_value_copy || servo_breaks == 5){
+     if(servo_value_cur != servo_value_copy || servo_breaks == 100){
          servo_value_copy = servo_value_cur;
          servo_breaks = 1;
          TCNT2 = servo_value_cur;
          SERVO = 1;
      }                       
      else{
-        servo_breaks++;
+        servo_breaks+=2;
         TCNT2 = 0x00;
      }
-    
 }
 //show position of servo
 void fnDisplay(void )
@@ -27,4 +23,9 @@ void fnDisplay(void )
   lcd_gotoxy(0, 1);
   itoa(servo_value_cur-170, strTemp);
   lcd_puts(strTemp);  
+}
+
+void fnServo(){
+if (state==25)if (servo_value_cur<220)servo_value_cur+=1;
+if (state==24)if (servo_value_cur>120)servo_value_cur-=1;
 }

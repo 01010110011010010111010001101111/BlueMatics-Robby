@@ -1,6 +1,26 @@
-#include "modules/states/spec_states/detector.h"
+void STATE_7(){ 
+        unsigned char iWII=0; 
+        readData();
+        convertdata();
+        lcd_clear();
+        puts("FOLLOW"); 
 
-void STATE_6(){
-line_detector();
-detectorcase_line();
+        for(iWII=0; iWII<2; iWII++){            
+                if (iWII<2){
+                   if(x[iWII]==1023||y[iWII]==1023){ 
+                  }
+                   else{                          
+                   if ((x[iWII]-512)<1023){
+                   Wiipwmright=100;
+                   }else{
+                   Wiipwmleft=100;               
+                   }                   
+                   } 
+               }    
+          }
+    if((iTime/52.2)>40){     
+    movement(Wiipwmleft,Wiipwmright,0,0);    
+    }               
+    delay_ms(30); 
+    WII_CAM_SCL = !WII_CAM_SCL;        
 }

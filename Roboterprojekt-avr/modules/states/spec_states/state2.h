@@ -1,63 +1,25 @@
    /////////////////////////// 
  
-  void  STATE_METERLINKSMETERRECHTS(){
-  
-  /////spin left
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=0; 
-      ipwmcompareright=100; 
-  ENGINE_DIRECTION_LEFT = 1;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str);
-  }while (wheelEncoderCounter_left<17);   
+  void  STATE_2(){
 
-  ENGINE_ENABLE_RIGHT = 0;
-  ENGINE_ENABLE_LEFT = 0; 
-  delay_ms(1000);
- 
+  wheelEncoderCounter_left=4;
+  wheelEncoderCounter_right=5; 
   
-  /////1m forward
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
-  do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100;  
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
-         lcd_gotoxy(0,1); 
-         puts("L:");
-         itoa(wheelEncoderCounter_left,str);
-         puts(str);
-         puts(" R:");
-         itoa(wheelEncoderCounter_right,str);
-         puts(str); 
-  }while (wheelEncoderCounter_left<100&&wheelEncoderCounter_right<100);
+  lcd_clear(); 
+  lcd_gotoxy(0,0);
+  puts("L state");
   
-  ENGINE_ENABLE_RIGHT = 0;
-  ENGINE_ENABLE_LEFT = 0;   
-  delay_ms(1000);
-  /////spin right
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
+ //forward 
   do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=0;  
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 1;  
-         lcd_clear();
+         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+             movement(60,60,0,0);
+         }     
+         if(wheelEncoderCounter_right<wheelEncoderCounter_left){
+             movement(70,60,0,0);
+         } 
+         if(wheelEncoderCounter_right>wheelEncoderCounter_left){
+             movement(60,70,0,0);
+         }
          lcd_gotoxy(0,1); 
          puts("L:");
          itoa(wheelEncoderCounter_left,str);
@@ -65,29 +27,137 @@
          puts(" R:");
          itoa(wheelEncoderCounter_right,str);
          puts(str);
-  
-  }while (wheelEncoderCounter_right<17); 
-  ENGINE_ENABLE_RIGHT = 0;
-  ENGINE_ENABLE_LEFT = 0;   
-  delay_ms(1000);
- 
-  /////1m forward
+  }while ((wheelEncoderCounter_right<205)&(wheelEncoderCounter_right>-1));   
+  movement(0,0,0,0);     
   wheelEncoderCounter_left=0;
   wheelEncoderCounter_right=0; 
+  delay_ms(1500);  
+  
+ //90°left 
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0;
   do{
-      //0-255
-      ipwmcompareleft=100; 
-      ipwmcompareright=100; 
-  ENGINE_DIRECTION_LEFT = 0;  
-  ENGINE_DIRECTION_RIGHT = 0;  
-         lcd_clear();
+  movement(50,50,0,1);
          lcd_gotoxy(0,1); 
          puts("L:");
          itoa(wheelEncoderCounter_left,str);
          puts(str);
          puts(" R:");
          itoa(wheelEncoderCounter_right,str);
-         puts(str); 
-  }while (wheelEncoderCounter_left<100&&wheelEncoderCounter_right<100);  
+         puts(str);
+  }while (wheelEncoderCounter_right<13);   
+  movement(0,0,0,0);  
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  delay_ms(1500);
+      
+   //forward 
+  do{
+         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+             movement(60,60,0,0);
+         }     
+         if(wheelEncoderCounter_right<wheelEncoderCounter_left){
+             movement(70,60,0,0);
+         } 
+         if(wheelEncoderCounter_right>wheelEncoderCounter_left){
+             movement(60,70,0,0);
+         }
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  }while ((wheelEncoderCounter_right<205)&(wheelEncoderCounter_right>-1));   
+  movement(0,0,0,0);     
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  delay_ms(1500); 
+  
+ //180°left 
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0;
+  do{
+  movement(50,50,0,1);
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  }while (wheelEncoderCounter_right<30);   
+  movement(0,0,0,0);  
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  delay_ms(1500); 
+                
+   //forward 
+  do{
+         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+             movement(60,60,0,0);
+         }     
+         if(wheelEncoderCounter_right<wheelEncoderCounter_left){
+             movement(70,60,0,0);
+         } 
+         if(wheelEncoderCounter_right>wheelEncoderCounter_left){
+             movement(60,70,0,0);
+         }
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  }while ((wheelEncoderCounter_right<205)&(wheelEncoderCounter_right>-1));   
+  movement(0,0,0,0);     
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  delay_ms(1500);  
+  
+   //90°right
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0;
+  do{
+  movement(50,50,1,0);
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  }while (wheelEncoderCounter_right<13);   
+  movement(0,0,0,0);  
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  delay_ms(1500); 
+  
+     //forward 
+  do{
+         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+             movement(60,60,0,0);
+         }     
+         if(wheelEncoderCounter_right<wheelEncoderCounter_left){
+             movement(70,60,0,0);
+         } 
+         if(wheelEncoderCounter_right>wheelEncoderCounter_left){
+             movement(60,70,0,0);
+         }
+         lcd_gotoxy(0,1); 
+         puts("L:");
+         itoa(wheelEncoderCounter_left,str);
+         puts(str);
+         puts(" R:");
+         itoa(wheelEncoderCounter_right,str);
+         puts(str);
+  }while ((wheelEncoderCounter_right<205)&(wheelEncoderCounter_right>-1));   
+  movement(0,0,0,0);     
+  wheelEncoderCounter_left=0;
+  wheelEncoderCounter_right=0; 
+  delay_ms(1500);       
+  
   } 
  

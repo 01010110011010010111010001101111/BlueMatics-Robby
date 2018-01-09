@@ -1,5 +1,8 @@
-
-
+    long newvalL;
+    long newvalR;  
+    
+    int tmr_line;
+    int val_L_linesearch;
 
 // Timer1 overflow interrupt service routine
 interrupt [TIM1_OVF] void timer1_ovf_isr(void)
@@ -7,7 +10,7 @@ interrupt [TIM1_OVF] void timer1_ovf_isr(void)
   // Reinitialize Timer 1 value
   TCNT1L=0x9C;
   ipwmcounter++; 
-  if (ipwmcounter>255)
+  if (ipwmcounter>100)
     ipwmcounter=0;  
  if(ipwmcounter >= ipwmcompareleft){
  ENGINE_ENABLE_LEFT=0;  
@@ -17,9 +20,47 @@ interrupt [TIM1_OVF] void timer1_ovf_isr(void)
  if(ipwmcounter >= ipwmcompareright){
  ENGINE_ENABLE_RIGHT=0;     
   }else{
-  ENGINE_ENABLE_RIGHT=1;}    
+  ENGINE_ENABLE_RIGHT=1;}
+  
+  
+    if (tmr_line<6000){
+  tmr_line++;}else{ 
+  if(val_L_linesearch<200&&val_L_linesearch>49){
+   val_L_linesearch++;
+   tmr_line=0;
+  }else{
+   val_L_linesearch=50;
+   tmr_line=0;
+  }}
+   
+ 
+if(Wiipwmleft>0||Wiipwmright>0){
+ if (tmr_wiipwm<200){
+  tmr_wiipwm++;}else{ 
+   Wiipwmleft--;  
+   Wiipwmright--;
+   tmr_wiipwm=0;
+  }}else{
+   Wiipwmleft=0;
+   Wiipwmright=0;
+   tmr_wiipwm=0;
+  }
+  
+      
 }
 
+
+
+  
+void pwmmaker(int min_light){
+if((newvalL<255&&newvalL>-1)&&(newvalR<255&&newvalR>-1)&&((LIGHT_SENSOR_LEFT/5)>min_light)&&((LIGHT_SENSOR_RIGHT/5)>min_light)){
+newvalL=LIGHT_SENSOR_LEFT/5;
+newvalR=LIGHT_SENSOR_RIGHT/5;
+}else{
+ newvalL=0;
+ newvalR=0;
+}
+}
 
   void movement(int left, int right, int dir_left, int dir_right){
   ipwmcompareleft=left; 

@@ -3,8 +3,6 @@
 
 
   /////////////ADC PORT////////////// 
-
-
 #define FIRST_ADC_INPUT 0
 #define LAST_ADC_INPUT 5
 unsigned int adc_data[LAST_ADC_INPUT-FIRST_ADC_INPUT+1];

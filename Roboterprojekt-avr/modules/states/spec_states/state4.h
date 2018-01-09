@@ -1,19 +1,17 @@
-#include "modules/states/spec_states/detector.h"
 
-int all;
-int newvalL;
-int newvalR;
-int valL;
-int valR;
+void STATE_4(){
+lcd_clear();
+puts("bug");
+lcd_gotoxy(0,1);
+itoa(newvalR,str);
+puts(str);
+puts(" ");
+itoa(newvalL,str);
+puts(str);
 
-void pwmmaker(){
-all=LIGHT_SENSOR_LEFT+LIGHT_SENSOR_RIGHT;
-valL=all/2;
-newvalL=100/LIGHT_SENSOR_LEFT*valL;
-valR=all/2;
-newvalR=100/LIGHT_SENSOR_RIGHT*valR;
-}
-
-pwmmaker();
+pwmmaker(70);
 //Data for left and right reversed, so that the robot can drive away from light
 movement(newvalR,newvalL,1,1);
+}
+
+

@@ -3,17 +3,17 @@ char strTemp[17] = "";
 int servo_breaks = 1;
 int servo_value_cur = 170; 
 int servo_value_copy = 0;
-int servo_test = 0;
 int state_info = 0;
 int leftCounter = 0;
 int rightCounter = 0;     
 int leftEnc = 0;
 int rightEnc = 0;  
 int engine_dir = 0;
-int wiicamobject;
+int wiicamobject1=0;
+int wiicamobject2=0;
 int servochange=0;
 char str[17];
-int currstate=0;
+int currstate;
 int state = state_stop; 
 int line_left;
 int line_mleft;
@@ -25,9 +25,17 @@ int dist_fright;
 int dist_right;
 int linesensorvaluetemp;
 int distanzsensorvaluetemp;
+//pwm
 int ipwmcounter=0;
 int ipwmcompareleft=0;
 int ipwmcompareright=0;
+int tmr_wiipwm=0;
+int Wiipwmleft=0;
+int Wiipwmright=0;
+int wii1;
+int wii2;
+int wii3;
+int wii4; 
 
 
 
@@ -48,7 +56,7 @@ char s[17];
 
 //ESP
 // TX_BUFFER, RX_BUFFER
-#define BUFFER_SIZE 15
+#define BUFFER_SIZE 18
 // 7bit slave I2C address
 #define TWI_SLAVE_ADDR 0x50
 unsigned char i=10;
@@ -64,7 +72,8 @@ struct TData
   int16_t lichtrechts;
   int16_t motorvalueleft;
   int16_t motorvalueright;
-  uint8_t wiicam;
+  int16_t wiicam1;
+  int16_t wiicam2;
   uint8_t infarot;
   uint8_t servo;
   uint8_t ultraschall;

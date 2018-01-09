@@ -47,13 +47,19 @@ Data Stack size         : 1024
 #define state_zur  10
 #define state_links  11
 #define state_rechts  12
-#define state_90links  13
-#define state_90rechts  14
-#define state_drehung  15
-#define state_meterlinksmeterrechts  16
-#define state_2  17
-#define state_3  18
-#define state_stop 19
+//state_0 = state_stop
+#define state_1  13
+#define state_2  14
+#define state_3  15
+#define state_4  16
+#define state_5  17
+#define state_6  18
+#define state_7  19
+#define state_8  20
+#define state_90links  22
+#define state_90rechts  23
+#define state_stop 27
+
 
 
 #include "modules/variables.h"
@@ -73,8 +79,6 @@ Data Stack size         : 1024
 
 
 
-
-
 void main(void)
 {
 // Ports initialisieren
@@ -85,12 +89,12 @@ wii_cam_init();
 twiinit();
 
 while (1)
-      {
-      detector();           //SENSOR_DETECTOR        
+      {    
+      fnServo();
       STATE_MACHINE();      //DEFAULT_STATE_MACHINE
       esp_states();         //ESP_STATE_MACHINE
-      ondata();             //IR_DATA_FUNCTION
       esp_mainfunctions();  //ESP_MAIN_FUNCTIONS
-  
-      }
+      ondata();             //IR_DATA_FUNCTION 
+     
+   }
 }
