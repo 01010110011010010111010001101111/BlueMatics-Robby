@@ -1,0 +1,9 @@
+VERSION:3 SOURCE_TIMESTAMP:4C2C550E
+NODE:I LEVEL:0 LINE:1 "C:\cvavr\inc\stdio.h"
+NODE:I LEVEL:0 LINE:2 "C:\cvavr\inc\stdlib.h"
+NODE:V LEVEL:0 LINE:4 "default_buffer -> RAM:????"
+NODE:V LEVEL:0 LINE:5 "buffer_data -> RAM:????"
+NODE:F LEVEL:0 LINE:8 "send_buffer(void)"
+NODE:F LEVEL:0 LINE:16 "set_volume(int volume)"
+NODE:F LEVEL:0 LINE:23 "play_track(int track_id)"
+NODE:F LEVEL:0 LINE:37 "pause_current_track(void)"

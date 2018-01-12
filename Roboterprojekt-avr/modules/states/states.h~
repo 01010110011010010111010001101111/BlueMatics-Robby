@@ -182,12 +182,15 @@ void STATE_MACHINE(){
        
 
        default:  
-       
-          /* lcd_clear();
+         /*
+           lcd_clear();
            lcd_puts("   BlueMatics"); 
            lcd_gotoxy(0,1);
            lcd_puts("     Robby");   
-          */
+           */ 
+           
+           lcd_clear();
+lcd_puts(LINE_DETECTOR_LEFT_ADC);
       }                              
        delay_ms(50);
 }

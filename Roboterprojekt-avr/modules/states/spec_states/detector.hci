@@ -1,7 +1,7 @@
-VERSION:3 SOURCE_TIMESTAMP:4C28854E
+VERSION:3 SOURCE_TIMESTAMP:4C2BA065
 NODE:V LEVEL:0 LINE:7 "detector_value -> RAM:????"
 NODE:V LEVEL:0 LINE:8 "detector_value_line -> RAM:????"
 NODE:F LEVEL:0 LINE:11 "detector(void)"
 NODE:F LEVEL:0 LINE:79 "line_detector(void)"
-NODE:F LEVEL:0 LINE:158 "detectorcase_line(void)"
-NODE:F LEVEL:0 LINE:537 "detectorcase(void)"
+NODE:F LEVEL:0 LINE:161 "detectorcase_line(void)"
+NODE:F LEVEL:0 LINE:577 "detectorcase(void)"

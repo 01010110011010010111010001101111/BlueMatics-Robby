@@ -11,9 +11,9 @@ void STATE_7(){
                   }
                    else{                          
                    if ((x[iWII]-512)<1023){
-                   Wiipwmright=100; 
+                   Wiipwmright=60; 
                    }else{
-                   Wiipwmleft=100;               
+                   Wiipwmleft=60;               
                    } 
                    wiicamobject1=x[iWII]-512;  
                    wiicamobject2=y[i]-374;                  

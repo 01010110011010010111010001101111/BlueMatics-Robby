@@ -23,17 +23,17 @@ interrupt [TIM1_OVF] void timer1_ovf_isr(void)
   ENGINE_ENABLE_RIGHT=1;}
   
   
-    if (tmr_line<6000){
+    if (tmr_line<3000){
   tmr_line++;}else{ 
-  if(val_L_linesearch<200&&val_L_linesearch>49){
+  if(val_L_linesearch<30&&val_L_linesearch>0){
    val_L_linesearch++;
    tmr_line=0;
   }else{
-   val_L_linesearch=50;
+   val_L_linesearch=1;
    tmr_line=0;
   }}
    
- //if aktiv
+ 
 if(Wiipwmleft>0||Wiipwmright>0){
  if (tmr_wiipwm<200){
   tmr_wiipwm++;}else{ 
@@ -68,3 +68,19 @@ newvalR=LIGHT_SENSOR_RIGHT/5;
   ENGINE_DIRECTION_LEFT = dir_left;  
   ENGINE_DIRECTION_RIGHT = dir_right;
   }
+  
+  
+  void  linefunc(){
+  if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=65;     
+  if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=66;  
+  if (     !LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=67;  
+ // if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=68;  
+ // if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=69;  
+ // if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=70;  
+ // if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=71;     
+ // if (      LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=72; 
+ // if (     !LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=73; 
+  if (      LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=74; 
+  if (     !LINE_DETECTOR_LEFT&&  !LINE_DETECTOR_MID_LEFT&& LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=80; 
+  if (      LINE_DETECTOR_MID_RIGHT&&  !LINE_DETECTOR_RIGHT&& LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT)detector_value_line=81; 
+}

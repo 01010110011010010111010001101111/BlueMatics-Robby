@@ -23,13 +23,13 @@ interrupt [TIM1_OVF] void timer1_ovf_isr(void)
   ENGINE_ENABLE_RIGHT=1;}
   
   
-    if (tmr_line<6000){
+    if (tmr_line<3000){
   tmr_line++;}else{ 
-  if(val_L_linesearch<200&&val_L_linesearch>49){
+  if(val_L_linesearch<30&&val_L_linesearch>0){
    val_L_linesearch++;
    tmr_line=0;
   }else{
-   val_L_linesearch=50;
+   val_L_linesearch=1;
    tmr_line=0;
   }}
    
@@ -68,3 +68,5 @@ newvalR=LIGHT_SENSOR_RIGHT/5;
   ENGINE_DIRECTION_LEFT = dir_left;  
   ENGINE_DIRECTION_RIGHT = dir_right;
   }
+  
+  

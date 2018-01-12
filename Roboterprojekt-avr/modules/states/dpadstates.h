@@ -2,7 +2,7 @@
   void STATE_VOR(){
     wheelEncoderCounter_left=2;
     wheelEncoderCounter_right=0;  
-         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+         if(wheelEncoderCounter_right==wheelEncoderCounter_left){
              movement(100,100,0,0);
          }     
          if(wheelEncoderCounter_right<wheelEncoderCounter_left){
@@ -17,7 +17,7 @@
   void STATE_ZUR(){
     wheelEncoderCounter_left=2;
     wheelEncoderCounter_right=0;  
-         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+         if(wheelEncoderCounter_right==wheelEncoderCounter_left){
              movement(100,100,1,1);
          }     
          if(wheelEncoderCounter_right<wheelEncoderCounter_left){
@@ -30,12 +30,14 @@
     /////////////////////////// 
  
   void STATE_LINKS(){
-        movement(100,100,1,0);
+        //movement(0,100,1,0);
+        movement(0,100,0,0);
   }  
     /////////////////////////// 
  
   void STATE_RECHTS(){
-movement(100,100,0,1);
+        //movement(100,100,0,0);
+        movement(100,0,0,0);
   }       
     /////////////////////////// 
  

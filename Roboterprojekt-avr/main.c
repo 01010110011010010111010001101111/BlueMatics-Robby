@@ -6,7 +6,7 @@ Automatic Program Generator
 http://www.hpinfotech.com
 
 Project : BlueMatics
-Version : 0.0.8
+Version : 0.0.9
 Date    : 28.11.2017
 Author  : Viktor Lau
 Company : https://lauviktor.de
@@ -60,8 +60,6 @@ Data Stack size         : 1024
 #define state_90rechts  23
 #define state_stop 27
 
-
-
 #include "modules/variables.h"
 #include "modules/port_init.h"
 #include "modules/pwm.h"
@@ -79,6 +77,8 @@ Data Stack size         : 1024
 
 
 
+
+
 void main(void)
 {
 // Ports initialisieren
@@ -88,8 +88,16 @@ i2c_init();
 wii_cam_init();
 twiinit();
 
+
+
 while (1)
-      {    
+      {  
+if(LINE_DETECTOR_LEFT_ADC>500){LINE_DETECTOR_LEFT=1;}else{LINE_DETECTOR_LEFT=0;};
+if(LINE_DETECTOR_MID_LEFT_ADC>500){LINE_DETECTOR_MID_LEFT=1;}else{LINE_DETECTOR_MID_LEFT=0;};      
+if(LINE_DETECTOR_MID_RIGHT_ADC>500){LINE_DETECTOR_MID_RIGHT=1;}else{LINE_DETECTOR_MID_RIGHT=0;};      
+if(LINE_DETECTOR_RIGHT_ADC>500){LINE_DETECTOR_RIGHT=1;}else{LINE_DETECTOR_RIGHT=0;};      
+
+  
       fnServo();
       STATE_MACHINE();      //DEFAULT_STATE_MACHINE
       esp_states();         //ESP_STATE_MACHINE

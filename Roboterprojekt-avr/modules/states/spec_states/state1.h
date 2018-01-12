@@ -2,8 +2,8 @@
    /////////////////////////// 
  
   void STATE_1(){
-  wheelEncoderCounter_left=0;
-  wheelEncoderCounter_right=0; 
+  //wheelEncoderCounter_left=0;
+  //wheelEncoderCounter_right=0; 
   do{
       //0-255
       ipwmcompareleft=100; 

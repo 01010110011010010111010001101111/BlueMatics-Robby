@@ -138,20 +138,23 @@ void line_detector(){
   if (      BUMPER_LEFT&& !BUMPER_RIGHT&&  DISTANCE_SENSOR_LEFT&&  DISTANCE_SENSOR_RIGHT&& !DISTANCE_SENSOR_FRONT_LEFT&& !DISTANCE_SENSOR_FRONT_RIGHT)detector_value=59;   
   if (     !BUMPER_LEFT&&  BUMPER_RIGHT&& !DISTANCE_SENSOR_LEFT&& !DISTANCE_SENSOR_RIGHT&&  DISTANCE_SENSOR_FRONT_LEFT&&  DISTANCE_SENSOR_FRONT_RIGHT)detector_value=60;        
         
-  if (     (iTime/52.2)<20)detector_value=64;    
+  if (     (iTime/52.2)<30)detector_value=64;    
 
 
 
   if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=65;     
   if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=66;  
   if (     !LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=67;  
-  if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=68;  
-  if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=69;  
+ // if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=68;  
+ // if (     !LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=69;  
   if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=70;  
-  if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=71;     
-  if (      LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=72; 
-  if (     !LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=73; 
+ // if (      LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=71;     
+ // if (      LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=72; 
+ // if (     !LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT&&  LINE_DETECTOR_MID_RIGHT&& !LINE_DETECTOR_RIGHT)detector_value_line=73; 
   if (      LINE_DETECTOR_LEFT&& !LINE_DETECTOR_MID_LEFT&& !LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=74; 
+ 
+  if (     !LINE_DETECTOR_LEFT&&  !LINE_DETECTOR_MID_LEFT&& LINE_DETECTOR_MID_RIGHT&&  LINE_DETECTOR_RIGHT)detector_value_line=80; 
+  if (      LINE_DETECTOR_MID_RIGHT&&  !LINE_DETECTOR_RIGHT&& LINE_DETECTOR_LEFT&&  LINE_DETECTOR_MID_LEFT)detector_value_line=81; 
 
 }  
   
@@ -164,32 +167,32 @@ void detectorcase_line(){
     
    case 1:   
     //DISTANCE_SENSOR_FRONT_RIGHT
-     movement(100,70,1,1);
+     movement(80,60,1,1);
    break;   
 
    case 2:  
    //DISTANCE_SENSOR_FRONT_LEFT
-     movement(70,100,1,1);
+     movement(60,80,1,1);
    break;   
    
    case 3:   
     //DISTANCE_SENSOR_RIGHT
-     movement(70,100,0,0);  
+     movement(60,80,0,0);  
    break;   
 
    case 4:  
    //DISTANCE_SENSOR_LEFT
-     movement(100,70,0,0);
+     movement(80,60,0,0);
    break;      
 
    case 5:  
    //BUMPER_RIGHT
-     movement(100,70,1,1);
+     movement(80,60,1,1);
    break;  
  
    case 6:  
    //BUMPER_LEFT
-     movement(70,100,1,1);
+     movement(60,800,1,1);
    break;  
    
    case 7:  
@@ -469,66 +472,104 @@ void detectorcase_line(){
    break;                                                      
                   
     
-   case 65:   
-    //nothing detected
-    //Robby is driving a spiral (right)
-     movement(val_L_linesearch,255,0,0); 
-     puts("nothing");
+   case 65:    
+    //detected a line on all sensors 
+    //Robby is driving slowly to the left
+     movement(35,35,0,1);
+     puts("all"); 
    break; 
     
    case 66:   
-    //detected a line on all sensors 
-    //Robby is driving slowly to the left
-     movement(0,65,0,0);
-     puts("all"); 
+   //nothing detected
+   //Robby is driving a spiral (right)
+     movement(val_L_linesearch,30,0,0); 
+     puts("nothing");
    break;   
 
    case 67:  
    //detected a line on left sensor
    //Robby is driving to the right 
-     movement(80,60,0,0);
+     movement(15,40,0,1);
+     
+     delay_ms(70);
+     movement(10,10,1,1);
+     puts("67"); 
    break;   
    
    case 68:   
     //detected a line on left and midleft sensor 
     //Robby is driving slowly to the left
-     movement(60,70,0,0);
+     movement(30,40,0,0);
+          puts("68"); 
+               delay_ms(70);
+     movement(10,10,1,1);
    break;   
 
    case 69:  
     //detected a line on left, midleft and midright sensor 
     //Robby is driving slowly left 
-     movement(60,70,0,0);
+     movement(20,30,0,0);
+          puts("69"); 
    break;      
 
    case 70:  
     //detected a line on right sensor 
     //Robby is driving slowly to the right
-     movement(70,60,0,0);
+     movement(40,5,0,1);
+          puts("70");
+               delay_ms(70);
+     movement(10,10,1,1); 
    break;  
  
    case 71:  
     //detected a line on right and midright sensor 
     //Robby is driving slowly right
-     movement(70,60,0,0);
+     movement(40,30,0,0);
+          puts("71"); 
+               delay_ms(70);
+     movement(10,10,1,1);
    break;  
    
    case 72:  
     //detected a line on right, midright and midleft sensor 
     //Robby is driving slowly right
-     movement(75,65,0,0);
+     movement(30,40,0,0);
+          puts("72"); 
    break;  
    
    case 73:  
     //detected a line on left and right sensor 
     //Robby is driving slowly left
-     movement(60,70,0,0);
+     movement(30,40,0,0);
+          puts("73");
+               delay_ms(70);
+     movement(10,10,1,1); 
    break;      
    
    case 74:  
     //detected a line on midleft and midright sensor 
     //Robby is driving slowly to the left
-     movement(60,60,0,0);
+     movement(35,35,0,0);
+     puts("75");
+     delay_ms(30);
+     movement(10,10,1,1); 
+   break;  
+   
+      case 80:  
+
+     movement(40,0,0,0);
+     delay_ms(50);
+     movement(10,10,1,1);
+
+          puts("80"); 
+   break;  
+   
+      case 81:  
+
+     movement(25,35,1,0);
+          delay_ms(70);
+     movement(10,10,1,1);
+          puts("81"); 
    break;     
   }  
 
@@ -539,37 +580,39 @@ void detectorcase_line(){
     switch (detector_value){
    case 0:  
     //nothing detected 
-     movement(100,100,0,0);  
+     movement(30,30,0,0);  
    break; 
     
    case 1:   
     //DISTANCE_SENSOR_FRONT_RIGHT
-     movement(100,70,1,1);
+     movement(50,30,1,1);
    break;   
 
    case 2:  
    //DISTANCE_SENSOR_FRONT_LEFT
-     movement(70,100,1,1);
+     movement(30,50,1,1);
    break;   
    
    case 3:   
     //DISTANCE_SENSOR_RIGHT
-     movement(70,100,0,0);  
+     movement(30,50,0,0);  
    break;   
 
    case 4:  
    //DISTANCE_SENSOR_LEFT
-     movement(100,70,0,0);
+     movement(50,30,0,0);
    break;      
 
    case 5:  
    //BUMPER_RIGHT
-     movement(100,70,1,1);
+     movement(100,50,1,1);
+     delay_ms(200);
    break;  
  
    case 6:  
    //BUMPER_LEFT
-     movement(70,100,1,1);
+     movement(50,100,1,1);  
+     delay_ms(200);
    break;  
    
    case 7:  
@@ -594,7 +637,8 @@ void detectorcase_line(){
    
    case 11:  
    //BUMPER_RIGHT & BUMPER_LEFT
-     movement(100,70,1,1);
+     movement(100,70,1,1);  
+     delay_ms(200);
    break; 
    
    case 12:  

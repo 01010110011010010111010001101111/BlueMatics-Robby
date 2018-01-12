@@ -1,12 +1,16 @@
 #include <lcd.h>
 
 
+int LINE_DETECTOR_LEFT;
+int LINE_DETECTOR_RIGHT;
+int LINE_DETECTOR_MID_LEFT;
+int LINE_DETECTOR_MID_RIGHT;
+
+
 
   /////////////ADC PORT////////////// 
-
-
 #define FIRST_ADC_INPUT 0
-#define LAST_ADC_INPUT 5
+#define LAST_ADC_INPUT 6
 unsigned int adc_data[LAST_ADC_INPUT-FIRST_ADC_INPUT+1];
 // Voltage Reference: AVCC pin
 #define ADC_VREF_TYPE ((0<<REFS1) | (1<<REFS0) | (0<<ADLAR))
@@ -28,26 +32,10 @@ ADCSRA|=(1<<ADSC);
 }
 
 
-  /////////////INTERRUPTS////////////// 
-  
-  
- int wheelEncoderCounter_left  = 0;
- int wheelEncoderCounter_right = 0;           
-// External Interrupt 4 Wheel encoder Left
- interrupt [EXT_INT4] void ext_int4_isr(void)
- {
- if (wheelEncoderCounter_right<20000){
-  wheelEncoderCounter_right++;      
-  }else{wheelEncoderCounter_right=0;}
- }
-// External Interrupt 6 Wheel encoder Right
- interrupt [EXT_INT6] void ext_int6_isr(void)
- {
- if (wheelEncoderCounter_left<20000){
-  wheelEncoderCounter_left++;      
-  }else{wheelEncoderCounter_left=0;}
- }
 
+
+      
+ 
 
 
   /////////////PORT A////////////// 
@@ -107,14 +95,57 @@ ADCSRA|=(1<<ADSC);
 
   /////////////PORT F////////////// 
 
-#define LINE_DETECTOR_LEFT           PINF.0
+#define LINE_DETECTOR_LEFT_ADC       adc_data[0]
 #define LIGHT_SENSOR_LEFT            adc_data[1]
-#define LINE_DETECTOR_MID_LEFT       PINF.2
+#define LINE_DETECTOR_MID_LEFT_ADC   adc_data[2]
 #define LIGHT_SENSOR_RIGHT           adc_data[3]
-#define LINE_DETECTOR_MID_RIGHT      PINF.4
+#define LINE_DETECTOR_MID_RIGHT_ADC  adc_data[4]
 //NOTI IN USE#define PORTF.5
-#define LINE_DETECTOR_RIGHT          PINF.6
+#define LINE_DETECTOR_RIGHT_ADC      adc_data[6]
 //NOT IN USE #define PORTF.7
+
+
+
+
+
+
+  /////////////INTERRUPTS////////////// 
+  
+  
+long int wheelEncoderCounter_left  = 0;
+long int wheelEncoderCounter_right = 0;           
+// External Interrupt 4 Wheel encoder Left
+ interrupt [EXT_INT4] void ext_int4_isr(void)
+ {
+ if (wheelEncoderCounter_right>=-20000&wheelEncoderCounter_right<20000){ 
+ 
+  
+  if(ENGINE_DIRECTION_LEFT==1){wheelEncoderCounter_right--;}else{wheelEncoderCounter_right++;} 
+ 
+  
+  }else{wheelEncoderCounter_right=0;}
+ }
+// External Interrupt 6 Wheel encoder Right
+ interrupt [EXT_INT6] void ext_int6_isr(void)
+ {
+ if (wheelEncoderCounter_left>=-20000&wheelEncoderCounter_left<20000){  
+ 
+  if(ENGINE_DIRECTION_RIGHT==1){wheelEncoderCounter_left--;}else{wheelEncoderCounter_left++;}
+ 
+  }else{wheelEncoderCounter_left=0;}
+ }  
+ 
+ 
+
+
+
+
+
+
+
+
+
+
 
 #asm
    .equ __lcd_port=0x15 ;PORTC
@@ -192,7 +223,12 @@ OCR1CL=0x00;
 
 
 
-//TIMER 2
+// Timer/Counter 2 initialization
+// Clock source: System Clock
+// Clock value: 62,500 kHz
+// Mode: Normal top=0xFF
+// OC2 output: Disconnected
+// Timer Period: 4,096 ms
 TCCR2=(0<<WGM20) | (0<<COM21) | (0<<COM20) | (0<<WGM21) | (1<<CS22) | (0<<CS21) | (0<<CS20);
 TCNT2=0x00;
 OCR2=0x00;
