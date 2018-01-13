@@ -507,7 +507,7 @@ void sendDisplayValue(){
   if (rx_buffer.data.distanzsensorvalue==101){dist = "L:0 fL:1 fR:0 R:1";}
 
   /*
-   * first we send object name and the atribute to our display.
+   * first we send object name and atribute to our display.
    * since we are sending a text we need to send double quotes before and after the actual text.
    * We always have to send 3x 8Bit after each command sent to our display.
    * 

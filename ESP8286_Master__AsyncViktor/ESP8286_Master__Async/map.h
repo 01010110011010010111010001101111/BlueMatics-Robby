@@ -333,7 +333,7 @@ function sendCMD(Value){
 <body>
 
  <nav class="container"  > 
-    <a href="./map" class="buttons" tooltip="more"></a>
+    <a href="./more" class="buttons" tooltip="more"></a>
   <a href="./drive" class="buttons" tooltip="drive Robby"></a>
     <a href="./" class="buttons" tooltip="home"></a>
     <a href="./states" class="buttons" tooltip="states"></a>

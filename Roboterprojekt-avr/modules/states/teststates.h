@@ -107,8 +107,7 @@ void STATE_LINE_SENSOR(){
   ///////////////////////////
  void STATE_WIICAM(){ 
  unsigned char iWII=0; 
-        unsigned char pwmleft;
-        unsigned char pwmright;
+
         readData();
         convertdata(); 
 

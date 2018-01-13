@@ -33,6 +33,13 @@ body {
   left: 20%;
   right: 20%;
 }
+
+#wiicamobject { 
+width:86px;
+height:64px;
+background-color: rgba(0, 0, 0, 0.0); 
+}
+
 .gradient {
 background-color: rgba(255,255,255,0.8);
 border: 1px solid #DDD;
@@ -231,6 +238,18 @@ border-radius: 0px 25px 25px 0px;
          
        document.getElementById("integer").innerHTML = jsObj.integer;
 
+
+       //WiiCam object capturing
+      var wiicamobject = document.getElementById('wiicamobject');
+      var contextObject = wiicamobject.getContext('2d');
+      
+      contextObjekt.clearRect(0, 0, canvas.width, canvas.height);
+      contextObject.arc(jsObj.wiicam1, jsObj.wiicam2, 2, 0, 2* Math.PI);
+      contextObject.fillStyle = 'red';
+      contextObject.fill();
+      contextObject.stroke();
+
+
       }
     else 
     { 
@@ -240,6 +259,10 @@ border-radius: 0px 25px 25px 0px;
       document.getElementById("sdFormatIcon").src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC';
       document.getElementById("sdSizeIcon").src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC';
       document.getElementById("connectionIcon").src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAA4VBMVEUAAAB9fX19fX19fX19fX2BgYF9fX1+fn59fX19fX19fX19fX1/f399fX19fX1+fn59fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX1+fn59fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX2SkpJ9fX19fX19fX19fX19fX19fX19fX19fX19fX2SkpKQkJCXl5d9fX2JiYmQkJCFhYWEhISEhISPj4+Hh4eTk5ORkZGSkpKBgYF9fX2UlJSMjIwlzjGSAAAASHRSTlMAAwYMCBAkF0s9EyEaMTcdRu3BQill6Pj0gF1XUvCQcS3do+Opl8WFede+uX1pYP7fy3Vt0bStnInZlyGxpO/c9Oq1ZjTCwLbHrjhTAAAEHklEQVRYw+VV6XaaQBgNwwCyDAiIdQWC4K5x1zZp0r227/9AnRl2RcWe01+954QEZu6db7lf5uFfAgg8EkVRrSns/WR5HvQf63W92+3qen2x9By1tArDicHieI76riXD23Suaj8eL0H3WzJzlc46RuN4De9Gdu0Kf9473oZuaxdyV41jOTzOpQK+cmgcS2NrnpXC3JxVfenbw7U1c5rBdtQ9XVyBfPit/PG60azKLGCiVSC57f0ov8UTssVv5tlTFRY0GA2W7zLbxihZkrws3atg7WJo1iSzcyPG5+8yX1/ylgUAMLkw2hmb9czw4yrToHVEZ1jNnPrLnt7o9jbbQ8eVcNGolByktRjJdG+i2d3zUUzmcNzIO3Bjt7GLGawB2svk84zshnrcGguGYTr9pGt5DcTQIGp+/G1AI5hEGXVA2NHLfu5GLuYOkaZFX6v0vFGV0tF1P/fmHI26STM0lLDSrX69txPpwvSmn31Eq7Re1hcein2oICRRQ0zKjFKHcjTkcqc+4Rf5qumjib/3dv3Fic/noNhn7mN2V99uuRxDU1RExx9lXNywmCI+u80M276j5DbB2myc6Ual0Ohp7DsxMaQgwehPYT5KR7EohFq8upgRDhDEgVHHgevLoM1TQd6L8xgXVUGJSmCI5DzRzlXEbwskEacevgeFF9EqHMcaOcvXT41sdIhuZ0FjVIuvhOFjo2eTkyqFsxBIWMEcd7uGeelyUJBMxm14LMaEBMe67o1LDg6Ol2DwDyWgXhmHPVNCwEqzrvc9O3gZpYo95Q6Bd8shotlK1X0vdqhcJgU9bP0g3QzEl+hGgsSdNwTYAz2rlTObENBJVgn/hgD9n7jZiXgr9/yskMczwB/X/Y2nkmjg7UIyksDg57cP799/+UoebXIoKxEmAAxzlRs+Sfjf3v/CeCKP168gXmeu82l8gCpwH36leOMT/o3gQSgAwIPwIyPwuxPxH8oB4kCU71kB6w4+DoIkwmZT+CSWpqe7qq8J/+knR1bKAUAQ5fHhKea/mXcUACZGET5GCp/xRUALey+UUOGTBaLs7oaGFZ4+W+UJBQqvby188t+DMxH4Gx4DIDhDCRqDiSzLcpIkKIqiaTJPIMsafhMEiWMxwIV5wFzAcpykYJaLkCqa1WolRBXDFFUVuTVeU4jO+UyTkzlJ0OSai6mVTrtlzdbOcNrEmA5XK2dmtdqdSlVUUY2XBY5jIchJhHyZryFCb1nr1XRge9ux0TcwJn5waA6dGdbAEjgORZJYCLMKMCvQTgXGk8m4nwjMqQAiAjSE0xQ4kgJKUnBW0+YApzAYTIfO2ppfS4EWEVINBVfeRSopYiUFqSItokyLCCG82AksQ7IRoibGfdQ03EbSR4iPBsxVL1AAAgizv6gByM9/gvIT+AeevlMDy20U7QAAAABJRU5ErkJggg==';
+      
+      contextObjekt.clearRect(0, 0, canvas.width, canvas.height);
+      contextObject.stroke();
+     
      console.log('Server: ', e.data);  //Daten des Websocket ausgeben, wenn kein json Objekt mit 'request'
     }
    }
@@ -320,7 +343,7 @@ function sendCMD(Value){
 
 
  <nav class="container"  > 
-    <a href="./map" class="buttons" tooltip="more"></a>
+    <a href="./more" class="buttons" tooltip="more"></a>
   <a href="./drive" class="buttons" tooltip="drive Robby"></a>
     <a href="./map" class="buttons" tooltip="map"></a>
     <a href="./" class="buttons" tooltip="home"></a>
@@ -351,6 +374,7 @@ function sendCMD(Value){
       <img id="sdTypeIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">
       <img id="sdFormatIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">
       <img id="sdSizeIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">   
+      <canvas id="wiicamobject"></canvas>  
   </div>
   
 <div class="menue"  > 

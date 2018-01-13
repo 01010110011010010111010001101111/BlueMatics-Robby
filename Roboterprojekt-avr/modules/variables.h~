@@ -1,7 +1,15 @@
 // globale variables
 char strTemp[17] = "";
 int servo_breaks = 1;
-int servo_value_cur = 150; 
+int servoM40=50;
+int servoM30=80;
+int servoM20=110;
+int servoM10=140;
+int servo_value_cur = 170; 
+int servoP10=179;
+int servoP20=188;
+int servoP30=197;
+int servoP40=206;
 int servo_value_copy = 0;
 int state_info = 0;
 int leftCounter = 0;

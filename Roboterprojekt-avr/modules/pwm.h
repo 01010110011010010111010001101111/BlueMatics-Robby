@@ -51,16 +51,7 @@ if(Wiipwmleft>0||Wiipwmright>0){
 
 
 
-  
-void pwmmaker(int min_light){
-if((newvalL<255&&newvalL>-1)&&(newvalR<255&&newvalR>-1)&&((LIGHT_SENSOR_LEFT/5)>min_light)&&((LIGHT_SENSOR_RIGHT/5)>min_light)){
-newvalL=LIGHT_SENSOR_LEFT/5;
-newvalR=LIGHT_SENSOR_RIGHT/5;
-}else{
- newvalL=0;
- newvalR=0;
-}
-}
+
 
   void movement(int left, int right, int dir_left, int dir_right){
   ipwmcompareleft=left; 

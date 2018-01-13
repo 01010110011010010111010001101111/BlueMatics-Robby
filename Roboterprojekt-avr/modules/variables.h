@@ -1,7 +1,15 @@
 // globale variables
 char strTemp[17] = "";
 int servo_breaks = 1;
+int servoM40=50;
+int servoM30=80;
+int servoM20=110;
+int servoM10=140;
 int servo_value_cur = 170; 
+int servoP10=179;
+int servoP20=188;
+int servoP30=197;
+int servoP40=206;
 int servo_value_copy = 0;
 int state_info = 0;
 int leftCounter = 0;
@@ -12,19 +20,19 @@ int engine_dir = 0;
 int wiicamobject1=0;
 int wiicamobject2=0;
 int servochange=0;
-char str[17];
-int currstate;
+char str[17]="";
+int currstate=0;
 int state = state_stop; 
-int line_left;
-int line_mleft;
-int line_mright;
-int line_right;
-int dist_left;
-int dist_fleft;
-int dist_fright;
-int dist_right;
-int linesensorvaluetemp;
-int distanzsensorvaluetemp;
+int line_left=0;
+int line_mleft=0;
+int line_mright=0;
+int line_right=0;
+int dist_left=0;
+int dist_fleft=0;
+int dist_fright=0;
+int dist_right=0;
+int linesensorvaluetemp=0;
+int distanzsensorvaluetemp=0;
 //pwm
 int ipwmcounter=0;
 int ipwmcompareleft=0;
@@ -32,10 +40,10 @@ int ipwmcompareright=0;
 int tmr_wiipwm=0;
 int Wiipwmleft=0;
 int Wiipwmright=0;
-int wii1;
-int wii2;
-int wii3;
-int wii4; 
+int wii1=0;
+int wii2=0;
+int wii3=0;
+int wii4=0; 
 
 
 

@@ -78,6 +78,13 @@ body {
   margin: 15px auto 0;
 }
 
+
+
+
+
+
+
+
 .buttons:nth-last-child(1) {
   -webkit-transition-delay: 25ms;
           transition-delay: 25ms;
@@ -277,6 +284,8 @@ function sendCMD(Value){
       <img id="sdTypeIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">
       <img id="sdFormatIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">
       <img id="sdSizeIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">   
+    
+
   </div>
 
   

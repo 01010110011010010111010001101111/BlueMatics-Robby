@@ -1,4 +1,11 @@
+int min_light=0;
 void STATE_5(){
+
+if (min_light==0){
+if (LIGHT_SENSOR_LEFT<LIGHT_SENSOR_RIGHT){
+min_light=LIGHT_SENSOR_LEFT;}else
+{min_light=LIGHT_SENSOR_RIGHT;}
+}
 
 lcd_clear();
 puts("moth");
@@ -9,6 +16,19 @@ puts(" ");
 itoa(newvalL,str);
 puts(str);
 
-pwmmaker(70);
-movement(newvalL,newvalR,0,0);
+if(LIGHT_SENSOR_LEFT>min_light+100|LIGHT_SENSOR_RIGHT>min_light+100){
+if(LIGHT_SENSOR_LEFT>LIGHT_SENSOR_RIGHT){
+newvalL=50;
+newvalR=0;
+}
+
+if(LIGHT_SENSOR_LEFT<LIGHT_SENSOR_RIGHT){
+newvalL=0;
+newvalR=50;
+}
+}
+
+
+
+movement(newvalR,newvalL,0,0);
 }
