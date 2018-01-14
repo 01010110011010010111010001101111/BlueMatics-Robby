@@ -34,7 +34,7 @@ body {
   right: 20%;
 }
 
-#mycanvas { 
+#myCanvas { 
 width:86px;
 height:64px;
 border:1px solid #45d45a;
@@ -294,7 +294,7 @@ border-radius: 0px 25px 25px 0px;
         document.getElementById("sdSizeIcon").src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH4gECFSQSGI0AZwAAAZ9JREFUWMPt1D1sTlEcBvBf3zYtUR8hQaWDAfExipRKRZB0kEpE2AwslSZWko5GiUXMYpEYxGLoYrFLEywkpHQSEZQqqnotz03e3PQdWCznSU5yz/M/5/l/nktBQUHBf0Z32/cabMdqfP1HvUFsxS/8DNcT7b6sxealHkziC77hI+5jw184PoJn+Ix5fMKj2I7iNd6Ff48H8auFrqwbOIlpnMHYCo6W4qwdQxHcjTu4EK3B2PswkOQu4Q1O40qnbI6hwsQKtgrDjRZeD3+5g94oFlKhbbiN3xivy9+OLbiJWUyFO4AT+J79eRxOWR9mbuBesp3EwZy/GmcV9mEGvZirW9Rqc74HT7EZp3K4CztxDmdzbiT7Qxm2+fADadFL7Eo7N2I5OtMJcAL9uNXs44dEth+bsLZDC4Ya3MXwj7E+3FSCG05LF/AkgYwl0Oe1QC/uRmQxr6HCtQ4BHG9wdTbL+JEqVnibwRzNvkpVq7yIcW0vYEdKWHOtTOtMw9lIhmmuwa/C3jjsz71ZvMK62Lqju5Rqvyi/4YKCgoKCAvgDx/1jxaP3fbkAAAAASUVORK5CYII=';
         }
 
-        
+        makecanvas();
  }
  else{
 
@@ -330,14 +330,14 @@ function sendCMD(Value){
   connection.send(Value);
 }   
 
-
+function makecanvas(){
                 //WiiCam object capturing
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.beginPath();
 ctx.arc(15, 10, 2, 0, 2 * Math.PI);
 ctx.stroke();
-
+}
 </script>
 
 
@@ -378,7 +378,7 @@ ctx.stroke();
       <img id="sdTypeIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">
       <img id="sdFormatIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">
       <img id="sdSizeIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4gEDCiAS0ydGSwAAABpJREFUWMPtwQEBAAAAgiD/r25IQAEAAADvBhAgAAGX91fXAAAAAElFTkSuQmCC" width="32" height="32">   
-      <canvas id="mycanvas"></canvas>  
+      <canvas id="myCanvas"></canvas>  
   </div>
   
 <div class="menue"  > 
