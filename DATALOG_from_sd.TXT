@@ -1,0 +1,26 @@
+
+
+So sieht die Logdatei aus.
+
+
+
+------------------------------------------
+TIMESTAMP: Mon Jan 15 2018 14:31:34 GMT+0100 (CET)
+I2C transaction result: 0
+Transmitted to MEGA128:  0
+Received from MEGA128:   87    0   42   88    2    0    0    0
+Content of Receive Buffer: 57  0 2A  0 58  0  2  0  0  0  0  0  0  0  0  0 74  0 
+
+------------------------------------------
+TIMESTAMP: Mon Jan 15 2018 14:31:34 GMT+0100 (CET)
+I2C transaction result: 0
+Transmitted to MEGA128:  0
+Received from MEGA128:   87    0   41   88    2    0    0    0
+Content of Receive Buffer: 57  0 29  0 58  0  2  0  0  0  0  0  0  0  0  0 73  0 
+
+------------------------------------------
+TIMESTAMP: Mon Jan 15 2018 14:31:34 GMT+0100 (CET)
+I2C transaction result: 0
+Transmitted to MEGA128:  0
+Received from MEGA128:   87    0   43   89    2    0    0    0
+Content of Receive Buffer: 57  0 2B  0 59  0  2  0  0  0  0  0  0  0  0  0 74  0 
