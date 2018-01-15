@@ -267,8 +267,8 @@ function sendCMD(Value){
 <body>
 
  <nav class="container"  > 
-    <a href="./more" class="buttons" tooltip="more"></a>
-  <a href="./" class="buttons" tooltip="drive Robby"></a>
+    <a href="./" class="buttons" tooltip="home"></a>
+  <a href="./drive" class="buttons" tooltip="drive Robby"></a>
     <a href="./map" class="buttons" tooltip="map"></a>
     <a href="./states" class="buttons" tooltip="states"></a>
 

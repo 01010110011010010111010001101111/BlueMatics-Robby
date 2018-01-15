@@ -14,7 +14,6 @@
 
 
 void STATE_MACHINE(){
-      //0-255
       ipwmcompareleft=0; 
       ipwmcompareright=0; 
        switch(state){
@@ -182,16 +181,11 @@ void STATE_MACHINE(){
        
 
        default:  
-         /*
            lcd_clear();
            lcd_puts("   BlueMatics"); 
            lcd_gotoxy(0,1);
            lcd_puts("     Robby");   
-           */ 
-           
-            lcd_clear();
-            itoa(LINE_DETECTOR_LEFT_ADC,str);
-            lcd_puts(str);
+
       }                              
        delay_ms(50);
 }

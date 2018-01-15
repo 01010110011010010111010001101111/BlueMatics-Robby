@@ -17,7 +17,7 @@
   
  //forward 
   do{
-         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+         if(wheelEncoderCounter_right==wheelEncoderCounter_left){
              movement(60,60,0,0);
          }     
          if(wheelEncoderCounter_right<wheelEncoderCounter_left){
@@ -63,7 +63,7 @@
   puts(" 3");
    //forward 
   do{
-         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+         if(wheelEncoderCounter_right==wheelEncoderCounter_left){
              movement(60,60,0,0);
          }     
          if(wheelEncoderCounter_right<wheelEncoderCounter_left){
@@ -109,7 +109,7 @@
   puts(" 5");      
    //forward 
   do{
-         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+         if(wheelEncoderCounter_right==wheelEncoderCounter_left){
              movement(60,60,0,0);
          }     
          if(wheelEncoderCounter_right<wheelEncoderCounter_left){
@@ -155,7 +155,7 @@
   puts(" 7");
      //forward 
   do{
-         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+         if(wheelEncoderCounter_right==wheelEncoderCounter_left){
              movement(60,60,0,0);
          }     
          if(wheelEncoderCounter_right<wheelEncoderCounter_left){

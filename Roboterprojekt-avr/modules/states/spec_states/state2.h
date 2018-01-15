@@ -1,4 +1,4 @@
-   /////////////////////////// 
+// L fahren
 
   int wheelEncoderCounter_left_comp=0;  
   int wheelEncoderCounter_right_comp=0;

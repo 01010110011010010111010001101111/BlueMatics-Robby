@@ -189,8 +189,9 @@ void STATE_MACHINE(){
            lcd_puts("     Robby");   
            */ 
            
-           lcd_clear();
-lcd_puts(LINE_DETECTOR_LEFT_ADC);
+            lcd_clear();
+            itoa(LINE_DETECTOR_LEFT_ADC,str);
+            lcd_puts(str);
       }                              
        delay_ms(50);
 }

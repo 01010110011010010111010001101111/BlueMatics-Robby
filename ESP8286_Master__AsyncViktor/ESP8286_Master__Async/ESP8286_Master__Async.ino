@@ -1,16 +1,12 @@
 #include <SD.h>
 #include <ESP8266WiFi.h>
 #include <SPI.h>
-//#include <WiFiClient.h>
 #include <WebSocketsServer.h>
 #include <ArduinoJson.h>
-//#include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
-//#include <ESP8266WebServer.h>
 #include <FS.h>
 #include <Wire.h>
 #include <SoftwareSerial.h>
-#include <JQ6500_Serial.h>
 #include <Nextion.h>
 #include "webpage.h"
 #include "map.h"
@@ -21,38 +17,42 @@
 
 String line;
 String dist;
-int me=0;
+
+
+SDFile Sensorfile;
 
 
 int itest = 0;
+//Display
+//Deklaration der im Display verwendeten Buttons
+NexButton b1 = NexButton(5, 6, "b1");  
+NexButton m1 = NexButton(6, 6, "m1"); 
+NexButton touchDodge = NexButton(7, 6, "m1"); 
+NexButton touchBug = NexButton(8, 6, "m1");  
+NexButton touchMoth = NexButton(9, 6, "m1");  
+NexButton touchLine = NexButton(10, 6, "m1"); 
+NexButton touchFollow = NexButton(11, 6, "m1");  
+NexButton touchMapping = NexButton(12, 6, "m1"); 
+NexButton touchStop = NexButton(3, 12, "m9");  
 
-NexButton b1 = NexButton(5, 6, "b1");  // Button added
-NexButton m1 = NexButton(6, 6, "m1");  // Button added
-NexButton touchDodge = NexButton(7, 6, "m1");  // Button added
-NexButton touchBug = NexButton(8, 6, "m1");  // Button added
-NexButton touchMoth = NexButton(9, 6, "m1");  // Button added
-NexButton touchLine = NexButton(10, 6, "m1");  // Button added
-NexButton touchFollow = NexButton(11, 6, "m1");  // Button added
-NexButton touchMapping = NexButton(12, 6, "m1");  // Button added
-NexButton touchStop = NexButton(3, 12, "m9");  // Button added
-
-
-
+//Display
+//Füge die Buttons zum listener hinzu
 NexTouch *nex_listen_list[] = 
 {
-  &b1,  // Button added
-  &m1,  // Button added  
-  &touchDodge,  // Button added
-  &touchBug,  // Button added
-  &touchMoth,  // Button added
-  &touchLine,  // Button added
-  &touchFollow,  // Button added
-  &touchMapping,  // Button added
+  &b1,  
+  &m1,  
+  &touchDodge,  
+  &touchBug,  
+  &touchMoth, 
+  &touchLine,  
+  &touchFollow, 
+  &touchMapping,  
   &touchStop,  
   NULL  // String terminated
 };  // End of touch event list
 
-
+//Display
+//Aktion beim klick des Buttons
 void b1PushCallback(void *ptr)  
 {itest=14;i2c_exchange_data();}  
 void m1PushCallback(void *ptr) 
@@ -78,9 +78,10 @@ void touchStopPushCallback(void *ptr)
 
 
 
+
 /*-------------------SD Defs-----------------------------------------*/
 String    error;
-uint8_t   sd=0;
+uint8_t   sd=1;
 uint8_t   sdtype;
 int       formattype;
 uint32_t  sdsize;
@@ -102,6 +103,7 @@ const char* password = "password";
 // 7-bit I2C slave adress
 #define TWI_SLAVE_ADDR 0x50
 
+//Die Größe des Buffers, sowie die struct müssen zum atmega identisch sein
 // TX_BUFFER, RX_BUFFER
 #define BUFFER_SIZE 18
 
@@ -181,7 +183,7 @@ unsigned char i2c_master_trans(unsigned char slave_addr,
 
 
 
-
+//Datenaustausch zwischen ESP und ATMEGA
 void i2c_exchange_data(void)
 {
   // Daten, die gesendet werden
@@ -189,15 +191,13 @@ void i2c_exchange_data(void)
   char timestampBuffer[50];
   // transmit data from tx_buffer to the slave and receive response in rx_buffer
   i2c_result = i2c_master_trans(TWI_SLAVE_ADDR, tx_buffer.bytes, BUFFER_SIZE, rx_buffer.bytes, BUFFER_SIZE);
-  // display the transaction on the terminal
   if (i2c_result == 0)
   {
 
     // I2C transaction was performed without errors
-    if (sd=1){
+    //Eintragung in log Datei auf der SD-Karte
     timestamp.toCharArray(timestampBuffer, 60); 
-    SDFile Sensorfile = SD.open("datalog.txt", FILE_WRITE);
-
+    Sensorfile = SD.open("datalog.txt", FILE_WRITE);
     // if the file is available, write to it:
     if (Sensorfile) {
     Sensorfile.printf("------------------------------------------\n");
@@ -212,13 +212,12 @@ void i2c_exchange_data(void)
     Sensorfile.printf("%2X ", rx_buffer.bytes[i]);
     Sensorfile.printf("\r\n\n");
     Sensorfile.close();
-  }}}
+  }}
   else
   {
-    if (sd=1){
     timestamp.toCharArray(timestampBuffer, 60);
-    SDFile Sensorfile = SD.open("datalog.txt", FILE_WRITE);
-
+    Sensorfile = SD.open("datalog.txt", FILE_WRITE);
+    //Eintragung in log Datei auf der SD-Karte
     // if the file is available, write to it:
     if (Sensorfile) {
     Sensorfile.printf("-----------------ERROR-----------------\n");
@@ -233,7 +232,7 @@ void i2c_exchange_data(void)
     Sensorfile.printf("%2X ", rx_buffer.bytes[i]);
     Sensorfile.printf("\r\n\n");
     Sensorfile.close();
-  }}}
+  }}
   
 
   
@@ -250,35 +249,34 @@ void setup() {
   Wire.setClock(400000);
   Wire.begin();
 
-
-
   // Serial initialization
+    //Das Display kommunitiert mit dem ESP über das UART Interface
   Serial.begin(9600);
 
-
-  b1.attachPush(b1PushCallback);  // Button press
-  m1.attachPush(m1PushCallback);  // Button press
-  touchDodge.attachPush(touchDodgePushCallback);  // Button press
-  touchBug.attachPush(touchBugPushCallback);  // Button press
-  touchMoth.attachPush(touchMothPushCallback);  // Button press
-  touchLine.attachPush(touchLinePushCallback);  // Button press
-  touchLine.attachPush(touchLinePushCallback);  // Button press
-  touchFollow.attachPush(touchFollowPushCallback);  // Button press
-  touchMapping.attachPush(touchMappingPushCallback);  // Button press
-  touchStop.attachPush(touchStopPushCallback);  // Button press
-
+  //Display
+  //Was soll passieren wenn die Bediengung wahr ist?
+  //Funktionsaufruf
+  b1.attachPush(b1PushCallback);  
+  m1.attachPush(m1PushCallback);  
+  touchDodge.attachPush(touchDodgePushCallback);  
+  touchBug.attachPush(touchBugPushCallback);  
+  touchMoth.attachPush(touchMothPushCallback); 
+  touchLine.attachPush(touchLinePushCallback);
+  touchLine.attachPush(touchLinePushCallback); 
+  touchFollow.attachPush(touchFollowPushCallback);  
+  touchMapping.attachPush(touchMappingPushCallback);  
+  touchStop.attachPush(touchStopPushCallback);  
   
-//  Serial.println();
+
   delay(200);
-  if (!card.init(SPI_HALF_SPEED, 14)) {
-    //sd-card not found
-    sd=0;
-    return;
-  } else {
-    //sd-card found
-    sd=1;
-    }
-  // get the type of card
+
+//Initiealisierung der SD-Karte
+  if (!SD.begin(14)) {
+      sd=0;
+      return;
+  }
+    
+  // Typbestimmung
   switch (card.type()) {
     case SD_CARD_TYPE_SD1:
       sdtype=1;
@@ -293,10 +291,9 @@ void setup() {
       sdtype=0;
   }
   if (!volume.init(card)) {
-    //Serial.println("Could not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
     return;
   }
-   //print the type and size of the first FAT-type volume
+      //Größenbestimmung
   uint32_t volumesize;
 
   formattype = volume.fatType();
@@ -323,16 +320,6 @@ void setup() {
   WiFi.softAPConfig(local_IP, gateway, subnet);
   
 
-  //Serial.print("Setting soft-AP configuration ... ");
-  //Serial.println(WiFi.softAPConfig(local_IP, gateway, subnet) ? "Ready" : "Failed!");
-  //Serial.print("Setting soft-AP ... ");
-  //Serial.println(WiFi.softAP("ESPsoftAP_01") ? "Ready" : "Failed!");
-  //Serial.print("Soft-AP IP address = ");
-  //Serial.println(WiFi.softAPIP());
-  //Serial.print("Station IP address = ");
-  //Serial.println(WiFi.localIP());
-
-    // SPIFFS initialization
     if (!SPIFFS.begin())
     {
     // Serious problem
@@ -346,13 +333,13 @@ void setup() {
     }
   
 
-  // WebSocket
+  // startet den WebSocket
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
   
- // Serial.println("WebSocket gestartet!");
   
   // WebServer
+  // Was soll aufgerufen werden, wenn folgendes in der Adresszeile übergeben wird
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send_P(200, "text/html", html);
   });
@@ -369,10 +356,9 @@ void setup() {
     request->send_P(200, "text/html", handleDrive);
   });
 
-  
+  //startet den HTTP Server
   server.begin();
   
-  //Serial.println("HTTP server gestartet!");
 
 }
 
@@ -382,16 +368,15 @@ void loop() {
 
   unsigned long currentMillis = millis();
   webSocket.loop();  
-  //avoid overloading the serial pipe which causes hanging up the terminal and watchdog
+      //Alle 1,2 Sekunden einen Datenaustausch durchführen
   if (currentMillis % 1200 == 0) {
       i2c_exchange_data();  //get data from atmega
       sendDisplayValue();
+        
     if (con == true) {
       sendJasonString(); //Daten über Websocket nur schicken, wenn Verbindung besteht!
     }}
-   nexLoop(nex_listen_list);  // Check for any touch event
-
-
+   nexLoop(nex_listen_list); // Display Toucheventlistener
 
 
 }    
@@ -405,21 +390,12 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
   switch (type) {
     case WStype_DISCONNECTED:
 
-    
-      //Serial.println("Websocket disconnected!");
-    
-      
       con = false;
       break;
     case WStype_CONNECTED:
       {
       IPAddress ip = webSocket.remoteIP(num);
-      
-      
-      //Serial.println("Websocket Connected!");
-      //Serial.println(ip);
-
-      
+           
       con = true;
       }
       break;
@@ -427,7 +403,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
       {
         String text = String((char *) &payload[0]);
         
-
+//Prüft die Übergabe des Json Objektes von der Website
         if (text == "state_linedetector") {itest=1; i2c_exchange_data();}   
         if (text == "state_engine") {itest=2; i2c_exchange_data();}
         if (text == "state_engine_dir") {itest=3; i2c_exchange_data();}
@@ -451,9 +427,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         if (text == "map") {itest=21; i2c_exchange_data();}        
         if (text == "servo+") {itest=25; i2c_exchange_data();}
         if (text == "servo-") {itest=26; i2c_exchange_data();}
+        if (text == "getUS") {itest=50; i2c_exchange_data();}        
         if (text == "off") {itest=0; i2c_exchange_data();}
         if (text.startsWith("Client connected")){
-          if (sd=1){
                   SDFile Sensorfile = SD.open("datalog.txt", FILE_WRITE);
                   if (Sensorfile) {
                       Sensorfile.printf("\n------------------------------------------\n");
@@ -462,7 +438,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                       Sensorfile.printf("------------------------------------------\n");
                       Sensorfile.printf("------------------------------------------\n");
                   Sensorfile.close();
-                                    }}}
+                                    }}
           if (text.startsWith("TIMESTAMP:")){timestamp=text;}else{Serial.println(text);}}
       break;
   }
@@ -472,6 +448,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
 
 void sendDisplayValue(){
+//Sendet Daten an das Display
+  
   //Line Sensor
   //get the overflow-value (it's ok, because the value is constant)
   if (rx_buffer.data.linesensorvalue==0){line="L:0 mL:0 mR:0 R:0";}
@@ -591,6 +569,7 @@ void sendDisplayValue(){
 
 void sendJasonString()
 {
+//Sendet Daten an die Website über ws 7 json Objekt  
   DynamicJsonBuffer jsonBuf;
   JsonObject& root = jsonBuf.createObject();
   root["action"] = "request";
@@ -611,14 +590,11 @@ void sendJasonString()
 
 
   //esp-intern
-  if (sd=1){
-      root["sd"] = 1;
+      root["sd"] = sd;
       root["sd_type"] = sdtype;
       root["sd_format"] = formattype;
       root["sd_size"] = sdsize;
-  }else{
-      root["sd"] = 0;   
-  }
+
     
   char buf[512];
   size_t size = root.printTo(buf, sizeof(buf));

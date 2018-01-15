@@ -1,4 +1,6 @@
 void STATE_7(){ 
+
+//Objektverfolgung
         unsigned char iWII=0; 
         readData();
         convertdata();
@@ -15,8 +17,8 @@ void STATE_7(){
                    }else{
                    Wiipwmleft=60;               
                    } 
-                   wiicamobject1=x[iWII]-512;  
-                   wiicamobject2=y[i]-374;                  
+                   wiicamobject1=x[iWII];  
+                   wiicamobject2=y[i];                  
                    } 
                }    
           }

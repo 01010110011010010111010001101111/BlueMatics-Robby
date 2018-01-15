@@ -2,7 +2,7 @@
 
   /////////////////////////// 
 
-
+//Hier werden die Zustände der Sensoren abgefragt
 
 int detector_value;
 int detector_value_line;

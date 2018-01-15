@@ -291,7 +291,6 @@ user-select: none;
         
    }else 
     { 
-    // document.getElementById("READY_STATE").innerHTML = connection.readyState;
      console.log('Server: ', e.data);  //Daten des Websocket ausgeben, wenn kein json Objekt mit 'request'
     }
    }
@@ -405,7 +404,7 @@ function sendSTOP() {
 
  
 
-
+//Die Richtungstasten senden nach dem Klick ein Befehl über ws zum ESP
       <div class="dpadbuttons">
       <a class="up" onmousedown="sendUP()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAABmJLR0QAzQDNAM2UZCwLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gEJEwcSdaiMtQAAAXtJREFUWMPtlb1KA0EUhb9NWFYUiSBsI9oJYqNwERuLYCc+gaIPIMEXsLFQX8BCrMVSEKwFG4uIHNTKwkJIYZFmSROIiLHZhBCN5Gd3DbinuczuzJ0P5swZSDWkcgZZLMkBjoArMyv+CYgkF7gE1sNP22Z2niiIpHGgCMy3/ToFCmb2GTuIpBngCZjoMOUeyJtZtZe+mR4h8sDrLxAAS8CrpKlYQCTtADddrvGBkqS1yI5GUgY4Bgp9+nAfODCzet8gkjzgGlgZMCYugA0z++gZRNIk8ABMR5RZL8CymQVde0TSHFCKEAJgFniTtNAVSGiwZ2A0hiQfAR4lbXU8mjCu94DDhJ6XE2C3EX5OCJEFzoDNhN+6O2DVzKqOpDHg1vO8RYBcLkelUvlWa7VaXzt5ntfs0d6/XC43TeyEVzT7Q4860Hrd3vsBMTMnkkBr8VA9TpAMQ6IUJAVJQVKQxEB83x8OkCAI8H0f13WbtQHoum5z3Frjhk/1v/QFZl941PVyvB4AAAAASUVORK5CYII=" /></a><br><br>
       <a class="left" onmousedown="sendLEFT()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAABmJLR0QAzQDNAM2UZCwLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gEJEwooBgorSgAAAZxJREFUWMPN1zGL1EAYxvHfziWYVQTFWmuxEqdwC4vDTvQLKPgBRPwCFoKoX8DisBZLQbCw0s7iRAa52trGxs4VEu5scnqr6+3eJpvxaZLM+zL5z/MyeSf0oJTSiZTSsS5zhB4gNvAeG9lAUkojPMfFrgvq6sh93OqjvKGDG9fwWE8KK0Kcxxs9KqwAcQZpTmhvMJB2i37C8TnhZhCQlFLAW5y1Bh3Fkae4Yk0aLenGHWwtyqvrWlmWptOpoig0ze9qFUWhLEt1XWuaRlEUJpPJr/cXS0BsLgMBZVmC8Xg88/xnzrzxsADiHN4ZQOEQiJPY6aMfrQySUiqxjVMGUvhHI3uFCwbUPEee4LqBNQ/ktQz6CyTGuI3b/4MjYowv8Cw7SKu7+JgdJMa4i018ze2IGON3XMJuVpAW5gtuLMqrqkpVVUIIM1fMjO3f78eO1H3bD90DPDwEeLRWRw7oEV5mK82BFe/hJj7nPqGJMTa4jB9ZQVqYb5hkB2lhdvpuAysfeto2sJUdpNU9fMgO0raBq+vaSav8C5/uOsdPIFVn6qDUv0wAAAAASUVORK5CYII=" /></a>

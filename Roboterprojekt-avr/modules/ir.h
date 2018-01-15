@@ -45,6 +45,7 @@ int rc5_receive(unsigned char *ucToggle, unsigned char *ucAdress, unsigned char 
     return 0;
 }  
 
+//Zeigt empfangene ir Daten an
 void rc5_display(void)
 { lcd_clear();
   lcd_puts("DATA");
@@ -58,6 +59,7 @@ void rc5_display(void)
   lcd_puts(s);   
 }
 
+//Schaltet die states durch
 void ondata(){
     if(rc5_receive(&ucToggle, &ucAdress, &ucData))
     {               

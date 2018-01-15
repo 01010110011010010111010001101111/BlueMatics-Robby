@@ -37,8 +37,6 @@ body {
 #myCanvas { 
 width:86px;
 height:64px;
-border:1px solid #45d45a;
-//background-color: rgba(0, 0, 0, 1.0); 
 }
 
 .gradient {
@@ -176,6 +174,8 @@ border-radius: 0px 25px 25px 0px;
 <script language="JavaScript">
 'use strict'                
  var ip = location.host;
+ var wiicamx=0;
+ var wiicamy=0;
  let connection = null; 
  function start(){
   connection=new WebSocket("ws://"+ip+":81");
@@ -193,6 +193,7 @@ border-radius: 0px 25px 25px 0px;
  connection.onmessage = function(e){
    if (connection.readyState === 1) {   //Verbindung wurde hergestellt      
      let jsObj = JSON.parse(e.data);
+             makecanvas();
      if (jsObj.action == "request") {
 
         if(jsObj.sd=1){
@@ -234,6 +235,8 @@ border-radius: 0px 25px 25px 0px;
        document.getElementById("servo").innerHTML = jsObj.servovalue;  
        document.getElementById("wiicamx").innerHTML = jsObj.wiicam1;  
        document.getElementById("wiicamy").innerHTML = jsObj.wiicam2;  
+       wiicamx = jsObj.wiicam1+=32;  
+       wiicamy = jsObj.wiicam2+=32; 
        document.getElementById("infarot").innerHTML = jsObj.infarot;  
        document.getElementById("ultraschall").innerHTML = jsObj.ultraschall;  
          
@@ -293,8 +296,6 @@ border-radius: 0px 25px 25px 0px;
         if(jsObj.sd_size>1881){
         document.getElementById("sdSizeIcon").src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH4gECFSQSGI0AZwAAAZ9JREFUWMPt1D1sTlEcBvBf3zYtUR8hQaWDAfExipRKRZB0kEpE2AwslSZWko5GiUXMYpEYxGLoYrFLEywkpHQSEZQqqnotz03e3PQdWCznSU5yz/M/5/l/nktBQUHBf0Z32/cabMdqfP1HvUFsxS/8DNcT7b6sxealHkziC77hI+5jw184PoJn+Ix5fMKj2I7iNd6Ff48H8auFrqwbOIlpnMHYCo6W4qwdQxHcjTu4EK3B2PswkOQu4Q1O40qnbI6hwsQKtgrDjRZeD3+5g94oFlKhbbiN3xivy9+OLbiJWUyFO4AT+J79eRxOWR9mbuBesp3EwZy/GmcV9mEGvZirW9Rqc74HT7EZp3K4CztxDmdzbiT7Qxm2+fADadFL7Eo7N2I5OtMJcAL9uNXs44dEth+bsLZDC4Ya3MXwj7E+3FSCG05LF/AkgYwl0Oe1QC/uRmQxr6HCtQ4BHG9wdTbL+JEqVnibwRzNvkpVq7yIcW0vYEdKWHOtTOtMw9lIhmmuwa/C3jjsz71ZvMK62Lqju5Rqvyi/4YKCgoKCAvgDx/1jxaP3fbkAAAAASUVORK5CYII=';
         }
-
-        makecanvas();
  }
  else{
 
@@ -334,8 +335,11 @@ function makecanvas(){
                 //WiiCam object capturing
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 ctx.beginPath();
-ctx.arc(15, 10, 2, 0, 2 * Math.PI);
+ctx.fillStyle='red';
+ctx.arc(wiicamx, wiicamy, 10, 0, 2 * Math.PI);
+ctx.fill();
 ctx.stroke();
 }
 </script>

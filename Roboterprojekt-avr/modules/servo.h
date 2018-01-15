@@ -14,7 +14,7 @@ interrupt [TIM2_OVF] void timer2_ovf_isr(void)
      } 
   
 }
-//show position of servo
+//Zeigt die Position des Servos an
 void fnDisplay(void )
 {
   lcd_clear();  
@@ -24,6 +24,7 @@ void fnDisplay(void )
   lcd_puts(strTemp);  
 }
 
+//Lässt den Servo drehen
 void fnServo(){
 if (state==24)if (servo_value_cur<220)servo_value_cur+=1;
 if (state==25)if (servo_value_cur>120)servo_value_cur-=1;

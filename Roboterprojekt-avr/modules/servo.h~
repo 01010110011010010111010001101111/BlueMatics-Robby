@@ -17,7 +17,6 @@ interrupt [TIM2_OVF] void timer2_ovf_isr(void)
 //show position of servo
 void fnDisplay(void )
 {
- char str[10];
   lcd_clear();  
   lcd_puts("POSITION-SERVO");      
   lcd_gotoxy(0, 1);

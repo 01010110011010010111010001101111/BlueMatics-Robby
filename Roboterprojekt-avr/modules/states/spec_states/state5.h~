@@ -1,4 +1,3 @@
-int min_light=0;
 void STATE_5(){
 
 if (min_light==0){

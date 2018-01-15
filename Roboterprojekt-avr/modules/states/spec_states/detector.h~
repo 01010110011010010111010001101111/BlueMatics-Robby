@@ -2,7 +2,7 @@
 
   /////////////////////////// 
 
-
+//Hier werden die Zuständer d
 
 int detector_value;
 int detector_value_line;
@@ -489,8 +489,7 @@ void detectorcase_line(){
    case 67:  
    //detected a line on left sensor
    //Robby is driving to the right 
-     movement(15,40,0,1);
-     
+     movement(0,40,0,0);
      delay_ms(70);
      movement(10,10,1,1);
      puts("67"); 
@@ -515,7 +514,7 @@ void detectorcase_line(){
    case 70:  
     //detected a line on right sensor 
     //Robby is driving slowly to the right
-     movement(40,5,0,1);
+     movement(40,0,0,0);
           puts("70");
                delay_ms(70);
      movement(10,10,1,1); 
@@ -566,7 +565,7 @@ void detectorcase_line(){
    
       case 81:  
 
-     movement(25,35,1,0);
+     movement(0,40,0,0);
           delay_ms(70);
      movement(10,10,1,1);
           puts("81"); 

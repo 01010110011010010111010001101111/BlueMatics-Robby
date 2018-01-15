@@ -17,7 +17,7 @@
   void STATE_ZUR(){
     wheelEncoderCounter_left=2;
     wheelEncoderCounter_right=0;  
-         if(wheelEncoderCounter_right=wheelEncoderCounter_left){
+         if(wheelEncoderCounter_right==wheelEncoderCounter_left){
              movement(100,100,1,1);
          }     
          if(wheelEncoderCounter_right<wheelEncoderCounter_left){

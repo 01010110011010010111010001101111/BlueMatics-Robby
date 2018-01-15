@@ -80,7 +80,7 @@ void ondata(){
     if(ucData==8){state=20;}    
     if(ucData==18){state=12;}
     if(ucData==19){state=11;} 
-    if(ucData==22){state=09;}
+    if(ucData==22){state=9;}
     if(ucData==23){state=10;}
 
 } 

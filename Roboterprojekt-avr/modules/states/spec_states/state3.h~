@@ -1,6 +1,5 @@
- 
+//Hindernissen ausweichen
   void STATE_3(){
-    //detector(); 
-    linefunc();
+    detector(); 
     detectorcase();
   } 

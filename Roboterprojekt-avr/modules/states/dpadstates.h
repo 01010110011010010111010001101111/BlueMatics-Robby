@@ -1,4 +1,4 @@
- 
+//States mit PWM-Ausgleich
   void STATE_VOR(){
     wheelEncoderCounter_left=2;
     wheelEncoderCounter_right=0;  
